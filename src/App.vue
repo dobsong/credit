@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CrestFooter from './components/CrestFooter.vue'
+
 const theme: string = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 </script>
 
@@ -46,10 +48,10 @@ const theme: string = window.matchMedia('(prefers-color-scheme: dark)').matches 
           montes, nascetur ridiculus mus. Donec tempor odio nec suscipit semper. Donec neque erat,
           semper nec urna mollis, placerat fringilla urna.
         </p>
-        <div class="flex mt-8">
+        <div class="flex mt-8 justify-center md:justify-start">
           <a
             href="#"
-            class="uppercase py-2 px-4 rounded-lg bg-cyan-600 border-2 border-transparent text-white dark:text-gray-800 text-md hover:bg-cyan-400"
+            class="uppercase py-2 px-4 rounded-lg bg-[#F15D5C] border-2 border-transparent text-white dark:text-gray-800 text-md hover:bg-[#FF8D8C]"
           >
             Create Proposal
           </a>
@@ -63,35 +65,7 @@ const theme: string = window.matchMedia('(prefers-color-scheme: dark)').matches 
       </div>
     </div>
   </main>
-  <footer class="flex flex-wrap-reverse m-[7px] lg:m-5 xl:m-6">
-    <div class="w-1/2 md:w-1/3">
-      <img
-        id="wellcome-logo"
-        alt="Wellcome logo"
-        src="./assets/wellcome_logo_cyan_50_web.svg"
-        class="size-[70px] lg:size-25 xl:size-30"
-      />
-    </div>
-    <img
-      v-if="theme === 'dark'"
-      id="lu-logo"
-      alt="Lancaster University logo"
-      src="./assets/dark/lu-logo.svg"
-      class="h-[70px] lg:h-25 xl:h-25 w-1/2 md:w-1/3"
-    />
-    <img
-      v-else
-      id="lu-logo"
-      alt="Lancaster University logo"
-      src="./assets/lu-logo.svg"
-      class="h-[70px] lg:h-25 xl:h-25 w-1/2 md:w-1/3"
-    />
-    <div
-      class="text-center text-sm px-6 pb-6 my-auto text-gray-600 dark:text-gray-400 w-full md:w-1/3"
-    >
-      Funded by Wellcome. Maybe project and contact details here?
-    </div>
-  </footer>
+  <CrestFooter :theme="theme"></CrestFooter>
 </template>
 
 <style scoped></style>
