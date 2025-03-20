@@ -19,7 +19,7 @@ defineProps<{
         id="rrp-logo"
         :src="'/src/assets/' + (theme === 'dark' ? 'dark/' : '') + 'rrp-logo.svg'"
         alt="Reimagining Research Culture Logo"
-        class="h-[50px] lg:h-25 w-auto md:max-w-1/2"
+        class="h-[50px] lg:h-25 w-full sm:w-auto md:max-w-1/2"
       />
       <img
         id="rrp-inclusion-logo"
