@@ -7,18 +7,17 @@ const theme: string = window.matchMedia('(prefers-color-scheme: dark)').matches 
 <template>
   <header class="h-24 sm:h-32 flex items-center z-30 w-full">
     <div class="container mx-auto px-6 flex items-center justify-between">
-      <div class="font-black text-3xl flex items-start py-2">
-        <img alt="CREST logo" class="size-16 mr-6" src="./assets/logo_placeholder.svg" />
-        <span class="my-auto">CREST</span>
+      <div class="text-4xl flex items-start py-2">
+        <img alt="CREST logo" class="size-16 md:size-24 mr-6" src="./assets/logo_placeholder.svg" />
+        <span class="my-auto font-[MuseoSans]">CREST</span>
       </div>
       <div class="flex items-center">
-        <nav class="font-sen uppercase text-lg lg:flex items-center hidden">
-          <a href="#" class="py-2 px-6 flex"> Home </a>
-          <a href="#" class="py-2 px-6 flex"> Create Proposal </a>
-          <a href="#" class="py-2 px-6 flex"> Case Studies </a>
-          <a href="#" class="py-2 px-6 flex"> Catalogue </a>
-          <a href="#" class="py-2 px-6 flex"> Glossary </a>
-          <a href="#" class="py-2 px-6 flex"> About </a>
+        <nav class="uppercase text-lg lg:flex items-center hidden font-semibold">
+          <a href="#" class="py-2 px-4 flex"> Home </a>
+          <a href="#" class="py-2 px-4 flex"> Create Proposal </a>
+          <a href="#" class="py-2 px-4 flex"> Case Studies </a>
+          <a href="#" class="py-2 px-4 flex"> Catalogue </a>
+          <a href="#" class="py-2 px-4 flex"> Glossary </a>
         </nav>
         <button class="lg:hidden flex flex-col ml-4">
           <span class="w-6 h-1 bg-gray-800 dark:bg-white mb-1"> </span>
@@ -31,7 +30,7 @@ const theme: string = window.matchMedia('(prefers-color-scheme: dark)').matches 
   <main role="main" class="flex relative items-center overflow-hidden">
     <div class="container mx-auto px-6 flex relative py-8 md:py-16">
       <div class="w-full sm:w-3/5 flex flex-col relative">
-        <h1 class="font-bebas-neue uppercase text-3xl md:text-6xl font-black flex flex-col mb-4">
+        <h1 class="uppercase text-3xl md:text-6xl font-[MuseoSans] flex flex-col mb-4">
           Community Research Toolkit
         </h1>
         <span class="w-20 h-2 bg-gray-800 dark:bg-white mb-8"> </span>

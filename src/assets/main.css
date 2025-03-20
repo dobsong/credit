@@ -5,3 +5,19 @@
   margin: 0 auto;
   padding: 2rem;
 }
+
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/src/assets/fonts/opensans-regular-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'MuseoSans';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/src/assets/fonts/museosans-900-webfont.woff') format('woff2');
+}
