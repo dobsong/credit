@@ -13,11 +13,13 @@
       </div>
       <div class="flex items-center">
         <nav class="uppercase text-lg lg:flex items-center hidden font-semibold">
-          <a href="#" class="py-2 px-4 flex"> Home </a>
-          <a href="#" class="py-2 px-4 flex"> Create Proposal </a>
-          <a href="#" class="py-2 px-4 flex"> Case Studies </a>
-          <a href="#" class="py-2 px-4 flex"> Catalogue </a>
-          <a href="#" class="py-2 px-4 flex"> Glossary </a>
+          <RouterLink to="/" class="py-2 px-4 flex">Home</RouterLink>
+          <RouterLink to="/createProposal/step/01" class="py-2 px-4 flex"
+            >Create Proposal</RouterLink
+          >
+          <a href="#" class="py-2 px-4 flex">Case Studies</a>
+          <a href="#" class="py-2 px-4 flex">Catalogue</a>
+          <a href="#" class="py-2 px-4 flex">Glossary</a>
         </nav>
         <button class="lg:hidden flex flex-col ml-4">
           <span class="w-6 h-1 bg-gray-800 dark:bg-white mb-1"> </span>

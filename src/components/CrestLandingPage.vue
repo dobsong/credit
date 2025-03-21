@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterLink } from 'vue-router'
+</script>
 
 <template>
   <div class="container mx-auto px-6 flex relative py-8 md:py-16">
@@ -21,12 +23,12 @@
         urna mollis, placerat fringilla urna.
       </p>
       <div class="flex mt-8 justify-center sm:justify-start">
-        <a
-          href="#"
+        <RouterLink
+          to="/createProposal/step/01"
           class="uppercase py-2 px-4 rounded-lg bg-highlight border-2 border-transparent text-white dark:text-gray-800 text-md hover:bg-highlight-hover"
         >
           Create Proposal
-        </a>
+        </RouterLink>
       </div>
     </div>
     <div class="hidden sm:block">
