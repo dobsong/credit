@@ -10,24 +10,40 @@ import { RouterLink } from 'vue-router'
       </h1>
       <span class="w-20 h-2 bg-gray-800 dark:bg-white mb-8"> </span>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus quis purus id felis
-        imperdiet consectetur et sed quam. Aenean quis commodo justo. Cras quis sapien nec odio
-        faucibus dignissim tempor ac libero. Donec ut risus ultrices, venenatis augue non, dapibus
-        eros. Nullam in cursus enim. Sed ante tellus, viverra ut pretium mollis, finibus maximus
-        mauris. Aenean tincidunt elit in venenatis consequat. Interdum et malesuada fames ac ante
-        ipsum primis in faucibus. Nullam sed mauris sed libero lacinia imperdiet non aliquam erat.
-        In id metus at ipsum interdum cursus ut sed lacus. Integer porta auctor leo, vitae iaculis
-        risus vestibulum at. Nam posuere sit amet lorem in facilisis. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes,
-        nascetur ridiculus mus. Donec tempor odio nec suscipit semper. Donec neque erat, semper nec
-        urna mollis, placerat fringilla urna.
+        When embarking on a research project involving participation from members of the public
+        there are many opportunities and challenges to consider. The extent of participation in this
+        type of research varies, and can involve crowd sourcing transcriptions, data collection,
+        data analysis, or co-design, among other engagement. Opportunities for participants to
+        engage with the research after the initial interaction lengthens the impact and legacy. This
+        toolkit resource has been designed to help guide researchers through some of the
+        considerations to undertake this type of research. Whether you have carried out
+        participatory research previously or are new to the methodology, this toolkit provides the
+        opportunities to reflect on your context and develop a research proposal.
+      </p>
+      <p>
+        This toolkit has been designed to support research that might come under headings such as
+        citizen science (<a href="https://www.ecsa.ngo/" target="_blank"
+          >European Citizen Science Association (ECSA)</a
+        >), participatory sciences (<a href="https://participatorysciences.org/" target="_blank"
+          >AAPS - Association for Advancing Participatory Sciences</a
+        >), or people-powered research (<a href="https://www.zooniverse.org/" target="_blank"
+          >Zooniverse</a
+        >). We are using Community Research as an encompassing term for the resource title, whilst
+        noting it is challenging to select a term that defines the full scope of the methodologies.
+        This toolkit does not cover research where members of the public are solely subjects of the
+        research question.
+      </p>
+      <p>Ready to begin? To start at the beginning use the “develop a proposal” button below.</p>
+      <p>
+        Looking for inspiration? The tabs at the top of the page can be used to navigate to
+        Lancaster University case studies used in the toolkit.
       </p>
       <div class="flex mt-8 justify-center sm:justify-start">
         <RouterLink
           to="/createProposal/step/01"
           class="uppercase py-2 px-4 rounded-lg bg-highlight border-2 border-transparent text-white dark:text-gray-800 text-md hover:bg-highlight-hover"
         >
-          Create Proposal
+          Develop a Proposal
         </RouterLink>
       </div>
     </div>

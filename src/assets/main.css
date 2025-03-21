@@ -1,5 +1,14 @@
 @import 'tailwindcss';
 
+@layer base {
+  p a {
+    color: #f15d5c;
+  }
+  p {
+    @apply pb-4;
+  }
+}
+
 @theme {
   --color-highlight: #f15d5c;
   --color-highlight-hover: #ff8d8c;

@@ -15,7 +15,7 @@
         <nav class="uppercase text-lg lg:flex items-center hidden font-semibold">
           <RouterLink to="/" class="py-2 px-4 flex">Home</RouterLink>
           <RouterLink to="/createProposal/step/01" class="py-2 px-4 flex"
-            >Create Proposal</RouterLink
+            >Develop a Proposal</RouterLink
           >
           <a href="#" class="py-2 px-4 flex">Case Studies</a>
           <a href="#" class="py-2 px-4 flex">Catalogue</a>
