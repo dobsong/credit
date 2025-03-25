@@ -40,7 +40,7 @@ import { RouterLink } from 'vue-router'
       </p>
       <div class="flex mt-8 justify-center sm:justify-start">
         <RouterLink
-          to="/createProposal/step/01"
+          to="/proposal/phase/01"
           class="uppercase py-2 px-4 rounded-lg bg-highlight border-2 border-transparent text-white dark:text-gray-800 text-md hover:bg-highlight-hover"
         >
           Develop a Proposal
