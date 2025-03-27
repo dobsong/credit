@@ -1,14 +1,12 @@
 <script setup lang="ts">
+import CrestHeading from '../ui/CrestHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 </script>
 
 <template>
   <div class="container mx-auto px-6 flex relative py-8 md:py-16">
     <div class="w-full sm:w-3/5 flex flex-col relative">
-      <h1 class="uppercase text-3xl md:text-6xl font-[MuseoSans] flex flex-col mb-4">
-        Launch and Sustain: The Live Phase
-      </h1>
-      <span class="w-20 h-2 bg-gray-800 dark:bg-white mb-8"> </span>
+      <CrestHeading text="Launch and Sustain: The Live Phase"></CrestHeading>
       <p>
         <ToolkitNextButton :phase="7" text="Analysis and Evaluation"></ToolkitNextButton>
       </p>
