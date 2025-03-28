@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Button from '@/volt/Button.vue'
+import { RouterLink } from 'vue-router'
+
 defineProps<{
   text: string
   phase: number
@@ -7,9 +10,10 @@ defineProps<{
 
 <template>
   <RouterLink
+    v-slot="{ navigate }"
     :to="`/proposal/phase/${String(phase).padStart(2, '0')}`"
-    class="uppercase pt-1.5 pb-2 px-4 rounded-lg bg-highlight border-2 border-transparent text-white dark:text-gray-800 hover:bg-highlight-hover"
+    custom
   >
-    <span class="text-sm sm:text-base align-middle">{{ text }}</span>
+    <Button @click="navigate">{{ text }}</Button>
   </RouterLink>
 </template>

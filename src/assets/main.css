@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'tailwindcss-primeui';
 
 @layer base {
   p a {
@@ -34,4 +35,81 @@
   font-weight: 900;
   font-display: swap;
   src: url('/src/assets/fonts/museosans-900-webfont.woff') format('woff2');
+}
+
+/* default values for CSS vairiable used by tailwindcss-primeui */
+
+/* Primary and Surface Palettes */
+:root {
+  --p-primary-50: #feebeb;
+  --p-primary-100: #fcd7d6;
+  --p-primary-200: #f8aeae;
+  --p-primary-300: #f58685;
+  --p-primary-400: #f15d5c;
+  --p-primary-500: #c94e4d;
+  --p-primary-600: #a13e3d;
+  --p-primary-700: #792f2e;
+  --p-primary-800: #501f1f;
+  --p-primary-900: #28100f;
+  --p-primary-950: #140808;
+  --p-surface-0: #ffffff;
+  --p-surface-50: var(--color-gray-50);
+  --p-surface-100: var(--color-gray-100);
+  --p-surface-200: var(--color-gray-200);
+  --p-surface-300: var(--color-gray-300);
+  --p-surface-400: var(--color-gray-400);
+  --p-surface-500: var(--color-gray-500);
+  --p-surface-600: var(--color-gray-600);
+  --p-surface-700: var(--color-gray-700);
+  --p-surface-800: var(--color-gray-800);
+  --p-surface-900: var(--color-gray-900);
+  --p-surface-950: var(--color-gray-950);
+  --p-content-border-radius: 6px;
+}
+
+/* Light */
+:root {
+  --p-primary-color: var(--p-primary-500);
+  --p-primary-contrast-color: var(--p-surface-0);
+  --p-primary-hover-color: var(--p-primary-600);
+  --p-primary-active-color: var(--p-primary-700);
+  --p-content-border-color: var(--p-surface-200);
+  --p-content-hover-background: var(--p-surface-100);
+  --p-content-hover-color: var(--p-surface-800);
+  --p-highlight-background: var(--p-primary-50);
+  --p-highlight-color: var(--p-primary-700);
+  --p-highlight-focus-background: var(--p-primary-100);
+  --p-highlight-focus-color: var(--p-primary-800);
+  --p-text-color: var(--p-surface-700);
+  --p-text-hover-color: var(--p-surface-800);
+  --p-text-muted-color: var(--p-surface-500);
+  --p-text-hover-muted-color: var(--p-surface-600);
+}
+
+/*
+* Dark Mode
+* Defaults to system, change the dark variant selector to match the CSS variable configuration.
+* For example;
+* @custom-variant dark (&:where(.app-dark, .app-dark *));
+* should match to;
+* :root[class="app-dark"]
+*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --p-primary-color: var(--p-primary-400);
+    --p-primary-contrast-color: var(--p-surface-900);
+    --p-primary-hover-color: var(--p-primary-300);
+    --p-primary-active-color: var(--p-primary-200);
+    --p-content-border-color: var(--p-surface-700);
+    --p-content-hover-background: var(--p-surface-800);
+    --p-content-hover-color: var(--p-surface-0);
+    --p-highlight-background: color-mix(in srgb, var(--p-primary-400), transparent 84%);
+    --p-highlight-color: rgba(255, 255, 255, 0.87);
+    --p-highlight-focus-background: color-mix(in srgb, var(--p-primary-400), transparent 76%);
+    --p-highlight-focus-color: rgba(255, 255, 255, 0.87);
+    --p-text-color: var(--p-surface-0);
+    --p-text-hover-color: var(--p-surface-0);
+    --p-text-muted-color: var(--p-surface-400);
+    --p-text-hover-muted-color: var(--p-surface-300);
+  }
 }

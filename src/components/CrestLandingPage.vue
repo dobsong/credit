@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import CrestHeading from './ui/CrestHeading.vue'
 import { RouterLink } from 'vue-router'
+import Button from '@/volt/Button.vue'
 </script>
 
 <template>
@@ -36,12 +37,9 @@ import { RouterLink } from 'vue-router'
         Looking for inspiration? The tabs at the top of the page can be used to navigate to
         Lancaster University case studies used in the toolkit.
       </p>
-      <div class="flex mt-8 justify-center sm:justify-start">
-        <RouterLink
-          to="/proposal/phase/01"
-          class="uppercase py-2 px-4 rounded-lg bg-highlight border-2 border-transparent text-white dark:text-gray-800 text-md hover:bg-highlight-hover"
-        >
-          Develop a Proposal
+      <div class="flex mt-4 justify-center sm:justify-start">
+        <RouterLink v-slot="{ navigate }" to="/proposal/phase/01" custom>
+          <Button @click="navigate">Develop a Proposal</Button>
         </RouterLink>
       </div>
     </div>
