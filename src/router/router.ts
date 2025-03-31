@@ -11,6 +11,9 @@ import ToolkitLegacyPhase from '@/components/toolkit/ToolkitLegacyPhase.vue'
 import ToolkitFinalSummary from '@/components/toolkit/ToolkitFinalSummary.vue'
 import ToolkitFinalEvaluation from '@/components/toolkit/ToolkitFinalEvaluation.vue'
 import ToolkitDataManagement from '@/components/toolkit/ToolkitDataManagement.vue'
+import CrestGlossary from '@/components/CrestGlossary.vue'
+import CrestCaseStudies from '@/components/CrestCaseStudies.vue'
+import CrestResources from '@/components/CrestResources.vue'
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -71,6 +74,18 @@ export default createRouter({
     {
       path: '/proposal/phase/11',
       component: ToolkitFinalEvaluation,
+    },
+    {
+      path: '/case-studies',
+      component: CrestCaseStudies,
+    },
+    {
+      path: '/resources',
+      component: CrestResources,
+    },
+    {
+      path: '/glossary',
+      component: CrestGlossary,
     },
   ],
 })

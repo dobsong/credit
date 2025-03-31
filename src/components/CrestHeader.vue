@@ -15,9 +15,9 @@
         <nav class="uppercase text-lg lg:flex items-center hidden font-semibold">
           <RouterLink to="/" class="py-2 px-4 flex">Home</RouterLink>
           <RouterLink to="/proposal/phase/01" class="py-2 px-4 flex">Develop a Proposal</RouterLink>
-          <a href="#" class="py-2 px-4 flex">Case Studies</a>
-          <a href="#" class="py-2 px-4 flex">Resources</a>
-          <a href="#" class="py-2 px-4 flex">Glossary</a>
+          <RouterLink to="/case-studies" class="py-2 px-4 flex">Case Studies</RouterLink>
+          <RouterLink to="/resources" class="py-2 px-4 flex">Resources</RouterLink>
+          <RouterLink to="/glossary" class="py-2 px-4 flex">Glossary</RouterLink>
         </nav>
         <button class="lg:hidden flex flex-col ml-4">
           <span class="w-6 h-1 bg-gray-800 dark:bg-white mb-1"> </span>
