@@ -16,6 +16,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@primevue/icons": "^4.3.3",
     "@tailwindcss/vite": "^4.0.17",
     "pinia": "^3.0.1",
     "primevue": "^4.3.3",
