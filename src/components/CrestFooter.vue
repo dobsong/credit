@@ -40,6 +40,7 @@ defineProps<{
       <img
         id="rrp-inclusion-logo"
         src="./../assets/rrp-inclusion.svg"
+        alt="Inclusion Logo"
         class="size-[70px] lg:size-25 xl:size-30 ml-[7px] lg:ml-5 xl:ml-6 w-auto"
       />
       <img

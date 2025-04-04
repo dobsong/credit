@@ -1,10 +1,10 @@
 @import 'tailwindcss';
 @import 'tailwindcss-primeui';
-@import 'primeicons/primeicons.css';
 
 @layer base {
   p a {
-    color: #f15d5c;
+    color: var(--p-primary-color);
+    text-decoration: underline;
   }
   p {
     @apply pb-4;
@@ -70,7 +70,7 @@
 
 /* Light */
 :root {
-  --p-primary-color: var(--p-primary-500);
+  --p-primary-color: var(--p-primary-600);
   --p-primary-contrast-color: var(--p-surface-0);
   --p-primary-hover-color: var(--p-primary-600);
   --p-primary-active-color: var(--p-primary-700);

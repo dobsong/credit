@@ -84,7 +84,7 @@ const projectLocation = ref<string>('Unknown')
                   name="uk"
                   value="UK"
                 />
-                <label for="projectSizeMedium">UK</label>
+                <label for="projectLocationUk">UK</label>
               </div>
               <div class="flex items-center gap-2">
                 <RadioButton

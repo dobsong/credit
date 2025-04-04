@@ -45,6 +45,7 @@ import CrestHeading from './ui/CrestHeading.vue'
   <div class="hidden sm:block">
     <img
       src="https://unsplash.it/400/400"
+      alt="A placeholder image"
       class="max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg my-auto mx-6"
     />
   </div>
