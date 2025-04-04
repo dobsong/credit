@@ -1,4 +1,38 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Button from '@/volt/Button.vue'
+import Menu from '@/volt/Menu.vue'
+import { ref } from 'vue'
+const menu = ref()
+const items = ref([
+  {
+    items: [
+      {
+        label: 'Home',
+        route: '/',
+      },
+      {
+        label: 'Develop a Proposal',
+        route: '/proposal/phase/01',
+      },
+      {
+        label: 'Case Studies',
+        route: '/case-studies',
+      },
+      {
+        label: 'Resources',
+        route: '/resources',
+      },
+      {
+        label: 'Glossary',
+        route: '/glossary',
+      },
+    ],
+  },
+])
+const toggle = (event: MouseEvent) => {
+  menu.value.toggle(event)
+}
+</script>
 
 <template>
   <header class="h-24 sm:h-32 flex items-center z-30 w-full">
@@ -19,11 +53,23 @@
           <RouterLink to="/resources" class="py-2 px-4 flex">Resources</RouterLink>
           <RouterLink to="/glossary" class="py-2 px-4 flex">Glossary</RouterLink>
         </nav>
-        <button class="lg:hidden flex flex-col ml-4">
-          <span class="w-6 h-1 bg-gray-800 dark:bg-white mb-1"> </span>
-          <span class="w-6 h-1 bg-gray-800 dark:bg-white mb-1"> </span>
-          <span class="w-6 h-1 bg-gray-800 dark:bg-white mb-1"> </span>
-        </button>
+
+        <Button
+          type="button"
+          plain
+          @click="toggle"
+          aria-haspopup="true"
+          aria-controls="overlay_menu"
+          class="lg:hidden flex flex-col ml-2 bg-gray-800 dark:bg-white"
+          >&#x2630;</Button
+        >
+        <Menu ref="menu" id="overlay_menu" :model="items" :popup="true" class="pb-4">
+          <template #item="{ item }">
+            <RouterLink :to="item.route" class="text-lg uppercase px-2">
+              {{ item.label }}
+            </RouterLink>
+          </template>
+        </Menu>
       </div>
     </div>
   </header>
