@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '@/volt/Card.vue'
 import RadioButton from '@/volt/RadioButton.vue'
-import { ref } from 'vue'
 import CrestHeading from '../ui/CrestHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 
-const projectSize = ref<string>('Unknown')
-const projectLocation = ref<string>('Unknown')
+const projectPlan = useProjectPlanStore()
 </script>
 
 <template>
@@ -25,7 +24,7 @@ const projectLocation = ref<string>('Unknown')
             <div class="flex flex-wrap gap-4">
               <div class="flex items-center gap-2">
                 <RadioButton
-                  v-model="projectSize"
+                  v-model="projectPlan.projectSize"
                   inputId="projectSizeSmall"
                   name="small"
                   value="Small"
@@ -34,7 +33,7 @@ const projectLocation = ref<string>('Unknown')
               </div>
               <div class="flex items-center gap-2">
                 <RadioButton
-                  v-model="projectSize"
+                  v-model="projectPlan.projectSize"
                   inputId="projectSizeMedium"
                   name="medium"
                   value="Medium"
@@ -43,7 +42,7 @@ const projectLocation = ref<string>('Unknown')
               </div>
               <div class="flex items-center gap-2">
                 <RadioButton
-                  v-model="projectSize"
+                  v-model="projectPlan.projectSize"
                   inputId="projectSizeLarge"
                   name="large"
                   value="Large"
@@ -52,7 +51,7 @@ const projectLocation = ref<string>('Unknown')
               </div>
               <div class="flex items-center gap-2">
                 <RadioButton
-                  v-model="projectSize"
+                  v-model="projectPlan.projectSize"
                   inputId="projectSizeUnknown"
                   name="unknown"
                   value="Unknown"
@@ -70,7 +69,7 @@ const projectLocation = ref<string>('Unknown')
             <div class="flex flex-wrap gap-4">
               <div class="flex items-center gap-2">
                 <RadioButton
-                  v-model="projectLocation"
+                  v-model="projectPlan.country"
                   inputId="projectLocationOther"
                   name="other"
                   value="Other"
@@ -79,7 +78,7 @@ const projectLocation = ref<string>('Unknown')
               </div>
               <div class="flex items-center gap-2">
                 <RadioButton
-                  v-model="projectLocation"
+                  v-model="projectPlan.country"
                   inputId="projectLocationUk"
                   name="uk"
                   value="UK"
@@ -88,7 +87,7 @@ const projectLocation = ref<string>('Unknown')
               </div>
               <div class="flex items-center gap-2">
                 <RadioButton
-                  v-model="projectLocation"
+                  v-model="projectPlan.country"
                   inputId="projectLocationUnknown"
                   name="locationUnkown"
                   value="Unknown"
