@@ -1,2 +1,3 @@
-# crest
-Community RESearch Toolkit
+# CREDIT
+
+Community REsearch DIgitial Toolkit

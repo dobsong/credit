@@ -3,6 +3,7 @@ import { ref, type Ref } from 'vue'
 
 export const useProjectPlanStore = defineStore('projectPlan', () => {
   /* state */
+  const hasStarted: Ref<boolean> = ref(false)
   const projectSize: Ref<'Large' | 'Small' | 'Unknown'> = ref('Unknown')
   const country: Ref<'United Kingdom' | 'Other' | 'Unknown'> = ref('Unknown')
   const projectTitle: Ref<string> = ref('')
@@ -12,11 +13,11 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
   //const doubleCount = computed(() => count.value * 2)
 
   /* actions */
-  /*
-  function increment() {
-    count.value++
+  function enable() {
+    if (!hasStarted.value) {
+      hasStarted.value = true
+    }
   }
-    */
 
-  return { projectSize, country }
+  return { projectSize, country, hasStarted, projectTitle, projectDescription, enable }
 })

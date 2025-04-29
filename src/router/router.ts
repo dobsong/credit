@@ -1,26 +1,26 @@
-import CrestLandingPage from '@/components/CrestLandingPage.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import ToolkitAnalysisPhase from '@/components/toolkit/ToolkitAnalysisPhase.vue'
+import ToolkitConsiderationPhase from '@/components/toolkit/ToolkitConsiderationPhase.vue'
+import ToolkitDataManagement from '@/components/toolkit/ToolkitDataManagement.vue'
+import ToolkitDevelopmentPhase from '@/components/toolkit/ToolkitDevelopmentPhase.vue'
+import ToolkitFinalEvaluation from '@/components/toolkit/ToolkitFinalEvaluation.vue'
+import ToolkitFinalSummary from '@/components/toolkit/ToolkitFinalSummary.vue'
 import ToolkitInitialEvaluation from '@/components/toolkit/ToolkitInitialEvaluation.vue'
 import ToolkitIntroduction from '@/components/toolkit/ToolkitIntroduction.vue'
-import ToolkitConsiderationPhase from '@/components/toolkit/ToolkitConsiderationPhase.vue'
-import ToolkitPreparationPhase from '@/components/toolkit/ToolkitPreparationPhase.vue'
-import ToolkitDevelopmentPhase from '@/components/toolkit/ToolkitDevelopmentPhase.vue'
-import ToolkitLivePhase from '@/components/toolkit/ToolkitLivePhase.vue'
-import ToolkitAnalysisPhase from '@/components/toolkit/ToolkitAnalysisPhase.vue'
 import ToolkitLegacyPhase from '@/components/toolkit/ToolkitLegacyPhase.vue'
-import ToolkitFinalSummary from '@/components/toolkit/ToolkitFinalSummary.vue'
-import ToolkitFinalEvaluation from '@/components/toolkit/ToolkitFinalEvaluation.vue'
-import ToolkitDataManagement from '@/components/toolkit/ToolkitDataManagement.vue'
-import CrestGlossary from '@/components/CrestGlossary.vue'
-import CrestCaseStudies from '@/components/CrestCaseStudies.vue'
-import CrestResources from '@/components/CrestResources.vue'
+import ToolkitLivePhase from '@/components/toolkit/ToolkitLivePhase.vue'
+import ToolkitPreparationPhase from '@/components/toolkit/ToolkitPreparationPhase.vue'
+import ToolkitCaseStudies from '@/components/ToolkitCaseStudies.vue'
+import ToolkitGlossary from '@/components/ToolkitGlossary.vue'
+import ToolkitLandingPage from '@/components/ToolkitLandingPage.vue'
+import ToolkitResources from '@/components/ToolkitResources.vue'
+import { createRouter, createWebHistory } from 'vue-router'
 
 export default createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      component: CrestLandingPage,
+      component: ToolkitLandingPage,
     },
     {
       path: '/proposal/phase/01',
@@ -77,15 +77,15 @@ export default createRouter({
     },
     {
       path: '/case-studies',
-      component: CrestCaseStudies,
+      component: ToolkitCaseStudies,
     },
     {
       path: '/resources',
-      component: CrestResources,
+      component: ToolkitResources,
     },
     {
       path: '/glossary',
-      component: CrestGlossary,
+      component: ToolkitGlossary,
     },
   ],
 })

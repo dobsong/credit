@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Button from '@/volt/Button.vue'
 import { RouterLink } from 'vue-router'
-import CrestHeading from './ui/CrestHeading.vue'
+import ToolkitHeading from './ui/ToolkitHeading.vue'
 </script>
 
 <template>
   <div class="w-full sm:w-3/5 flex flex-col relative">
-    <CrestHeading text="Community Research Toolkit"></CrestHeading>
+    <ToolkitHeading text="Community Research Toolkit"></ToolkitHeading>
     <p>
       When embarking on a research project involving participation from members of the public there
       are many opportunities and challenges to consider. The extent of participation in this type of

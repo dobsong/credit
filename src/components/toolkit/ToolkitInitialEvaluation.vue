@@ -2,15 +2,16 @@
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '@/volt/Card.vue'
 import RadioButton from '@/volt/RadioButton.vue'
-import CrestHeading from '../ui/CrestHeading.vue'
+import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 
 const projectPlan = useProjectPlanStore()
+projectPlan.enable()
 </script>
 
 <template>
   <div class="w-full flex flex-col">
-    <CrestHeading text="About Your Project"></CrestHeading>
+    <ToolkitHeading text="About Your Project"></ToolkitHeading>
     <p>
       Please select from the choices below. These choices will affect the content you see as you
       progress through the toolkit. Select &quot;unknown&quot; if you are unsure or want to see all

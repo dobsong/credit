@@ -5,7 +5,7 @@ import { SearchIcon } from '@primevue/icons'
 import Column from 'primevue/column'
 import { ref } from 'vue'
 import type { GlossaryDefinition } from './types/glossary-definition'
-import CrestHeading from './ui/CrestHeading.vue'
+import ToolkitHeading from './ui/ToolkitHeading.vue'
 
 const glossaryDefinitions: GlossaryDefinition[] = [
   {
@@ -29,7 +29,7 @@ const filters = ref({
 
 <template>
   <div class="w-full flex flex-col">
-    <CrestHeading text="Glossary"></CrestHeading>
+    <ToolkitHeading text="Glossary"></ToolkitHeading>
 
     <div>
       <DataTable

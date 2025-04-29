@@ -39,11 +39,11 @@ const toggle = (event: MouseEvent) => {
     <div class="container mx-auto px-6 flex items-center justify-between">
       <div class="text-4xl flex items-start py-1 md:py-2">
         <img
-          alt="CREST logo"
+          alt="CREDIT logo"
           class="size-16 md:size-24 mr-6"
           src="/src/assets/logo_placeholder.svg"
         />
-        <span class="my-auto font-[MuseoSans]">CREST</span>
+        <span class="my-auto font-[MuseoSans]">CREDIT</span>
       </div>
       <div class="flex items-center">
         <nav class="uppercase text-lg lg:flex items-center hidden font-semibold">
