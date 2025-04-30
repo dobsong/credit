@@ -46,7 +46,7 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
     <img
       src="../assets/community.jpg"
       alt="A placeholder image"
-      class="max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg my-auto mx-6"
+      class="max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg my-auto mx-6 rounded-xl"
     />
   </div>
 </template>

@@ -9,6 +9,7 @@ import ToolkitIntroduction from '@/components/toolkit/ToolkitIntroduction.vue'
 import ToolkitLegacyPhase from '@/components/toolkit/ToolkitLegacyPhase.vue'
 import ToolkitLivePhase from '@/components/toolkit/ToolkitLivePhase.vue'
 import ToolkitPreparationPhase from '@/components/toolkit/ToolkitPreparationPhase.vue'
+import ToolkitAbout from '@/components/ToolkitAbout.vue'
 import ToolkitCaseStudies from '@/components/ToolkitCaseStudies.vue'
 import ToolkitGlossary from '@/components/ToolkitGlossary.vue'
 import ToolkitLandingPage from '@/components/ToolkitLandingPage.vue'
@@ -86,6 +87,10 @@ export default createRouter({
     {
       path: '/glossary',
       component: ToolkitGlossary,
+    },
+    {
+      path: '/about',
+      component: ToolkitAbout,
     },
   ],
 })

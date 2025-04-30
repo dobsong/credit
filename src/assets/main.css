@@ -2,7 +2,8 @@
 @import 'tailwindcss-primeui';
 
 @layer base {
-  p a {
+  p a,
+  ul a {
     color: var(--p-primary-color);
     text-decoration: underline;
   }

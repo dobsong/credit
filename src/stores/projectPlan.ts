@@ -3,6 +3,7 @@ import { ref, type Ref } from 'vue'
 
 export const useProjectPlanStore = defineStore('projectPlan', () => {
   /* state */
+  const previousEngagement: Ref<'Yes' | 'No' | 'Unknown'> = ref('Unknown')
   const hasStarted: Ref<boolean> = ref(false)
   const projectSize: Ref<'Large' | 'Small' | 'Unknown'> = ref('Unknown')
   const country: Ref<'United Kingdom' | 'Other' | 'Unknown'> = ref('Unknown')
@@ -19,5 +20,18 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
     }
   }
 
-  return { projectSize, country, hasStarted, projectTitle, projectDescription, enable }
+  function setPreviousEngagement(newValue: 'Yes' | 'No' | 'Unknown') {
+    previousEngagement.value = newValue
+  }
+
+  return {
+    previousEngagement,
+    projectSize,
+    country,
+    hasStarted,
+    projectTitle,
+    projectDescription,
+    enable,
+    setPreviousEngagement,
+  }
 })

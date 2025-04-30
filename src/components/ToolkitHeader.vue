@@ -26,6 +26,10 @@ const items = ref([
         label: 'Glossary',
         route: '/glossary',
       },
+      {
+        label: 'About',
+        route: '/about',
+      },
     ],
   },
 ])
@@ -52,6 +56,7 @@ const toggle = (event: MouseEvent) => {
           <RouterLink to="/case-studies" class="py-2 px-4 flex">Case Studies</RouterLink>
           <RouterLink to="/resources" class="py-2 px-4 flex">Resources</RouterLink>
           <RouterLink to="/glossary" class="py-2 px-4 flex">Glossary</RouterLink>
+          <RouterLink to="/about" class="py-2 px-4 flex">About</RouterLink>
         </nav>
 
         <Button
