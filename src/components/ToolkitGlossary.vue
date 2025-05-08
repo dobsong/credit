@@ -4,7 +4,7 @@ import InputText from '@/volt/InputText.vue'
 import { SearchIcon } from '@primevue/icons'
 import Column from 'primevue/column'
 import { ref } from 'vue'
-import type { GlossaryDefinition } from './types/glossary-definition'
+import type { GlossaryDefinition } from '../types/glossary-definition'
 import ToolkitHeading from './ui/ToolkitHeading.vue'
 
 const glossaryDefinitions: GlossaryDefinition[] = [

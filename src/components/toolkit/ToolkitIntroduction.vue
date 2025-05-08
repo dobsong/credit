@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { typologyDefinitions } from '@/data/typology-definitions'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import MatchingTask from './tasks/MatchingTask.vue'
 
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
@@ -78,7 +80,6 @@ projectPlan.enable()
           <p class="m-0">What did you particularly enjoy?</p>
           <p class="m-0">What challenges did you face as a participant?</p>
         </template>
-        <template #footer> </template>
       </Card>
       <Card
         class="w-full md:w-23/48 overflow-hidden mb-2"
@@ -104,15 +105,11 @@ projectPlan.enable()
           <p class="m-0">Reflect on your experience as a community user.</p>
         </template>
       </Card>
-      <Card class="w-full overflow-hidden">
-        <template #title
-          >Links to Participatory Research opportunities Lancaster University research
-          projects</template
-        >
+      <Card class="w-full overflow-hidden mb-2">
+        <template #title>Links to Participatory Research opportunities</template>
         <template #content>
-          <ul>
+          <ul class="list-disc pl-5">
             <li>
-              Lancaster University research projects
               <a
                 href="https://www.lancaster.ac.uk/research/participate-in-research/"
                 target="_blank"
@@ -120,27 +117,33 @@ projectPlan.enable()
               >
             </li>
             <li>
-              SciStarter platform SciStarter -
-              <a href="https://scistarter.org/" target="_blank">SciStarter</a>
+              <a href="https://scistarter.org/" target="_blank">SciStarter platform</a>
             </li>
             <li>
-              Zooniverse platform
-              <a href="https://www.zooniverse.org/" target="_blank">Zooniverse</a>
+              <a href="https://www.zooniverse.org/" target="_blank">Zooniverse platform</a>
             </li>
             <li>
-              nQuire platform
-              <a href="https://nquire.org.uk/" target="_blank">Home | nQuire</a>
+              <a href="https://nquire.org.uk/" target="_blank">nQuire platform</a>
             </li>
             <li>
-              UK Centre for Ecology & Hydrology Citizen Science Apps
               <a
                 href="https://www.ceh.ac.uk/our-science/citizen-science/citizen-science-apps"
                 target="_blank"
-                >Citizen science apps and projects | UK Centre for Ecology & Hydrology</a
+                >UK Centre for Ecology & Hydrology Citizen Science Apps</a
               >
             </li>
           </ul></template
         >
+      </Card>
+      <Card class="w-full overflow-hidden mb-2">
+        <template #title>Participatory research is a broad field</template>
+        <template #content>
+          <p>
+            Match the activity focus to the definition to explore some approaches defined by A.
+            Wiggins and K. Crowston in their typology study of citizen science.
+          </p>
+          <MatchingTask :items="typologyDefinitions"></MatchingTask>
+        </template>
       </Card>
     </div>
     <p>
