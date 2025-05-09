@@ -1,19 +1,37 @@
 <script setup lang="ts">
 import type { GlossaryDefinition } from '@/types/glossary-definition'
+import Button from '@/volt/Button.vue'
 import Chip from '@/volt/Chip.vue'
-import { ref } from 'vue'
+import { CheckIcon, TimesIcon } from '@primevue/icons'
+import { ref, type Ref } from 'vue'
 
 const props = defineProps<{
   items: GlossaryDefinition[]
 }>()
 
+// todo - need to be able to change mind - either drag the defintions again once dropped or to click cross to remove
+// todo - dropping where a definitiion is already there needs to pop it
+// todo - add a "check the answers" button
+// todo - add a "show answers" button
+// todo - add some customisation around the text used
+
+// done?
+// todo - fix the fact that the defintions break if you navigate away and back a few times!
+// todo - need it to stack vertically on small screens
+
 // note that the component works on a copy of the items array to avoid mutating the original
-const itemsLocal = ref<GlossaryDefinition[]>(Object.assign([], props.items))
+const itemsLocal = ref<GlossaryDefinition[]>(structuredClone(props.items))
 
 // shuffle the definitions
 const definitions = ref(
   itemsLocal.value.map((item) => item.definition).sort(() => Math.random() - 0.5),
 )
+
+const correct: Ref<(boolean | null)[]> = ref([])
+
+itemsLocal.value.forEach((item) => {
+  correct.value[item.id] = null
+})
 
 // remove the definitions from the initially shown items
 itemsLocal.value.forEach((item) => {
@@ -21,8 +39,6 @@ itemsLocal.value.forEach((item) => {
 })
 
 const startDrag = (event: DragEvent, definition: string) => {
-  console.log('startDrag', event)
-  console.log('definition', definition)
   if (event.dataTransfer) {
     event.dataTransfer.dropEffect = 'move'
     event.dataTransfer.effectAllowed = 'move'
@@ -31,13 +47,14 @@ const startDrag = (event: DragEvent, definition: string) => {
 }
 
 const onDrop = (event: DragEvent, itemId: number) => {
-  console.log('onDrop', event)
   if (event.dataTransfer) {
     const definition = event.dataTransfer?.getData('definition')
     const item = itemsLocal.value.find((item) => item.id === itemId)
-    console.log('item', item)
-    console.log('definition', definition)
     if (item) {
+      if (item.definition) {
+        // dropping over the top of an existing definition will pop it back to the unassigned list
+        definitions.value.push(item.definition)
+      }
       item.definition = definition
       definitions.value = definitions.value.filter((def) => def !== definition)
     }
@@ -60,10 +77,26 @@ const onLeave = (event: DragEvent) => {
     event.target.classList.remove('drag-hover')
   }
 }
+
+const checkAnswers = () => {
+  props.items.forEach((actual) => {
+    const answered = itemsLocal.value.find((item) => item.id === actual.id)
+
+    if (!answered || !answered.definition) {
+      correct.value[actual.id] = null
+    } else {
+      if (answered.definition === actual.definition) {
+        correct.value[actual.id] = true
+      } else {
+        correct.value[actual.id] = false
+      }
+    }
+  })
+}
 </script>
 
 <template>
-  <div class="pt-4 flex">
+  <div class="pt-4 flex flex-wrap">
     <table class="w-full md:w-1/2 table-fixed text-left border-collapse">
       <thead>
         <tr>
@@ -80,18 +113,22 @@ const onLeave = (event: DragEvent) => {
             @dragleave="onLeave($event)"
             class="justify-center items-center flex flex-wrap border-1 border-dashed border-gray-300 p-2 text-neutral-500"
           >
-            <Chip
-              v-if="item.definition"
-              :label="item.definition"
-              class="m-1 definition w-full h-full"
-            ></Chip>
-            <template v-else>Choose a definition...</template>
+            <template v-if="item.definition">
+              <Chip
+                v-if="item.definition"
+                :label="item.definition"
+                class="m-1 definition w-full h-full"
+              ></Chip>
+              <CheckIcon v-if="correct[item.id] === true" class="text-green-500"></CheckIcon>
+              <TimesIcon v-if="correct[item.id] === false" class="text-red-500"></TimesIcon>
+            </template>
+            <template v-else>Drag a definition here...</template>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="w-full md:w-1/2 ml-2">
-      <h3 class="mb-2">Drag these definitions to the matching term in the list</h3>
+    <div class="w-full md:w-2/5 ml-2">
+      <h3 class="mb-2 font-bold">Drag these definitions to the matching term in the list</h3>
       <ul>
         <li v-for="item in definitions" :key="item">
           <Chip
@@ -103,6 +140,7 @@ const onLeave = (event: DragEvent) => {
         </li>
       </ul>
     </div>
+    <Button label="Check Your Answers" class="mt-4" @click="checkAnswers()"></Button>
   </div>
 </template>
 
