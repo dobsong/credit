@@ -9,15 +9,8 @@ const props = defineProps<{
   items: GlossaryDefinition[]
 }>()
 
-// todo - need to be able to change mind - either drag the defintions again once dropped or to click cross to remove
-// todo - dropping where a definitiion is already there needs to pop it
-// todo - add a "check the answers" button
 // todo - add a "show answers" button
 // todo - add some customisation around the text used
-
-// done?
-// todo - fix the fact that the defintions break if you navigate away and back a few times!
-// todo - need it to stack vertically on small screens
 
 // note that the component works on a copy of the items array to avoid mutating the original
 const itemsLocal = ref<GlossaryDefinition[]>(structuredClone(props.items))
@@ -49,12 +42,23 @@ const startDrag = (event: DragEvent, definition: string) => {
 const onDrop = (event: DragEvent, itemId: number) => {
   if (event.dataTransfer) {
     const definition = event.dataTransfer?.getData('definition')
+
+    const existingItem = itemsLocal.value.find((item) => item.definition === definition)
+
     const item = itemsLocal.value.find((item) => item.id === itemId)
-    if (item) {
+    if (item && item !== existingItem) {
       if (item.definition) {
-        // dropping over the top of an existing definition will pop it back to the unassigned list
-        definitions.value.push(item.definition)
+        // dropping over the top of an existing definition will swap them
+        if (existingItem) {
+          existingItem.definition = item.definition
+        } else {
+          // fall back to pop it out to the unassigned list if somethign unexpecetd happens
+          definitions.value.push(item.definition)
+        }
+      } else if (existingItem) {
+        existingItem.definition = ''
       }
+
       item.definition = definition
       definitions.value = definitions.value.filter((def) => def !== definition)
     }
@@ -118,9 +122,15 @@ const checkAnswers = () => {
                 v-if="item.definition"
                 :label="item.definition"
                 class="m-1 definition w-full h-full"
+                draggable="true"
+                @dragstart="startDrag($event, item.definition)"
               ></Chip>
-              <CheckIcon v-if="correct[item.id] === true" class="text-green-500"></CheckIcon>
-              <TimesIcon v-if="correct[item.id] === false" class="text-red-500"></TimesIcon>
+              <Transition name="fade">
+                <CheckIcon v-if="correct[item.id] === true" class="text-green-500"></CheckIcon>
+              </Transition>
+              <Transition name="fade">
+                <TimesIcon v-if="correct[item.id] === false" class="text-red-500"></TimesIcon>
+              </Transition>
             </template>
             <template v-else>Drag a definition here...</template>
           </td>
@@ -130,12 +140,12 @@ const checkAnswers = () => {
     <div class="w-full md:w-2/5 ml-2">
       <h3 class="mb-2 font-bold">Drag these definitions to the matching term in the list</h3>
       <ul>
-        <li v-for="item in definitions" :key="item">
+        <li v-for="defn in definitions" :key="defn">
           <Chip
-            :label="item"
+            :label="defn"
             class="m-1 cursor-grab term translate-x-0"
             draggable="true"
-            @dragstart="startDrag($event, item)"
+            @dragstart="startDrag($event, defn)"
           ></Chip>
         </li>
       </ul>
@@ -146,6 +156,16 @@ const checkAnswers = () => {
 
 <style scoped>
 .drag-hover {
-  background-color: gray;
+  background-color: var(--color-surface-500);
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease-in;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
