@@ -121,7 +121,7 @@ const checkAnswers = () => {
               <Chip
                 v-if="item.definition"
                 :label="item.definition"
-                class="m-1 definition w-full h-full"
+                class="m-1 definition w-full h-full cursor-grab translate-x-0"
                 draggable="true"
                 @dragstart="startDrag($event, item.definition)"
               ></Chip>
