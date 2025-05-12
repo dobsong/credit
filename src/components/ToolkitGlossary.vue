@@ -11,14 +11,17 @@ const glossaryDefinitions: GlossaryDefinition[] = [
   {
     term: 'A1',
     definition: 'Example Definition 1',
+    id: 1,
   },
   {
     term: 'A2',
     definition: 'Example Definition 2',
+    id: 2,
   },
   {
     term: 'A3',
     definition: 'Example Definition 3',
+    id: 3,
   },
 ]
 
