@@ -10,7 +10,7 @@ projectPlan.enable()
 <template>
   <div class="container mx-auto px-6 flex relative py-8 md:py-16">
     <div class="w-full sm:w-3/5 flex flex-col relative">
-      <ToolkitHeading text="Consideration Phase"></ToolkitHeading>
+      <ToolkitHeading text="Data Management"></ToolkitHeading>
       <p>
         <ToolkitNextButton :phase="10" text="Final Summary"></ToolkitNextButton>
       </p>

@@ -145,9 +145,28 @@ projectPlan.enable()
           <MatchingTask :items="typologyDefinitions"></MatchingTask>
         </template>
       </Card>
+      <Card class="w-full overflow-hidden mb-2">
+        <template #title>Practitioner communities</template>
+        <template #content>
+          <p>
+            Practitioner communities provide a range of information and opportunities, such as
+            training, networking, and resources. Links are provided below for a couple of
+            associations. You may like to browse these before continuing to the next phase of this
+            toolkit.
+          </p>
+          <p>
+            <ul>
+            <li><a href="https://www.ecsa.ngo/" target="_blank">European Citizen Science Association (ECSA)</a></li>
+            <li><a href="https://eu-citizen.science/" target="_blank">European Citizen Science Platform</a></li>
+            <li><a href="https://participatorysciences.org/" target="_blank">AAPS - Association for Advancing Participatory Sciences</a></li>
+          </ul>
+        </p>
+        </template>
+      </Card>
     </div>
     <p>
-      <ToolkitNextButton :phase="2" text="Initial Evaluation"> </ToolkitNextButton>
+      <ToolkitNextButton :phase="3" text="Get Started"></ToolkitNextButton>
+      <!--<ToolkitNextButton :phase="2" text="Initial Evaluation"> </ToolkitNextButton>-->
     </p>
   </div>
 </template>
