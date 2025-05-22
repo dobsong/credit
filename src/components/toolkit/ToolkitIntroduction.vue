@@ -5,6 +5,7 @@ import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import ToolkitReference from '../ui/ToolkitReference.vue'
 import MatchingTask from './tasks/MatchingTask.vue'
 
 const projectPlan = useProjectPlanStore()
@@ -139,8 +140,13 @@ projectPlan.enable()
         <template #title>Participatory research is a broad field</template>
         <template #content>
           <p>
-            Match the activity focus to the definition to explore some approaches defined by A.
-            Wiggins and K. Crowston in their typology study of citizen science.
+            Match the activity focus to the definition to explore some approaches defined by
+            <ToolkitReference
+              shortDescription="Wiggins and Crowston (2015)"
+              citation="Wiggins, A., & Crowston, K. (2015). From conservation to crowdsourcing: A typology of citizen science. In Proceedings of the 44th Hawaii international conference on system sciences (pp. 1-10)."
+              url="https://citsci.syr.edu/sites/crowston.syr.edu/files/hicss-44.pdf"
+            ></ToolkitReference>
+            in their typology study of citizen science.
           </p>
           <MatchingTask :items="typologyDefinitions"></MatchingTask>
         </template>
@@ -154,13 +160,24 @@ projectPlan.enable()
             associations. You may like to browse these before continuing to the next phase of this
             toolkit.
           </p>
-          <p>
-            <ul>
-            <li><a href="https://www.ecsa.ngo/" target="_blank">European Citizen Science Association (ECSA)</a></li>
-            <li><a href="https://eu-citizen.science/" target="_blank">European Citizen Science Platform</a></li>
-            <li><a href="https://participatorysciences.org/" target="_blank">AAPS - Association for Advancing Participatory Sciences</a></li>
+
+          <ul>
+            <li>
+              <a href="https://www.ecsa.ngo/" target="_blank"
+                >European Citizen Science Association (ECSA)</a
+              >
+            </li>
+            <li>
+              <a href="https://eu-citizen.science/" target="_blank"
+                >European Citizen Science Platform</a
+              >
+            </li>
+            <li>
+              <a href="https://participatorysciences.org/" target="_blank"
+                >AAPS - Association for Advancing Participatory Sciences</a
+              >
+            </li>
           </ul>
-        </p>
         </template>
       </Card>
     </div>
