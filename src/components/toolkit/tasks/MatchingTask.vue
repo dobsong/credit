@@ -2,6 +2,7 @@
 import type { GlossaryDefinition } from '@/types/glossary-definition'
 import Button from '@/volt/Button.vue'
 import Chip from '@/volt/Chip.vue'
+import Select from '@/volt/Select.vue'
 import { CheckIcon, TimesIcon } from '@primevue/icons'
 import { ref, type Ref } from 'vue'
 
@@ -16,6 +17,7 @@ const props = defineProps<{
 // note that the component works on a copy of the items array to avoid mutating the original
 const itemsLocal: Ref<GlossaryDefinition[]> = ref([])
 const definitions: Ref<string[]> = ref([])
+const unassignedTerms: Ref<string[]> = ref([])
 const correct: Ref<(boolean | null)[]> = ref([])
 let dropSucceeded = false
 
@@ -26,6 +28,7 @@ const initialiseAnswers = () => {
   definitions.value = itemsLocal.value
     .map((item) => item.definition)
     .sort(() => Math.random() - 0.5)
+  unassignedTerms.value = itemsLocal.value.map((item) => item.term)
   // remove the definitions from the initially shown items
   itemsLocal.value.forEach((item) => {
     item.definition = ''
@@ -72,10 +75,12 @@ const onDrop = (event: DragEvent, itemId: number) => {
         }
       } else if (existingItem) {
         existingItem.definition = ''
+        unassignedTerms.value.push(existingItem.term)
       }
 
       item.definition = definition
       definitions.value = definitions.value.filter((def) => def !== definition)
+      unassignedTerms.value = unassignedTerms.value.filter((term) => term !== item.term)
     }
   }
   if (event.target && event.target instanceof HTMLElement) {
@@ -109,6 +114,7 @@ const onDragEnd = (event: DragEvent, definition: string) => {
     if (existingItem) {
       existingItem.definition = ''
       definitions.value.push(definition)
+      unassignedTerms.value.push(existingItem.term)
     }
   }
 }
@@ -127,6 +133,15 @@ const checkAnswers = () => {
       }
     }
   })
+}
+
+const onSelect = (event: { value: string }, definition: string) => {
+  const item = itemsLocal.value.find((item) => item.term === event.value)
+  if (item) {
+    item.definition = definition
+    definitions.value = definitions.value.filter((def) => def !== definition)
+    unassignedTerms.value = unassignedTerms.value.filter((term) => term !== item.term)
+  }
 }
 </script>
 
@@ -153,7 +168,7 @@ const checkAnswers = () => {
             @dragover="onEnter($event)"
             @dragleave="onLeave($event)"
             @dragend="onDragEnd($event, item.definition)"
-            class="justify-center items-center flex flex-wrap p-4 text-neutral-500 border-1 border-dashed border-gray-300"
+            class="p-2 text-neutral-500 border-1 border-dashed border-gray-300"
           >
             <template v-if="item.definition">
               <Chip
@@ -164,26 +179,45 @@ const checkAnswers = () => {
                 @dragstart="startDrag($event, item.definition)"
               ></Chip>
               <Transition name="fade">
-                <CheckIcon v-if="correct[item.id] === true" class="text-green-500"></CheckIcon>
+                <CheckIcon
+                  v-if="correct[item.id] === true"
+                  class="text-green-500 mx-auto"
+                ></CheckIcon>
               </Transition>
               <Transition name="fade">
-                <TimesIcon v-if="correct[item.id] === false" class="text-red-500"></TimesIcon>
+                <TimesIcon
+                  v-if="correct[item.id] === false"
+                  class="text-red-500 mx-auto"
+                ></TimesIcon>
               </Transition>
             </template>
-            <template v-else>Drag a definition here...</template>
+            <template v-else><div class="text-center">Drag a definition here...</div></template>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="w-full sm:w-2/5 ml-2">
-      <h3 class="mb-2 font-bold">Drag these definitions to the matching term in the list</h3>
+    <div class="w-full sm:w-3/7 ml-2">
+      <h3 class="mb-2 font-bold">
+        Match these definitions to the corresponding terms by dragging them to the correct place or
+        selecting the correct option
+      </h3>
       <ul>
         <li v-for="defn in definitions" :key="defn">
           <Chip
-            :label="defn"
-            class="m-1 cursor-move term translate-x-0"
+            class="m-1 cursor-move term translate-x-0 w-full"
             draggable="true"
             @dragstart="startDrag($event, defn)"
+          >
+            <div class="flex flex-1 items-start">
+              <span class="flex-1">{{ defn }}</span>
+              <Select
+                :options="unassignedTerms.sort((a, b) => a.localeCompare(b))"
+                placeholder="Match..."
+                checkmark
+                :highlightOnSelect="true"
+                class="max-w-32 ml-2"
+                @change="onSelect($event, defn)"
+              /></div
           ></Chip>
         </li>
       </ul>
