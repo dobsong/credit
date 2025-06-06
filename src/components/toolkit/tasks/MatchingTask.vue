@@ -135,12 +135,14 @@ const checkAnswers = () => {
   })
 }
 
+// called when a definition is selected from a dropdown. Assigns the definition to the term and updates the lists accordingly
 const onSelect = (event: { value: string }, definition: string) => {
   const item = itemsLocal.value.find((item) => item.term === event.value)
   if (item) {
     item.definition = definition
     definitions.value = definitions.value.filter((def) => def !== definition)
     unassignedTerms.value = unassignedTerms.value.filter((term) => term !== item.term)
+    resetMarks()
   }
 }
 </script>

@@ -1,5 +1,20 @@
 <script setup lang="ts">
+import { useBibliographyStore } from '@/stores/bibliography'
+import { useToast } from 'primevue/usetoast'
+
+const bibliography = useBibliographyStore()
+const toast = useToast() // instance to create messages
+
 import { onMounted, ref } from 'vue'
+
+const props = defineProps<{
+  shortDescription: string
+  title: string
+  authors: string
+  citation: string
+  url: string
+  year: number
+}>()
 
 const bouncing = ref(true)
 const settling = ref(false)
@@ -12,26 +27,40 @@ onMounted(() => {
   }, 3000)
 })
 
-function startBounce() {
+const startBounce = () => {
   bouncing.value = true
   settling.value = false
 }
-function stopBounce() {
+
+const stopBounce = () => {
   bouncing.value = false
   settling.value = true
   setTimeout(() => (settling.value = false), 400)
 }
 
-defineProps<{
-  shortDescription: string
-  citation: string
-  url: string
-}>()
+const addToBibliography = () => {
+  // Add the current reference to the bibliography
+  bibliography.add({
+    title: props.title,
+    authors: props.authors,
+    citation: props.citation,
+    url: props.url,
+    year: props.year,
+  })
+
+  // Show a toast message to confirm addition
+  toast.add({
+    severity: 'success',
+    summary: 'Reference Added',
+    detail: 'The reference has been added to your bibliography.',
+    life: 3000,
+  })
+}
 </script>
 <template>
   <span>
     <a class="italic" :href="url" target="_blank">{{ shortDescription }}</a>
-    <button title="Add to your bibliography to review later">
+    <button title="Add to your bibliography to review later" @click="addToBibliography()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

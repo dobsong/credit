@@ -143,8 +143,11 @@ projectPlan.enable()
             Match the activity focus to the definition to explore some approaches defined by
             <ToolkitReference
               shortDescription="Wiggins and Crowston (2015)"
+              title="From conservation to crowdsourcing: A typology of citizen science"
+              authors="Wiggins, A., & Crowston, K."
               citation="Wiggins, A., & Crowston, K. (2015). From conservation to crowdsourcing: A typology of citizen science. In Proceedings of the 44th Hawaii international conference on system sciences (pp. 1-10)."
               url="https://citsci.syr.edu/sites/crowston.syr.edu/files/hicss-44.pdf"
+              :year="2015"
             ></ToolkitReference>
             in their typology study of citizen science.
           </p>

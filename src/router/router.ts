@@ -1,4 +1,5 @@
 import ToolkitAnalysisPhase from '@/components/toolkit/ToolkitAnalysisPhase.vue'
+import ToolkitBibliography from '@/components/toolkit/ToolkitBibliography.vue'
 import ToolkitConsiderationPhase from '@/components/toolkit/ToolkitConsiderationPhase.vue'
 import ToolkitDataManagement from '@/components/toolkit/ToolkitDataManagement.vue'
 import ToolkitDevelopmentPhase from '@/components/toolkit/ToolkitDevelopmentPhase.vue'
@@ -91,6 +92,10 @@ export default createRouter({
     {
       path: '/about',
       component: ToolkitAbout,
+    },
+    {
+      path: '/bibliography',
+      component: ToolkitBibliography,
     },
   ],
 })
