@@ -40,7 +40,7 @@ const toggle = (event: MouseEvent) => {
 
 <template>
   <header class="h-24 sm:h-32 flex">
-    <div class="container mx-auto px-6 flex items-center text-lg">
+    <div class="container mx-auto px-6 flex items-baseline text-lg my-auto">
       <img
         alt="CREDIT logo"
         class="size-16 md:size-24 mr-6"
@@ -48,7 +48,7 @@ const toggle = (event: MouseEvent) => {
       />
       <span class="my-auto text-2xl font-[MuseoSans]">CREDIT</span>
 
-      <nav class="uppercase lg:flex hidden font-semibold ml-auto">
+      <nav class="uppercase lg:flex hidden font-semibold ml-auto my-auto">
         <RouterLink to="/" class="py-2 px-4 flex">Home</RouterLink>
         <RouterLink to="/proposal/phase/01" class="py-2 px-4 flex">Develop a Proposal</RouterLink>
         <RouterLink to="/case-studies" class="py-2 px-4 flex">Case Studies</RouterLink>
@@ -57,32 +57,33 @@ const toggle = (event: MouseEvent) => {
         <RouterLink to="/about" class="py-2 px-4 flex">About</RouterLink>
       </nav>
     </div>
-    <SecondaryButton
-      type="button"
-      plain
-      @click="toggle"
-      aria-haspopup="true"
-      aria-controls="overlay_menu"
-      class="lg:hidden flex flex-col ml-2"
-      >&#x2630;</SecondaryButton
-    >
-    <Menu ref="menu" id="overlay_menu" :model="items" :popup="true">
-      <template #item="{ item }">
-        <RouterLink :to="item.route" class="text-lg uppercase px-2">
-          {{ item.label }}
-        </RouterLink>
-      </template>
-    </Menu>
-    <div class="flex flex-row">
+
+    <div class="flex flex-row items-baseline my-auto">
       <SecondaryButton
         icon="pi pi-bookmark-fill"
-        class="mr-2"
         text
         @click="$router.push('/bibliography')"
         title="Your Bibliography"
+        class="ml-2"
       />
-      <SecondaryButton icon="pi pi-pen-to-square" class="mr-2" text />
+      <SecondaryButton icon="pi pi-pen-to-square" text />
       <SecondaryButton icon="pi pi-clipboard" severity="secondary" text />
+      <SecondaryButton
+        type="button"
+        plain
+        @click="toggle"
+        aria-haspopup="true"
+        aria-controls="overlay_menu"
+        class="lg:hidden flex flex-col"
+        >&#x2630;</SecondaryButton
+      >
+      <Menu ref="menu" id="overlay_menu" :model="items" :popup="true">
+        <template #item="{ item }">
+          <RouterLink :to="item.route" class="text-lg uppercase px-2">
+            {{ item.label }}
+          </RouterLink>
+        </template>
+      </Menu>
     </div>
   </header>
 </template>

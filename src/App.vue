@@ -8,8 +8,8 @@ const theme: string = window.matchMedia('(prefers-color-scheme: dark)').matches 
 
 <template>
   <ToolkitHeader></ToolkitHeader>
-  <main role="main" class="flex relative items-center overflow-hidden">
-    <div class="container mx-auto px-6 flex relative pt-4 pb-8 md:pb-16 md:pt-8">
+  <main role="main" class="flex relative">
+    <div class="container flex relative px-6 pt-4 pb-8 md:pb-16 md:pt-8">
       <RouterView></RouterView>
     </div>
   </main>
