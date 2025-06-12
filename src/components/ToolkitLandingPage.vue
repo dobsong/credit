@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import Button from '@/volt/Button.vue'
-import { RouterLink } from 'vue-router'
 import ToolkitHeading from './ui/ToolkitHeading.vue'
 </script>
 
 <template>
-  <div class="w-full sm:w-3/5 flex flex-col relative">
-    <ToolkitHeading text="Community Research Toolkit"></ToolkitHeading>
+  <div id="landing-main" class="w-full container mx-auto">
+    <ToolkitHeading text="Community Research Digital Toolkit"></ToolkitHeading>
     <p>
       When embarking on a research project involving participation from members of the public there
       are many opportunities and challenges to consider. The extent of participation in this type of
@@ -36,18 +35,16 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
       Looking for inspiration? The tabs at the top of the page can be used to navigate to Lancaster
       University case studies used in the toolkit.
     </p>
-    <div class="flex mt-4 justify-center sm:justify-start">
-      <RouterLink v-slot="{ navigate }" to="/proposal/phase/01" custom>
-        <Button @click="navigate">Develop a Proposal</Button>
-      </RouterLink>
-    </div>
   </div>
-  <div class="hidden sm:block">
-    <img
-      src="../assets/community.jpg"
-      alt="A placeholder image"
-      class="max-w-xs md:max-w-sm lg:max-w-md xl:max-w-lg my-auto mx-6 rounded-xl"
-    />
+  <div id="landing-footer" class="relative w-full">
+    <img src="../assets/characters_blue_bg.svg" alt="Background characters" class="w-full h-auto" />
+    <div class="absolute inset-x-0 inset-y-0 max-width: 80rem">
+      <div class="container mx-auto">
+        <RouterLink v-slot="{ navigate }" to="/proposal/phase/01" custom>
+          <Button @click="navigate"> Develop a Proposal </Button>
+        </RouterLink>
+      </div>
+    </div>
   </div>
 </template>
 

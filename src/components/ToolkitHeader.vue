@@ -1,7 +1,12 @@
 <script setup lang="ts">
+import Button from '@/volt/Button.vue'
 import Menu from '@/volt/Menu.vue'
-import SecondaryButton from '@/volt/SecondaryButton.vue'
 import { ref } from 'vue'
+
+defineProps<{
+  theme: string
+}>()
+
 const menu = ref()
 const items = ref([
   {
@@ -39,16 +44,16 @@ const toggle = (event: MouseEvent) => {
 </script>
 
 <template>
-  <header class="h-24 sm:h-32 flex">
-    <div class="container mx-auto px-6 flex items-baseline text-lg my-auto">
+  <header class="h-24 sm:h-32 bg-primary-500 md:pb-4 pt-2">
+    <div class="flex container mx-auto">
       <img
         alt="CREDIT logo"
-        class="size-16 md:size-24 mr-6"
-        src="/src/assets/logo_placeholder.svg"
+        class="h-16 md:h-24 mx-6 sm:mx-0"
+        src="/src/assets/dark/credit-logo.svg"
       />
-      <span class="my-auto text-2xl font-[MuseoSans]">CREDIT</span>
-
-      <nav class="uppercase lg:flex hidden font-semibold ml-auto my-auto">
+      <nav
+        class="uppercase lg:flex hidden font-semibold mt-auto ml-auto text-base lg:text-lg text-white"
+      >
         <RouterLink to="/" class="py-2 px-4 flex">Home</RouterLink>
         <RouterLink to="/proposal/phase/01" class="py-2 px-4 flex">Develop a Proposal</RouterLink>
         <RouterLink to="/case-studies" class="py-2 px-4 flex">Case Studies</RouterLink>
@@ -56,34 +61,38 @@ const toggle = (event: MouseEvent) => {
         <RouterLink to="/glossary" class="py-2 px-4 flex">Glossary</RouterLink>
         <RouterLink to="/about" class="py-2 px-4 flex">About</RouterLink>
       </nav>
-    </div>
 
-    <div class="flex flex-row items-baseline my-auto">
-      <SecondaryButton
-        icon="pi pi-bookmark-fill"
-        text
-        @click="$router.push('/bibliography')"
-        title="Your Bibliography"
-        class="ml-2"
-      />
-      <SecondaryButton icon="pi pi-pen-to-square" text />
-      <SecondaryButton icon="pi pi-clipboard" severity="secondary" text />
-      <SecondaryButton
-        type="button"
-        plain
-        @click="toggle"
-        aria-haspopup="true"
-        aria-controls="overlay_menu"
-        class="lg:hidden flex flex-col"
-        >&#x2630;</SecondaryButton
-      >
-      <Menu ref="menu" id="overlay_menu" :model="items" :popup="true">
-        <template #item="{ item }">
-          <RouterLink :to="item.route" class="text-lg uppercase px-2">
-            {{ item.label }}
-          </RouterLink>
-        </template>
-      </Menu>
+      <div class="flex flex-row items-baseline mt-auto ml-auto mr-6">
+        <Button
+          icon="pi pi-bookmark text-white"
+          variant="text"
+          @click="$router.push('/bibliography')"
+          title="Your Bibliography"
+          class="ml-2 enabled:hover:p-text:bg-primary-400"
+        />
+        <Button
+          icon="pi pi-pen-to-square text-white"
+          variant="text"
+          class="enabled:hover:p-text:bg-primary-400"
+          disabled
+        />
+        <Button icon="pi pi-clipboard text-white" variant="text" disabled />
+        <Button
+          variant="text"
+          @click="toggle"
+          aria-haspopup="true"
+          aria-controls="overlay_menu"
+          icon="pi pi-bars text-white"
+          class="lg:hidden enabled:hover:p-text:bg-primary-400"
+        ></Button>
+        <Menu ref="menu" id="overlay_menu" :model="items" :popup="true">
+          <template #item="{ item }">
+            <RouterLink :to="item.route" class="text-lg uppercase px-2">
+              {{ item.label }}
+            </RouterLink>
+          </template>
+        </Menu>
+      </div>
     </div>
   </header>
 </template>

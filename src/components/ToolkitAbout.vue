@@ -3,7 +3,7 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
 </script>
 
 <template>
-  <div class="w-full flex flex-col">
+  <div class="w-full flex flex-col container mx-auto">
     <ToolkitHeading text="About"></ToolkitHeading>
     <p>
       This toolkit has been designed by members of the “Reimagining research practices: towards a

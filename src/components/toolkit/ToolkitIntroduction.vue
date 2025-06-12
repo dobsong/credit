@@ -13,7 +13,7 @@ projectPlan.enable()
 </script>
 
 <template>
-  <div class="w-full flex flex-col">
+  <div class="w-full flex flex-col container mx-auto">
     <ToolkitHeading text="Introduction"></ToolkitHeading>
     <p>
       This introductory task encourages you to experience participatory research from the
@@ -33,12 +33,6 @@ projectPlan.enable()
         <template #title>
           Have you ever participated in community research, such as a Citizen Science project as a
           non-expert?
-        </template>
-        <template #subtitle>
-          <p class="m-0">
-            Click on the button that displays your own previous engagement to reveal reflection
-            points.
-          </p>
         </template>
         <template #footer>
           <div class="flex gap-4 mt-1">
@@ -63,7 +57,19 @@ projectPlan.enable()
           </div>
         </template>
       </Card>
+
       <div class="hidden md:block w-1/24"></div>
+      <Card
+        class="w-full md:w-23/48 overflow-hidden mb-2"
+        v-if="projectPlan.previousEngagement === 'Unknown'"
+      >
+        <template #subtitle>
+          <p>
+            Click on the button that displays your own previous engagement to reveal reflection
+            points.
+          </p>
+        </template></Card
+      >
       <Card
         class="w-full md:w-23/48 overflow-hidden mb-2"
         v-if="projectPlan.previousEngagement === 'Yes'"

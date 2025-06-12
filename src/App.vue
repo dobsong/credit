@@ -7,9 +7,9 @@ const theme: string = window.matchMedia('(prefers-color-scheme: dark)').matches 
 </script>
 
 <template>
-  <ToolkitHeader></ToolkitHeader>
-  <main role="main" class="flex relative">
-    <div class="container flex relative px-6 pt-4 pb-8 md:pb-16 md:pt-8">
+  <ToolkitHeader :theme="theme"></ToolkitHeader>
+  <main role="main">
+    <div class="flex flex-col pt-4 md:pt-8 w-full">
       <RouterView></RouterView>
     </div>
   </main>

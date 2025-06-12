@@ -4,8 +4,10 @@ defineProps<{
 }>()
 </script>
 <template>
-  <h1 class="uppercase text-3xl md:text-5xl font-[MuseoSans] flex flex-col mb-4">
-    {{ text }}
-  </h1>
-  <span class="w-1/4 h-2 bg-gray-800 dark:bg-white mb-8"> </span>
+  <div class="flex flex-col">
+    <h1 class="uppercase text-2xl md:text-4xl font-[MuseoSans] flex flex-col mb-4">
+      {{ text }}
+    </h1>
+    <span class="w-1/4 h-1 md:h-2 bg-gray-800 dark:bg-white mb-4 md:mb-8"> </span>
+  </div>
 </template>
