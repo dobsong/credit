@@ -190,7 +190,7 @@ projectPlan.enable()
         </template>
       </Card>
     </div>
-    <p>
+    <p class="w-full mt-4 text-right">
       <ToolkitNextButton :phase="3" text="Get Started"></ToolkitNextButton>
       <!--<ToolkitNextButton :phase="2" text="Initial Evaluation"> </ToolkitNextButton>-->
     </p>

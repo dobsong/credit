@@ -14,6 +14,6 @@ defineProps<{
     :to="`/proposal/phase/${String(phase).padStart(2, '0')}`"
     custom
   >
-    <Button @click="navigate">{{ text }}</Button>
+    <Button @click="navigate" icon="pi pi-arrow-right" iconPos="right" :label="text"></Button>
   </RouterLink>
 </template>

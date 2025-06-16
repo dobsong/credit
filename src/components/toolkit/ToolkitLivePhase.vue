@@ -8,14 +8,19 @@ projectPlan.enable()
 </script>
 
 <template>
-  <div class="container mx-auto px-8 flex relative py-8 md:py-16">
-    <div class="w-full sm:w-3/5 flex flex-col relative">
-      <ToolkitHeading text="Launch and Sustain: The Live Phase"></ToolkitHeading>
-      <p>
+  <div class="container mx-auto px-8 flex">
+    <div class="w-full flex flex-wrap">
+      <ToolkitHeading text="Launch and Sustain: The Live Phase" class="w-full"></ToolkitHeading>
+      <p class="w-full mt-4 text-right">
         <ToolkitNextButton :phase="7" text="Analysis and Evaluation"></ToolkitNextButton>
       </p>
     </div>
   </div>
+  <img
+    src="@/assets/ribbon_launch.svg"
+    class="w-full h-32 object-cover object-center sm:h-auto sm:object-contain"
+    alt="Consideration Phase Image"
+  />
 </template>
 
 <style scoped></style>

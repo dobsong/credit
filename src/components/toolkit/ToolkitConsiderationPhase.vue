@@ -18,12 +18,12 @@ projectPlan.enable()
         first important to consider whether it is an appropriate approach. Then the context of the
         project can be defined and developed.
       </p>
-      <Card class="w-1/2">
+      <Card class="w-full sm:w-1/2">
         <template #title>
           <h1 class="font-black text-xl">Decision making: Is it the right approach?</h1>
         </template>
         <template #content>
-          <CharacterConsideration class="float-right" />
+          <CharacterConsideration class="float-right size-32 sm:size-40" />
           <p>
             The “<a
               href="https://www.ceh.ac.uk/sites/default/files/sepa_choosingandusingcitizenscience_interactive_4web_final_amended-blue1.pdf"
@@ -36,7 +36,7 @@ projectPlan.enable()
           </p>
         </template>
       </Card>
-      <Card class="w-1/2">
+      <Card class="w-full sm:w-1/2">
         <template #title>
           <h1 class="font-black text-xl">Ethics</h1>
         </template>
@@ -58,15 +58,15 @@ projectPlan.enable()
           </p>
         </template>
       </Card>
-      <p class="mt-4">
+      <p class="w-full mt-4 text-right">
         <ToolkitNextButton :phase="4" text="Preparation"></ToolkitNextButton>
       </p>
     </div>
   </div>
   <img
     src="@/assets/ribbon_consideration.svg"
-    class="w-full h-auto"
     alt="Consideration Phase Image"
+    class="w-full h-32 object-cover object-right sm:h-auto sm:object-contain"
   />
 </template>
 

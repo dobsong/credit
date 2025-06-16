@@ -8,12 +8,12 @@ const toast = useToast() // instance to create messages
 import { onMounted, ref } from 'vue'
 
 const props = defineProps<{
-  shortDescription: string
+  shortDescription?: string
   title: string
-  authors: string
+  authors?: string
   citation: string
   url: string
-  year: number
+  year?: number
 }>()
 
 const bouncing = ref(true)
@@ -41,11 +41,11 @@ const stopBounce = () => {
 const addToBibliography = () => {
   // Add the current reference to the bibliography
   bibliography.add({
-    title: props.title,
-    authors: props.authors,
+    title: props.title || '',
+    authors: props.authors || '',
     citation: props.citation,
     url: props.url,
-    year: props.year,
+    year: props.year || 0,
   })
 
   // Show a toast message to confirm addition
@@ -59,7 +59,7 @@ const addToBibliography = () => {
 </script>
 <template>
   <span>
-    <a class="italic" :href="url" target="_blank">{{ shortDescription }}</a>
+    <a class="italic" :href="url" target="_blank">{{ shortDescription || title }}</a>
     <button title="Add to your bibliography to review later" @click="addToBibliography()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
