@@ -14,8 +14,7 @@
 }
 
 @theme {
-  --color-highlight: #344c9b;
-  --color-highlight-hover: #344c9b;
+  --color-base-highlight: #344c9b;
 }
 
 #app {
@@ -42,17 +41,17 @@
 
 /* Primary and Surface Palettes */
 :root {
-  --p-primary-50: #ebedf5;
-  --p-primary-100: #d6dbeb;
-  --p-primary-200: #aeb7d7;
-  --p-primary-300: #8594c3;
-  --p-primary-400: #5d70af;
-  --p-primary-500: #344c9b;
-  --p-primary-600: #2a3d7c;
-  --p-primary-700: #1f2e5d;
-  --p-primary-800: #151e3e;
-  --p-primary-900: #0a0f1f;
-  --p-primary-950: #050810;
+  --p-primary-50: #feebeb;
+  --p-primary-100: #fcd7d6;
+  --p-primary-200: #f8aeae;
+  --p-primary-300: #f58685;
+  --p-primary-400: #f15d5c;
+  --p-primary-500: #c94e4d;
+  --p-primary-600: #a13e3d;
+  --p-primary-700: #792f2e;
+  --p-primary-800: #501f1f;
+  --p-primary-900: #28100f;
+  --p-primary-950: #140808;
   --p-surface-0: #ffffff;
   --p-surface-50: var(--color-gray-50);
   --p-surface-100: var(--color-gray-100);

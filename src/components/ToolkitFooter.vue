@@ -5,8 +5,10 @@ defineProps<{
 </script>
 
 <template>
-  <div class="w-full bg-primary-500">
-    <footer class="flex flex-wrap gap-y-4 justify-between container mx-auto pb-6 pt-8">
+  <div class="w-full bg-[var(--color-base-highlight)] -z-50">
+    <footer
+      class="flex flex-wrap gap-y-4 justify-between container mx-auto px-8 pb-6 pt-4 sm:pt-10"
+    >
       <div class="w-full md:w-1/3">
         <img
           id="lu-logo"
@@ -31,7 +33,7 @@ defineProps<{
         <img
           id="wellcome-logo"
           alt="Wellcome logo"
-          src="./../assets/wellcome_logo_orange_50_web.svg"
+          src="./../assets/wellcome_logo_red_20_web.svg"
           class="size-[70px] lg:size-25 xl:size-30 mx-[7px] lg:mx-5 xl:mx-6 w-auto"
         />
       </div>

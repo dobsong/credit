@@ -13,7 +13,7 @@ projectPlan.enable()
 </script>
 
 <template>
-  <div class="w-full flex flex-col container mx-auto">
+  <div class="w-full flex flex-col container mx-auto px-8">
     <ToolkitHeading text="Introduction"></ToolkitHeading>
     <p>
       This introductory task encourages you to experience participatory research from the

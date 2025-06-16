@@ -8,7 +8,7 @@ projectPlan.enable()
 </script>
 
 <template>
-  <div class="container mx-auto px-6 flex relative py-8 md:py-16">
+  <div class="container mx-auto px-8 flex relative py-8 md:py-16">
     <div class="w-full sm:w-3/5 flex flex-col relative">
       <ToolkitHeading text="Summary and Next Steps"></ToolkitHeading>
       <p>

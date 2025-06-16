@@ -4,7 +4,7 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
 </script>
 
 <template>
-  <div id="landing-main" class="w-full container mx-auto">
+  <div id="landing-main" class="w-full container mx-auto px-8">
     <ToolkitHeading text="Community Research Digital Toolkit"></ToolkitHeading>
     <p>
       When embarking on a research project involving participation from members of the public there
@@ -35,16 +35,13 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
       Looking for inspiration? The tabs at the top of the page can be used to navigate to Lancaster
       University case studies used in the toolkit.
     </p>
+    <RouterLink v-slot="{ navigate }" to="/proposal/phase/01" custom class="z-50">
+      <Button @click="navigate"> Develop a Proposal </Button>
+    </RouterLink>
   </div>
-  <div id="landing-footer" class="relative w-full">
-    <img src="../assets/characters_blue_bg.svg" alt="Background characters" class="w-full h-auto" />
-    <div class="absolute inset-x-0 inset-y-0 max-width: 80rem">
-      <div class="container mx-auto">
-        <RouterLink v-slot="{ navigate }" to="/proposal/phase/01" custom>
-          <Button @click="navigate"> Develop a Proposal </Button>
-        </RouterLink>
-      </div>
-    </div>
+
+  <div id="landing-footer" class="relative w-full pt-4 sm:pt-0 lg:-mt-6">
+    <img src="../assets/characters_blue_bg.svg" alt="Background characters" class="h-auto" />
   </div>
 </template>
 
