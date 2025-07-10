@@ -12,7 +12,11 @@ projectPlan.enable()
     <div class="w-full sm:w-3/5 flex flex-col relative">
       <ToolkitHeading text="Summary and Next Steps"></ToolkitHeading>
       <p>
-        <ToolkitNextButton :phase="11" text="Evaluation"></ToolkitNextButton>
+        <ToolkitNextButton
+          :phase="11"
+          text="Evaluation"
+          :show-navigation="false"
+        ></ToolkitNextButton>
       </p>
     </div>
   </div>

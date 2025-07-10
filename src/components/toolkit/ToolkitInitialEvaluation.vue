@@ -10,15 +10,15 @@ projectPlan.enable()
 </script>
 
 <template>
-  <div class="w-full flex flex-col">
+  <div class="container mx-auto w-full flex flex-col">
     <ToolkitHeading text="About Your Project"></ToolkitHeading>
     <p>
       Please select from the choices below. These choices will affect the content you see as you
       progress through the toolkit. Select &quot;unknown&quot; if you are unsure or want to see all
       content.
     </p>
-    <div class="flex flex-wrap gap-2 mb-4">
-      <Card class="w-full sm:w-auto">
+    <div class="grid grid-cols-2 gap-2 mb-4">
+      <Card>
         <template #title>Project Size</template>
         <template #content>
           <div class="flex justify-center">
@@ -63,7 +63,7 @@ projectPlan.enable()
           </div>
         </template>
       </Card>
-      <Card class="w-full sm:w-auto">
+      <Card>
         <template #title>Location</template>
         <template #content>
           <div class="flex justify-center">

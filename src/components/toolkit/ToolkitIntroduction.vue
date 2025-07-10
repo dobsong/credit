@@ -21,8 +21,8 @@ projectPlan.enable()
       development of your own project. For example, typology, good practice, and potential barriers
       to engagement methods.
     </p>
-    <div class="w-full flex flex-wrap mb-4">
-      <Card class="w-full md:w-23/48 overflow-hidden mb-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Card class="overflow-hidden">
         <template #header>
           <img
             alt="Illustrative image showing a lightbulb"
@@ -57,12 +57,7 @@ projectPlan.enable()
           </div>
         </template>
       </Card>
-
-      <div class="hidden md:block w-1/24"></div>
-      <Card
-        class="w-full md:w-23/48 overflow-hidden mb-2"
-        v-if="projectPlan.previousEngagement === 'Unknown'"
-      >
+      <Card v-if="projectPlan.previousEngagement === 'Unknown'">
         <template #subtitle>
           <p>
             Click on the button that displays your own previous engagement to reveal reflection
@@ -70,10 +65,7 @@ projectPlan.enable()
           </p>
         </template></Card
       >
-      <Card
-        class="w-full md:w-23/48 overflow-hidden mb-2"
-        v-if="projectPlan.previousEngagement === 'Yes'"
-      >
+      <Card class="overflow-hidden" v-if="projectPlan.previousEngagement === 'Yes'">
         <template #header>
           <img
             alt="Illustrative image showing a notepad"
@@ -88,10 +80,7 @@ projectPlan.enable()
           <p class="m-0">What challenges did you face as a participant?</p>
         </template>
       </Card>
-      <Card
-        class="w-full md:w-23/48 overflow-hidden mb-2"
-        v-if="projectPlan.previousEngagement === 'No'"
-      >
+      <Card class="overflow-hidden" v-if="projectPlan.previousEngagement === 'No'">
         <template #header>
           <img
             alt="Illustrative image showing users collaboarting on a laptop"
@@ -112,7 +101,7 @@ projectPlan.enable()
           <p class="m-0">Reflect on your experience as a community user.</p>
         </template>
       </Card>
-      <Card class="w-full overflow-hidden mb-2">
+      <Card class="md:col-span-2">
         <template #title>Links to Participatory Research opportunities</template>
         <template #content>
           <ul class="list-disc pl-5">
@@ -142,7 +131,7 @@ projectPlan.enable()
           </ul></template
         >
       </Card>
-      <Card class="w-full overflow-hidden mb-2">
+      <Card class="md:col-span-2">
         <template #title>Participatory research is a broad field</template>
         <template #content>
           <p>
@@ -160,7 +149,7 @@ projectPlan.enable()
           <MatchingTask :items="typologyDefinitions"></MatchingTask>
         </template>
       </Card>
-      <Card class="w-full overflow-hidden mb-2">
+      <Card class="md:col-span-2">
         <template #title>Practitioner communities</template>
         <template #content>
           <p>

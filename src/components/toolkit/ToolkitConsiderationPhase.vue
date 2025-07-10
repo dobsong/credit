@@ -18,46 +18,48 @@ projectPlan.enable()
         first important to consider whether it is an appropriate approach. Then the context of the
         project can be defined and developed.
       </p>
-      <Card class="w-full sm:w-1/2">
-        <template #title>
-          <h1 class="font-black text-xl">Decision making: Is it the right approach?</h1>
-        </template>
-        <template #content>
-          <CharacterConsideration class="float-right size-32 sm:size-40" />
-          <p>
-            The “<a
-              href="https://www.ceh.ac.uk/sites/default/files/sepa_choosingandusingcitizenscience_interactive_4web_final_amended-blue1.pdf"
-              target="_blank"
-              >Choosing and Using Citizen Science</a
-            >” resource from the UK Centre for Ecology and Hydrology contains a decision framework
-            that you can use to assist with consideration of this question. It may also help to
-            review the experiences of others, by examining the literature, and by networking with
-            those who have done similar work to your own context.
-          </p>
-        </template>
-      </Card>
-      <Card class="w-full sm:w-1/2">
-        <template #title>
-          <h1 class="font-black text-xl">Ethics</h1>
-        </template>
-        <template #content>
-          <p>
-            In this phase it is important to start thinking about the Ethics associated with the
-            project as you have human participants. You will need to identify the ethics approval
-            process and advisors for your discipline. At Lancaster University
-            <a
-              href="https://www.lancaster.ac.uk/research/research-services/research-integrity-ethics--governance/research-integrity-ethical-research-and-research-impact-training/"
-              >Ethics training</a
-            >
-            is available, and guidance is available on the
-            <a
-              href="https://www.lancaster.ac.uk/research/research-services/research-integrity-ethics--governance/"
-              target="_blank"
-              >research ethics webpage</a
-            >.
-          </p>
-        </template>
-      </Card>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <Card>
+          <template #title>
+            <h1 class="font-black text-xl">Decision making: Is it the right approach?</h1>
+          </template>
+          <template #content>
+            <CharacterConsideration class="float-right size-32 sm:size-40" />
+            <p>
+              The “<a
+                href="https://www.ceh.ac.uk/sites/default/files/sepa_choosingandusingcitizenscience_interactive_4web_final_amended-blue1.pdf"
+                target="_blank"
+                >Choosing and Using Citizen Science</a
+              >” resource from the UK Centre for Ecology and Hydrology contains a decision framework
+              that you can use to assist with consideration of this question. It may also help to
+              review the experiences of others, by examining the literature, and by networking with
+              those who have done similar work to your own context.
+            </p>
+          </template>
+        </Card>
+        <Card>
+          <template #title>
+            <h1 class="font-black text-xl">Ethics</h1>
+          </template>
+          <template #content>
+            <p>
+              In this phase it is important to start thinking about the Ethics associated with the
+              project as you have human participants. You will need to identify the ethics approval
+              process and advisors for your discipline. At Lancaster University
+              <a
+                href="https://www.lancaster.ac.uk/research/research-services/research-integrity-ethics--governance/research-integrity-ethical-research-and-research-impact-training/"
+                >Ethics training</a
+              >
+              is available, and guidance is available on the
+              <a
+                href="https://www.lancaster.ac.uk/research/research-services/research-integrity-ethics--governance/"
+                target="_blank"
+                >research ethics webpage</a
+              >.
+            </p>
+          </template>
+        </Card>
+      </div>
       <p class="w-full mt-4 text-right">
         <ToolkitNextButton :phase="4" text="Preparation"></ToolkitNextButton>
       </p>
