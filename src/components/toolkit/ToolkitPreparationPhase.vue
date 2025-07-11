@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useProjectPlanStore } from '@/stores/projectPlan'
+import Skeleton from '@/volt/Skeleton.vue'
 import Card from '../../volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
@@ -42,6 +43,13 @@ projectPlan.enable()
         </template>
         <template #content>
           <p>TODO - interactive task about team roles</p>
+          <div class="w-full xl:w-6/12 p-4">
+            <Skeleton class="mb-2"></Skeleton>
+            <Skeleton width="10rem" class="mb-2"></Skeleton>
+            <Skeleton width="5rem" class="mb-2"></Skeleton>
+            <Skeleton height="2rem" class="mb-2"></Skeleton>
+            <Skeleton width="10rem" height="4rem"></Skeleton>
+          </div>
         </template>
       </Card>
       <p class="container mx-auto w-full py-4">

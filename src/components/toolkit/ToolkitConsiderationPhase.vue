@@ -3,6 +3,7 @@ import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '../../volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import ToolkitReference from '../ui/ToolkitReference.vue'
 import CharacterConsideration from './characters/CharacterConsideration.vue'
 
 const projectPlan = useProjectPlanStore()
@@ -57,6 +58,31 @@ projectPlan.enable()
                 >research ethics webpage</a
               >.
             </p>
+          </template>
+        </Card>
+        <Card>
+          <template #title>
+            <h1 class="font-black text-xl">Suggested Reading List</h1>
+          </template>
+          <template #content
+            ><ul>
+              <li>
+                <ToolkitReference
+                  short-description="How to ethically share power with public research partners"
+                  title="How to ethically share power with public research partners: AKA keeping blobs blobby"
+                  citation="British Science Association"
+                  url="https://www.britishscienceassociation.org/essay-6-lde-how-to-ethically-share-power"
+                ></ToolkitReference>
+              </li>
+              <li>
+                <ToolkitReference
+                  short-description="Valuing Voices Tool"
+                  title="Valuing Voices Tool"
+                  citation="Valuing Voices Project. University of York, Mahidol University with funding from Wellcome."
+                  url="https://valuing-voices.ac.uk/"
+                ></ToolkitReference>
+              </li>
+            </ul>
           </template>
         </Card>
       </div>
