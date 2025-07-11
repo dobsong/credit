@@ -12,7 +12,7 @@ projectPlan.enable()
   <div class="container mx-auto px-8 flex">
     <div class="w-full flex flex-wrap">
       <ToolkitHeading text="Analysis, Reporting & Evaluation Phase" class="w-full"></ToolkitHeading>
-      <p>
+      <p class="w-full">
         Participants may play a role in collecting or analysing data for the project. Their views
         are also important for evaluating the project.
       </p>
