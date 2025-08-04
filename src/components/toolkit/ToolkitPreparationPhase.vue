@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useProjectPlanStore } from '@/stores/projectPlan'
-import Skeleton from '@/volt/Skeleton.vue'
 import Card from '../../volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 import ToolkitReference from '../ui/ToolkitReference.vue'
+import TeamRolesTask from './tasks/TeamRolesTask.vue'
 
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
@@ -15,7 +15,7 @@ projectPlan.enable()
     <div class="w-full flex flex-wrap">
       <ToolkitHeading text="Preparation Phase" class="w-full"></ToolkitHeading>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card>
+        <Card class="md:col-span-2">
           <template #title>
             <h1 class="font-black text-xl">Assembling the team</h1>
           </template>
@@ -32,29 +32,19 @@ projectPlan.enable()
               Depending on the context of your project, you may also need to consider both an
               academic team and a community team.
             </p>
-            <p>
-              Below are a range of different roles that your project might need. Click on each one
-              to learn about suggested responsibilities. Then download and complete the Team Roles
-              Table.
-            </p>
           </template>
         </Card>
-        <Card>
+        <Card class="md:col-span-2">
           <template #title>
             <h1 class="font-black text-xl">Team Roles</h1>
           </template>
           <template #content>
             <p>
-              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span> TODO -
-              interactive task about team roles
+              Below are a range of different roles that your project might need. Click on each one
+              to learn about suggested responsibilities. Then download and complete the Team Roles
+              Table.
             </p>
-            <div class="w-full xl:w-6/12 p-4">
-              <Skeleton class="mb-2"></Skeleton>
-              <Skeleton width="10rem" class="mb-2"></Skeleton>
-              <Skeleton width="5rem" class="mb-2"></Skeleton>
-              <Skeleton height="2rem" class="mb-2"></Skeleton>
-              <Skeleton width="10rem" height="4rem"></Skeleton>
-            </div>
+            <TeamRolesTask></TeamRolesTask>
           </template>
         </Card>
         <p class="container mx-auto w-full py-4 col-span-1 md:col-span-2">
