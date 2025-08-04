@@ -26,18 +26,19 @@ projectPlan.enable()
       <Card class="mb-4">
         <template #content><ToolkitOverallPlan></ToolkitOverallPlan></template>
       </Card>
-      <Card
-        ><template #title> <h1 class="font-black text-xl">Further Guidance</h1></template
-        ><template #content>
+      <Card>
+        <template #title> <h1 class="font-black text-xl">Further Guidance</h1></template>
+        <template #content>
           <ToolkitReference
-            title="          Funding Applications UKRI core question guidance: Core section questions and how they will
+            title="Funding Applications UKRI core question guidance: Core section questions and how they will
           be assessed -UKRI"
-            short-description="          Funding Applications UKRI core question guidance: Core section questions and how they will
+            short-description="Funding Applications UKRI core question guidance: Core section questions and how they will
           be assessed -UKRI"
             citation=""
             url="https://www.ukri.org/apply-for-funding/develop-your-application/responsive-mode-opportunities-funding-service-core-application-section-questions-and-assessment/core-section-questions-and-how-they-will-be-assessed/#contents-list"
-          ></ToolkitReference> </template
-      ></Card>
+          ></ToolkitReference>
+        </template>
+      </Card>
       <p class="w-full mt-4 text-right">
         <ToolkitNextButton :phase="6" text="Launch and Sustain"></ToolkitNextButton>
       </p>

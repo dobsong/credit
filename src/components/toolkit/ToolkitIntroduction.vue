@@ -31,8 +31,8 @@ projectPlan.enable()
           />
         </template>
         <template #title>
-          Have you ever participated in community research, such as a Citizen Science project as a
-          non-expert?
+          Before you start designing your community research, have you ever been a participant in
+          community research, such as a citizen science project?
         </template>
         <template #footer>
           <div class="flex gap-4 mt-1">
