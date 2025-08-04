@@ -177,7 +177,7 @@ projectPlan.enable()
             toolkit.
           </p>
 
-          <ul>
+          <ul class="list-disc pl-6">
             <li>
               <a href="https://www.ecsa.ngo/" target="_blank"
                 >European Citizen Science Association (ECSA)</a
