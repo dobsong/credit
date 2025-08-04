@@ -3,6 +3,7 @@ import { typologyDefinitions } from '@/data/typology-definitions'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
+import Skeleton from '@/volt/Skeleton.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 import ToolkitReference from '../ui/ToolkitReference.vue'
@@ -150,6 +151,23 @@ projectPlan.enable()
         </template>
       </Card>
       <Card class="md:col-span-2">
+        <template #title>
+          <h1 class="font-black text-xl">TO DO</h1>
+        </template>
+        <template #content>
+          <p>
+            <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - Case Study
+          </p>
+          <div class="w-full xl:w-6/12 p-4">
+            <Skeleton class="mb-2"></Skeleton>
+            <Skeleton width="10rem" class="mb-2"></Skeleton>
+            <Skeleton width="5rem" class="mb-2"></Skeleton>
+            <Skeleton height="2rem" class="mb-2"></Skeleton>
+            <Skeleton width="10rem" height="4rem"></Skeleton>
+          </div>
+        </template>
+      </Card>
+      <Card class="md:col-span-2">
         <template #title>Practitioner communities</template>
         <template #content>
           <p>
@@ -174,6 +192,11 @@ projectPlan.enable()
               <a href="https://participatorysciences.org/" target="_blank"
                 >AAPS - Association for Advancing Participatory Sciences</a
               >
+            </li>
+            <li>
+              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>
+              TODO - Lancaster network for members of Lancaster University, which Teams group?
+              Grp-Public & Community Engagement Network
             </li>
           </ul>
         </template>

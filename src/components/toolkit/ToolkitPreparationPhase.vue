@@ -44,7 +44,10 @@ projectPlan.enable()
             <h1 class="font-black text-xl">Team Roles</h1>
           </template>
           <template #content>
-            <p>TODO - interactive task about team roles</p>
+            <p>
+              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span> TODO -
+              interactive task about team roles
+            </p>
             <div class="w-full xl:w-6/12 p-4">
               <Skeleton class="mb-2"></Skeleton>
               <Skeleton width="10rem" class="mb-2"></Skeleton>

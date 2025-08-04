@@ -35,7 +35,10 @@ projectPlan.enable()
           <h1 class="font-black text-xl">Case Study</h1>
         </template>
         <template #content>
-          <p>TODO - Case Study to go here</p>
+          <p>
+            <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - Case Study
+            to go here
+          </p>
           <div class="w-full xl:w-6/12 p-4">
             <Skeleton class="mb-2"></Skeleton>
             <Skeleton width="10rem" class="mb-2"></Skeleton>

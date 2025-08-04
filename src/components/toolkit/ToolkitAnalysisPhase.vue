@@ -29,7 +29,10 @@ projectPlan.enable()
               <li>Quantitative and Qualitative data</li>
               <li>Community involvement</li>
             </ul>
-            <p class="mt-8">TODO - space to write</p>
+            <p class="mt-8">
+              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - space to
+              write
+            </p>
           </template>
         </Card>
         <Card>
@@ -61,7 +64,10 @@ projectPlan.enable()
               how the data is archived and approaches for sharing. (Note: this needs to be
               considered both in your ethics plan and data management plan).
             </p>
-            <p>TODO - case study link...</p>
+            <p>
+              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - case study
+              link...
+            </p>
             <p>
               <ToolkitReference
                 authors="Özgün Ünver and Julie Jordens"
@@ -82,7 +88,10 @@ projectPlan.enable()
             </p>
             <RouterLink to="/proposal/phase/09">See also, the Data Management section</RouterLink>
           </template>
-          <p>TODO - space to write</p>
+          <p>
+            <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - space to
+            write
+          </p>
         </Card>
         <Card>
           <template #title><h1 class="font-black text-xl">Evaluation</h1></template>
@@ -206,7 +215,10 @@ projectPlan.enable()
                 ></ToolkitReference>
               </li>
             </ul>
-            <p>TODO - space to write</p>
+            <p>
+              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - space to
+              write
+            </p>
           </template>
         </Card>
       </div>
