@@ -15,6 +15,7 @@
 
 @theme {
   --color-base-highlight: #344c9b;
+  --color-analysis: #0bb6a5;
 }
 
 #app {

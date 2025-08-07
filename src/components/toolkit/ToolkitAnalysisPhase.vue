@@ -1,237 +1,227 @@
 <script setup lang="ts">
-import { useProjectPlanStore } from '@/stores/projectPlan'
-import Card from '../../volt/Card.vue'
+import Button from '@/volt/Button.vue'
+import { Motion } from 'motion-v'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 import ToolkitReference from '../ui/ToolkitReference.vue'
 
-const projectPlan = useProjectPlanStore()
-projectPlan.enable()
+function scrollToSection(id: string) {
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
-  <div class="container mx-auto px-8 flex">
-    <div class="w-full flex flex-wrap">
-      <ToolkitHeading text="Analysis, Reporting & Evaluation Phase" class="w-full"></ToolkitHeading>
-      <p class="w-full">
-        Participants may play a role in collecting or analysing data for the project. Their views
-        are also important for evaluating the project.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card>
-          <template #title><h1 class="font-black text-xl">Analysis</h1></template>
-          <template #content>
-            <p>Considerations for data analysis includes:</p>
-            <ul class="list-disc pl-6">
-              <li>Data Quality and Processing</li>
-              <li>Data Visualisation</li>
-              <li>Data Interpretation</li>
-              <li>Quantitative and Qualitative data</li>
-              <li>Community involvement</li>
-            </ul>
-            <p class="mt-8">
-              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - space to
-              write
-            </p>
-          </template>
-        </Card>
-        <Card>
-          <template #title><h1 class="font-black text-xl">Reporting</h1></template>
-          <template #content>
-            <p>
-              You will likely have different audiences to report back to, for example: the project
-              participants, funders, academics, and other project partners. Additionally, you may
-              look to report to policy makers and through the press or social media. For each
-              audience type you will need to consider what information you are sharing and what
-              format it is in to make it accessible. Information collected for reporting includes,
-              data sets (such as interview data or raw scientific data), the project outcomes
-              (intended and unintended), publications (e.g., academic journal articles and
-              conference presentations, and recommendations), and project artifacts (such as
-              software and algorithms).
-            </p>
-          </template>
-        </Card>
-        <Card>
-          <template #title><h1 class="font-black text-xl">Data Sharing</h1></template>
-          <template #content>
-            <p>
-              Data is an important part of a project’s legacy and needs to be archived along with
-              suitable Metadata. Data sets may be published as supporting information for a
-              publication, made available via a website, or stored in a repository. There are open
-              access and ethical considerations around data collected from participatory methods. It
-              is important to consider the type of data in the data sets; is it suitable for an open
-              access repository? If it cannot be fully anonymised, then consideration is needed on
-              how the data is archived and approaches for sharing. (Note: this needs to be
-              considered both in your ethics plan and data management plan).
-            </p>
-            <p>
-              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - case study
-              link...
-            </p>
-            <p>
-              <ToolkitReference
-                authors="Özgün Ünver and Julie Jordens"
-                title="Understanding Data Repositories: A Beginners' Guide for Researchers & Data Stewards"
-                short-description="Understanding Data Repositories: A Beginners' Guide for Researchers & Data Stewards"
-                :year="2022"
-                url="https://zenodo.org/records/7258306"
-                citation="Özgün Ünver and Julie Jordens. 2022. Understanding Data Repositories: A Beginners' Guide for Researchers & Data Stewards. Zenodo. https://doi.org/10.5281/zenodo.7258306"
-              ></ToolkitReference>
-              <ToolkitReference
-                authors="Özgün Ünver"
-                title="Understanding Metadata: A Beginners' Guide for Researchers & Data Stewards"
-                short-description="Understanding Metadata: A Beginners' Guide for Researchers & Data Stewards"
-                :year="2022"
-                url="https://doi.org/10.5281/zenodo.7124032"
-                citation="Özgün Ünver, “Understanding Metadata: A Beginners' Guide for Researchers & Data Stewards”, 2022. https://doi.org/10.5281/zenodo.7124032"
-              ></ToolkitReference>
-            </p>
-            <RouterLink to="/proposal/phase/09">See also, the Data Management section</RouterLink>
-          </template>
-          <p>
-            <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - space to
-            write
-          </p>
-        </Card>
-        <Card>
-          <template #title><h1 class="font-black text-xl">Evaluation</h1></template>
-          <template #content>
-            <h1 class="font-bold">Formative</h1>
-            <p>
-              Taking place during the preparation or live phases, formative evaluation may inform or
-              lead to a change of approach for your project. This can improve the engagement with
-              participants, the quality of the data obtained, and may (re)direct the project aims to
-              be more meaningful for the community.
-            </p>
-            <ul class="list-disc pl-6 mb-4">
-              <li>Can be applied to individual or collections of activities.</li>
-            </ul>
-            <h1 class="font-bold">Summative</h1>
-            <p>
-              Taking place at the end of the project (or stage of the project, e.g., yearly if a
-              multi-year project), summative evaluation reviews both the processes and outcomes.
-            </p>
-            <ul class="list-disc pl-6 mb-4">
-              <li>May evaluate against a set of metrics and indicators.</li>
-              <li>Review the subsequent actions taken by stakeholders.</li>
-            </ul>
-            <p>
-              Further training on Evaluation can be found in the
-              <a
-                href="https://www.lancaster.ac.uk/research/research-services/research-integrity-ethics--governance/research-integrity-ethical-research-and-research-impact-training/"
-                target="_blank"
-                >Research Impact training</a
+  <div class="container mx-auto px-4 flex flex-col">
+    <ToolkitHeading text="Analysis, Reporting & Evaluation Phase" class="w-full" />
+    <p class="text-base md:text-xl">
+      Participants may play a role in collecting or analysing data for the project. Their views are
+      also important for evaluating the project.
+    </p>
+    <!-- Analysis Section -->
+    <Motion
+      :initial="{ x: -300, opacity: 0 }"
+      :animate="{ x: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 22 } }"
+      :visible="true"
+      :once="true"
+      class="w-full"
+    >
+      <section id="analysis" class="flex items-center justify-center">
+        <div class="bg-amber-200 dark:bg-slate-950 w-full h-full p-6 rounded-2xl mb-8">
+          <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <div class="flex flex-wrap w-full md:w-1/3">
+              <h2 class="md:w-full font-[MuseoSans] font-extrabold mb-1 md:mb-4 text-center">
+                <span class="text-6xl lg:text-9xl align-middle">A</span>
+                <span class="text-3xl lg:text-6xl align-middle">nalysis</span>
+              </h2>
+              <img
+                src="@/assets/character_analysis.svg"
+                class="h-[10svh] md:h-[15svh] lg:h-[30svh] md:w-full ml-auto"
+                alt="Analysis image"
+              />
+            </div>
+            <div class="my-auto w-full md:w-1/3">
+              <p class="mb-1 md:mb-4 text-lg md:text-2xl lg:text-3xl font-bold">
+                Considerations for data analysis include:
+              </p>
+              <ul class="list-disc pl-6 mb-8 text-lg md:text-xl">
+                <li>Data Quality and Processing</li>
+                <li>Data Visualisation</li>
+                <li>Data Interpretation</li>
+                <li>Quantitative and Qualitative data</li>
+                <li>Community involvement</li>
+              </ul>
+              <Button @click="scrollToSection('reporting')">Next: Reporting</Button>
+            </div>
+            <div class="w-full md:w-1/3 mb-auto text-center">
+              <img
+                src="@/assets/analysis3.jpg"
+                class="hidden md:inline-block max-h-[60svh] rounded-2xl"
+                alt="Analysis image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </Motion>
+
+    <!-- Reporting Section -->
+    <Motion
+      :initial="{ x: 300, opacity: 0 }"
+      :animate="{ x: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 22 } }"
+      :visible="true"
+      :once="true"
+      class="w-full"
+    >
+      <section id="reporting" class="flex items-center justify-center">
+        <div class="bg-[var(--color-analysis)] dark:bg-cyan-900 w-5/6 p-6 rounded-2xl mb-8">
+          <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <div class="my-auto w-1/2 p-4 md:p-8">
+              <p class="mb-1 md:mb-4 text-lg md:text-xl">
+                You will likely have different audiences to report back to, for example: the project
+                participants, funders, academics, and other project partners. Additionally, you may
+                look to report to policy makers and through the press or social media. For each
+                audience type you will need to consider what information you are sharing and what
+                format it is in to make it accessible. Information collected for reporting includes,
+                data sets (such as interview data or raw scientific data), the project outcomes
+                (intended and unintended), publications (e.g., academic journal articles and
+                conference presentations, and recommendations), and project artifacts (such as
+                software and algorithms).
+              </p>
+              <Button @click="scrollToSection('datasharing')">Next: Data Sharing</Button>
+            </div>
+            <div class="w-1/2 text-center pb-8">
+              <h2 class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center">
+                <span class="text-6xl md:text-9xl align-middle">R</span>
+                <span class="text-3xl md:text-6xl align-middle">eporting</span>
+              </h2>
+              <img
+                src="@/assets/report.jpg"
+                class="hidden md:inline-block max-w-2/3 rounded-2xl"
+                alt="Analysis image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </Motion>
+
+    <!-- Data Sharing Section -->
+    <Motion
+      :initial="{ x: -300, opacity: 0 }"
+      :animate="{ x: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 22 } }"
+      :visible="true"
+      :once="true"
+      class="w-full"
+    >
+      <section id="datasharing" class="flex items-center justify-center">
+        <div class="bg-amber-200 dark:bg-slate-950 w-full p-6 rounded-2xl mb-1">
+          <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <div class="w-1/2 text-center pb-8">
+              <h2 class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center">
+                ]">
+                <span class="text-6xl md:text-9xl align-middle">D</span>
+                <span class="text-3xl md:text-6xl align-middle">ata </span>
+                <span class="text-6xl md:text-9xl align-middle">S</span>
+                <span class="text-3xl md:text-6xl align-middle">haring</span>
+              </h2>
+            </div>
+            <div class="my-auto w-1/2 p-4 md:p-8">
+              <p class="mb-1 md:mb-4 text-lg md:text-xl">
+                Data is an important part of a project’s legacy and needs to be archived along with
+                suitable Metadata. Data sets may be published as supporting information for a
+                publication, made available via a website, or stored in a repository. There are open
+                access and ethical considerations around data collected from participatory methods.
+              </p>
+              <ul class="list-disc pl-6 mb-8">
+                <li>
+                  <ToolkitReference
+                    authors="Özgün Ünver and Julie Jordens"
+                    title="Understanding Data Repositories: A Beginners' Guide for Researchers & Data Stewards"
+                    url="https://zenodo.org/records/7258306"
+                    citation="Özgün Ünver and Julie Jordens. 2022. Understanding Data Repositories: A Beginners' Guide for Researchers & Data Stewards. Zenodo. https://doi.org/10.5281/zenodo.7258306"
+                  />
+                </li>
+                <li>
+                  <ToolkitReference
+                    authors="Özgün Ünver"
+                    title="Understanding Metadata: A Beginners' Guide for Researchers & Data Stewards"
+                    url="https://doi.org/10.5281/zenodo.7124032"
+                    citation="Özgün Ünver, “Understanding Metadata: A Beginners' Guide for Researchers & Data Stewards”, 2022. https://doi.org/10.5281/zenodo.7124032"
+                  />
+                </li>
+              </ul>
+              <Button @click="scrollToSection('evaluation')">Next: Evaluation</Button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Motion>
+
+    <!-- Evaluation Section -->
+    <Motion
+      :initial="{ x: 300, opacity: 0 }"
+      :animate="{ x: 0, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 22 } }"
+      :visible="true"
+      :once="true"
+      class="w-full"
+    >
+      <section id="evaluation" class="flex items-center justify-center py-8">
+        <div class="bg-[var(--color-analysis)] dark:bg-cyan-900 w-5/6 p-6 rounded-2xl mb-8">
+          <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
+            <div class="my-auto w-2/3 p-4 md:p-8 text-lg md:text-xl">
+              <h2
+                class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center text-slate-800 dark:text-slate-200"
               >
-            </p>
-            <h1 class="font-bold">Evaluation Methods</h1>
-            <ul class="list-disc pl-6 mb-4">
-              <li>
-                <ToolkitReference
-                  authors="Elisavet Christou, Violet Owen & Pınar Ceyhan"
-                  url="https://creativeevaluation.uk/home"
-                  short-description="The Little Book of Creative Evaluation"
-                  title="The Little Book of Creative Evaluation"
-                  citation="Elisavet Christou, Violet Owen & Pınar Ceyhan, “The Little Book of Creative Evaluation”, Imagination Lancaster, Lancaster University, The Little Book of Creative Evaluation"
-                ></ToolkitReference>
-              </li>
-              <li>
-                <ToolkitReference
-                  authors="Wellcome"
-                  url="https://wellcome.org/what-we-do/our-work/research-culture/hosting-your-cafe-culture-discussion"
-                  short-description="Hosting your Café Culture discussion"
-                  title="Hosting your Café Culture discussion | Research Culture | Wellcome"
-                  citation="Café Culture toolkit, Wellcome, Hosting your Café Culture discussion | Research Culture | Wellcome, https://wellcome.org/what-we-do/our-work/research-culture/hosting-your-cafe-culture-discussion"
-                ></ToolkitReference>
-              </li>
-            </ul>
-            <h1 class="font-bold">Resources for measuring outcomes, impact and evaluating</h1>
-            <ul class="list-disc pl-6 mb-4">
-              <li>
-                <ToolkitReference
-                  authors="The MICS project"
-                  url="https://www.birds.cornell.edu/citizenscience/measuring-outcomes/"
-                  short-description="MICS: Measuring the impact of citizen science"
-                  title="MICS: Measuring the impact of citizen science"
-                  citation="“MICS: Measuring the impact of citizen science”, The MICS project, MICS.tools “Tools for Measuring Outcomes and Evaluating Citizen Science”, Cornell University, Measuring Outcomes : Citizen Science, https://www.birds.cornell.edu/citizenscience/measuring-outcomes/"
-                ></ToolkitReference>
-              </li>
-            </ul>
-            <h1 class="font-bold">Further Resources</h1>
-            <ul class="list-disc pl-6 mb-4">
-              <li>
-                <ToolkitReference
-                  authors="University of Illinois Urbana-Champagne"
-                  url="https://guides.library.illinois.edu/citizen-science/evaluation"
-                  short-description="Evaluating participatory science data"
-                  title="Evaluating participatory science data - LibGuides at University of Illinois at Urbana-Champaign"
-                  citation="https://guides.library.illinois.edu/citizen-science/evaluation"
-                ></ToolkitReference>
-              </li>
-              <li>
-                <ToolkitReference
-                  authors="Barbara Kieslingerm"
-                  url="https://ecsa.citizen-science.net/wp-content/uploads/2020/03/2017_bki_evaluation_cs.pdf"
-                  short-description="Evaluation and impact assessment of Citizen Science: what’s the value for projects and for research funding policies?"
-                  title="Evaluation and impact assessment of Citizen Science: what’s the value for projects and for research funding policies?"
-                  citation="Barbara Kieslingerm, “Evaluation and impact assessment of Citizen Science: what’s the value for projects and for research funding policies?”, Centre for Social Innovation – ZSI, https://ecsa.citizen-science.net/wp-content/uploads/2020/03/2017_bki_evaluation_cs.pdf"
-                ></ToolkitReference>
-              </li>
-              <li>
-                <ToolkitReference
-                  authors="Andrew Sier and Hilary Geoghegan"
-                  url="https://ukeof.org.uk/our-work/citizen-science/cswg-outputs/cit-sci-evaluation-video"
-                  short-description="Evaluating a citizen science project"
-                  title="Evaluating a citizen science project"
-                  citation="Andrew Sier (UKCEH) and Hilary Geoghegan (University of Reading), “Evaluating a citizen science project”, Video, UKEOF, Evaluating a citizen science project | UKEOF"
-                ></ToolkitReference>
-              </li>
-              <li>
-                <ToolkitReference
-                  authors="Schaefer, T., Kieslinger, B., Brandt, M., van den Bogaert, V"
-                  url="https://link.springer.com/chapter/10.1007/978-3-030-58278-4_25"
-                  short-description="Evaluation in Citizen Science: The Art of Tracing a Moving Target"
-                  title="Evaluation in Citizen Science: The Art of Tracing a Moving Target"
-                  :year="2021"
-                  citation="Schaefer, T., Kieslinger, B., Brandt, M., van den Bogaert, V. (2021). Evaluation in Citizen Science: The Art of Tracing a Moving Target. In: Vohland, K., et al. The Science of Citizen Science. Springer, Cham. https://doi.org/10.1007/978-3-030-58278-4_25, Evaluation in Citizen Science: The Art of Tracing a Moving Target | SpringerLink"
-                ></ToolkitReference>
-              </li>
-              <li>
-                <ToolkitReference
-                  authors="Barbara Kieslinger, Teresa Schäfer, Florian Heigl, Daniel Dörler, Anett Richter, and Aletta Bonn"
-                  url="https://eu-citizen.science/resource/85"
-                  short-description="The Challenge of Evaluation: An Open Framework for Evaluating Citizen Science Activities"
-                  title="The Challenge of Evaluation: An Open Framework for Evaluating Citizen Science Activities"
-                  :year="2017"
-                  citation="Barbara Kieslinger, Teresa Schäfer, Florian Heigl, Daniel Dörler, Anett Richter, and Aletta Bonn. “The Challenge of Evaluation: An Open Framework for Evaluating Citizen Science Activities”, 2017. https://doi.org/10.17605/OSF.IO/ENZC9. European Citizen Science Platform :: Citizen Science Evaluation Framework"
-                ></ToolkitReference>
-              </li>
-              <li>
-                <ToolkitReference
-                  url="https://www.publicengagement.ac.uk/evaluation"
-                  short-description="“Evaluation”, National Co-ordinating Centre for Public Engagement, Evaluation | NCCPE"
-                  title="“Evaluation”, National Co-ordinating Centre for Public Engagement, Evaluation | NCCPE"
-                  :year="2017"
-                  citation="“Evaluation”, National Co-ordinating Centre for Public Engagement, Evaluation | NCCPE"
-                ></ToolkitReference>
-              </li>
-            </ul>
-            <p>
-              <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - space to
-              write
-            </p>
-          </template>
-        </Card>
-      </div>
-      <p class="w-full mt-4 text-right">
-        <ToolkitNextButton :phase="8" text="Legacy and Impact"></ToolkitNextButton>
-      </p>
-    </div>
+                <span class="text-6xl md:text-9xl align-middle">E</span>
+                <span class="text-3xl md:text-6xl align-middle">valuation</span>
+              </h2>
+              <h3 class="font-bold mb-2">Formative</h3>
+              <p>
+                Taking place during the preparation or live phases, formative evaluation may inform
+                or lead to a change of approach for your project. This can improve the engagement
+                with participants, the quality of the data obtained, and may (re)direct the project
+                aims to be more meaningful for the community.
+              </p>
+              <ul class="list-disc pl-6 mb-8">
+                <li>Can be applied to individual or collections of activities.</li>
+              </ul>
+              <h3 class="font-bold mb-2">Summative</h3>
+              <p>
+                Taking place at the end of the project (or stage of the project, e.g., yearly if a
+                multi-year project), summative evaluation reviews both the processes and outcomes.
+              </p>
+              <ul class="list-disc pl-6 mb-8">
+                <li>May evaluate against a set of metrics and indicators.</li>
+                <li>Review the subsequent actions taken by stakeholders.</li>
+              </ul>
+              <p>
+                Further training on Evaluation can be found in the
+                <a
+                  href="https://www.lancaster.ac.uk/research/research-services/research-integrity-ethics--governance/research-integrity-ethical-research-and-research-impact-training/"
+                  target="_blank"
+                  >Research Impact training</a
+                >
+              </p>
+            </div>
+            <div class="w-1/3 pb-8">
+              <img
+                src="@/assets/evaluation.jpg"
+                class="hidden md:inline-block rounded-2xl"
+                alt="Analysis image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </Motion>
+    <p class="w-full text-right">
+      <ToolkitNextButton :phase="8" text="Legacy and Impact" />
+    </p>
   </div>
   <img
     src="@/assets/ribbon_analysis.svg"
+    alt="Consideration Phase Image"
     class="w-full h-32 object-cover object-right sm:h-auto sm:object-contain"
-    alt="Analysis Phase Image"
   />
 </template>
-
-<style scoped></style>
