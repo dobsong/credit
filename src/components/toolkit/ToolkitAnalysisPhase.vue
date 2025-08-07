@@ -27,7 +27,7 @@ function scrollToSection(id: string) {
       class="w-full"
     >
       <section id="analysis" class="flex items-center justify-center">
-        <div class="bg-amber-200 dark:bg-slate-950 w-full h-full p-6 rounded-2xl mb-8">
+        <div class="bg-[var(--color-launch)] dark:bg-slate-950 w-full h-full p-6 rounded-2xl mb-8">
           <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <div class="flex flex-wrap w-full md:w-1/3">
               <h2
@@ -59,7 +59,7 @@ function scrollToSection(id: string) {
               <img
                 src="@/assets/analysis3.jpg"
                 class="hidden md:inline-block max-h-[60svh] rounded-2xl"
-                alt="Analysis image"
+                alt="A Person looking at graphs on a computer screen"
               />
             </div>
           </div>
@@ -100,7 +100,7 @@ function scrollToSection(id: string) {
               <img
                 src="@/assets/report3.jpg"
                 class="hidden md:inline-block lg:max-w-2/3 rounded-2xl"
-                alt="Analysis image"
+                alt="A Person Writing"
               />
             </div>
           </div>
@@ -117,7 +117,7 @@ function scrollToSection(id: string) {
       class="w-full"
     >
       <section id="datasharing" class="flex items-center justify-center">
-        <div class="bg-amber-200 dark:bg-slate-950 w-full p-6 rounded-2xl mb-1">
+        <div class="bg-[var(--color-launch)] dark:bg-slate-950 w-full p-6 rounded-2xl mb-1">
           <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <div class="md:w-1/2 text-center md:pb-8">
               <h2
@@ -211,7 +211,7 @@ function scrollToSection(id: string) {
               <img
                 src="@/assets/evaluation.jpg"
                 class="hidden md:inline-block rounded-2xl"
-                alt="Analysis image"
+                alt="People looking at a map"
               />
             </div>
           </div>

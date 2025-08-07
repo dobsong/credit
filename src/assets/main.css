@@ -15,7 +15,13 @@
 
 @theme {
   --color-base-highlight: #344c9b;
+  --color-consideration: #e67ab0;
+  --color-preparation: #f15825;
+  --color-development: #f0c71c;
+  --color-launch: #d5e6a9;
   --color-analysis: #0bb6a5;
+  --color-legacy: #68cdf1;
+  --color-data-management: #d9cee6;
 }
 
 #app {
