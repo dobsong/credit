@@ -30,9 +30,11 @@ function scrollToSection(id: string) {
         <div class="bg-amber-200 dark:bg-slate-950 w-full h-full p-6 rounded-2xl mb-8">
           <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
             <div class="flex flex-wrap w-full md:w-1/3">
-              <h2 class="md:w-full font-[MuseoSans] font-extrabold mb-1 md:mb-4 text-center">
-                <span class="text-6xl lg:text-9xl align-middle">A</span>
-                <span class="text-3xl lg:text-6xl align-middle">nalysis</span>
+              <h2
+                class="md:w-full font-[MuseoSans] font-extrabold mb-1 md:mb-4 text-center dark:text-[var(--color-analysis)]"
+              >
+                <span class="text-6xl md:text-7xl lg:text-9xl align-middle">A</span>
+                <span class="text-3xl md:text-4xl lg:text-6xl align-middle">nalysis</span>
               </h2>
               <img
                 src="@/assets/character_analysis.svg"
@@ -74,9 +76,9 @@ function scrollToSection(id: string) {
       class="w-full"
     >
       <section id="reporting" class="flex items-center justify-center">
-        <div class="bg-[var(--color-analysis)] dark:bg-cyan-900 w-5/6 p-6 rounded-2xl mb-8">
-          <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <div class="my-auto w-1/2 p-4 md:p-8">
+        <div class="bg-[var(--color-analysis)] dark:bg-cyan-900 md:w-5/6 p-6 rounded-2xl mb-8">
+          <div class="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
+            <div class="my-auto w-2/3 lg:w-1/2 p-4 md:p-8">
               <p class="mb-1 md:mb-4 text-lg md:text-xl">
                 You will likely have different audiences to report back to, for example: the project
                 participants, funders, academics, and other project partners. Additionally, you may
@@ -90,14 +92,14 @@ function scrollToSection(id: string) {
               </p>
               <Button @click="scrollToSection('datasharing')">Next: Data Sharing</Button>
             </div>
-            <div class="w-1/2 text-center pb-8">
-              <h2 class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center">
-                <span class="text-6xl md:text-9xl align-middle">R</span>
-                <span class="text-3xl md:text-6xl align-middle">eporting</span>
+            <div class="w-1/3 lg:w-1/2 text-center md:pb-8">
+              <h2 class="md:w-full font-[MuseoSans] font-extrabold md:mb-6 text-center">
+                <span class="text-6xl lg:text-9xl align-middle">R</span>
+                <span class="text-3xl lg:text-6xl align-middle">eporting</span>
               </h2>
               <img
-                src="@/assets/report.jpg"
-                class="hidden md:inline-block max-w-2/3 rounded-2xl"
+                src="@/assets/report3.jpg"
+                class="hidden md:inline-block lg:max-w-2/3 rounded-2xl"
                 alt="Analysis image"
               />
             </div>
@@ -117,16 +119,17 @@ function scrollToSection(id: string) {
       <section id="datasharing" class="flex items-center justify-center">
         <div class="bg-amber-200 dark:bg-slate-950 w-full p-6 rounded-2xl mb-1">
           <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <div class="w-1/2 text-center pb-8">
-              <h2 class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center">
-                ]">
+            <div class="md:w-1/2 text-center md:pb-8">
+              <h2
+                class="md:w-full font-[MuseoSans] font-extrabold md:mb-6 text-center dark:text-[var(--color-analysis)]"
+              >
                 <span class="text-6xl md:text-9xl align-middle">D</span>
                 <span class="text-3xl md:text-6xl align-middle">ata </span>
                 <span class="text-6xl md:text-9xl align-middle">S</span>
                 <span class="text-3xl md:text-6xl align-middle">haring</span>
               </h2>
             </div>
-            <div class="my-auto w-1/2 p-4 md:p-8">
+            <div class="my-auto md:w-1/2 p-4 lg:p-8">
               <p class="mb-1 md:mb-4 text-lg md:text-xl">
                 Data is an important part of a project’s legacy and needs to be archived along with
                 suitable Metadata. Data sets may be published as supporting information for a
@@ -167,9 +170,9 @@ function scrollToSection(id: string) {
       class="w-full"
     >
       <section id="evaluation" class="flex items-center justify-center py-8">
-        <div class="bg-[var(--color-analysis)] dark:bg-cyan-900 w-5/6 p-6 rounded-2xl mb-8">
+        <div class="bg-[var(--color-analysis)] dark:bg-cyan-900 md:w-5/6 p-6 rounded-2xl">
           <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-            <div class="my-auto w-2/3 p-4 md:p-8 text-lg md:text-xl">
+            <div class="my-auto md:w-2/3 p-4 md:p-8 text-lg md:text-xl">
               <h2
                 class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center text-slate-800 dark:text-slate-200"
               >
