@@ -5,13 +5,12 @@ defineProps<{
 }>()
 </script>
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col items-center">
     <h1
-      class="uppercase text-2xl md:text-4xl font-[MuseoSans] flex flex-col mb-4"
+      class="uppercase text-xl md:text-4xl font-[MuseoSans] flex flex-col mb-3 md:mb-6 mt-2 text-center"
       :class="textColorClass"
     >
       {{ text }}
     </h1>
-    <span class="w-1/4 h-1 md:h-2 bg-gray-800 dark:bg-white mb-4 md:mb-8"> </span>
   </div>
 </template>

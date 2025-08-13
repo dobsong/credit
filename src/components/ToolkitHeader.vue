@@ -44,24 +44,17 @@ const toggle = (event: MouseEvent) => {
 </script>
 
 <template>
-  <header class="h-24 sm:h-32 md:pb-4 pt-2">
+  <header class="pt-2 pb-4 md:pt-3 md:pb-6 lg:pt-4 lg:pb-8 bg-[var(--color-base-highlight)]">
     <div class="flex container mx-auto px-8">
       <RouterLink to="/">
         <img
-          v-if="theme === 'dark'"
           alt="CREDIT logo"
-          class="h-16 md:h-24 sm:mx-0"
+          class="h-8 md:h-14 lg:h-16 sm:mx-0"
           src="/src/assets/dark/credit-logo.svg"
-        />
-        <img
-          v-else
-          alt="CREDIT logo"
-          class="h-16 md:h-24 sm:mx-0"
-          src="/src/assets/credit-logo.svg"
         />
       </RouterLink>
       <nav
-        class="uppercase lg:flex hidden font-semibold mt-auto ml-auto text-base lg:text-xl text-(--color-base-highlight) dark:text-white"
+        class="uppercase lg:flex hidden font-semibold mt-auto ml-auto text-base lg:text-xl text-white"
       >
         <RouterLink to="/" class="py-2 px-4 flex">Home</RouterLink>
         <RouterLink to="/proposal/phase/01" class="py-2 px-4 flex">Develop a Proposal</RouterLink>
@@ -73,25 +66,25 @@ const toggle = (event: MouseEvent) => {
 
       <div class="flex flex-row items-baseline mt-auto ml-auto mr-6">
         <Button
-          icon="pi pi-bookmark text-black dark:text-white"
+          icon="pi pi-bookmark text-white"
           variant="text"
           @click="$router.push('/bibliography')"
           title="Your Bibliography"
           class="ml-2 enabled:hover:p-text:bg-primary-400"
         />
         <Button
-          icon="pi pi-pen-to-square text-black dark:text-white"
+          icon="pi pi-pen-to-square text-white"
           variant="text"
           class="enabled:hover:p-text:bg-primary-400"
           disabled
         />
-        <Button icon="pi pi-clipboard text-black dark:text-white" variant="text" disabled />
+        <Button icon="pi pi-clipboard text-white" variant="text" disabled />
         <Button
           variant="text"
           @click="toggle"
           aria-haspopup="true"
           aria-controls="overlay_menu"
-          icon="pi pi-bars text-black dark:text-white"
+          icon="pi pi-bars text-white"
           class="lg:hidden enabled:hover:p-text:bg-primary-400"
         ></Button>
         <Menu ref="menu" id="overlay_menu" :model="items" :popup="true">

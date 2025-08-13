@@ -11,7 +11,7 @@ function scrollToSection(id: string) {
 </script>
 
 <template>
-  <div class="container mx-auto px-4 flex flex-col">
+  <div class="container mx-auto px-2 flex flex-col">
     <ToolkitHeading text="Afrofuturism" class="w-full" />
 
     <ToolkitSection
@@ -21,13 +21,13 @@ function scrollToSection(id: string) {
       next-section-name="Approach"
       :slide-in-direction="1"
     >
-      <div class="flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8">
-        <div class="my-auto w-2/3 lg:w-1/2 p-4 md:p-8">
-          <h2 class="md:w-full font-[MuseoSans] font-extrabold md:mb-6 text-center">
-            <span class="text-6xl lg:text-9xl align-middle">B</span>
-            <span class="text-3xl lg:text-6xl align-middle">ackground</span>
+      <div class="grid grid-cols-3">
+        <div class="col-span-3 md:col-span-2">
+          <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
+            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">B</span>
+            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">ackground</span>
           </h2>
-          <p class="mb-1 md:mb-4 text-lg md:text-xl">
+          <p class="mb-1 md:mb-4 text-base md:text-xl">
             Afrofuturism as “both an artistic aesthetic and a framework for critical theory” is
             concerned with racial equity and technological agency to create emergent liberatory
             (social) systems. Using Afrofuturism as a research method encourages the imagination of
@@ -35,14 +35,21 @@ function scrollToSection(id: string) {
             Afrofuturism centres Black communities’ knowledge, subjectivities and experiences, and
             learns from lived experiences of racism and corresponding solutions.
           </p>
-          <Button @click="scrollToSection('approach')">Next: Approach</Button>
         </div>
-        <div class="w-1/3 lg:w-1/2 text-center md:pb-8">
+        <div class="text-center my-auto">
           <img
             src="@/assets/temidayo_eseonu.jpg"
-            class="hidden md:inline-block lg:max-w-2/3 rounded-2xl"
+            class="lg:max-w-2/3 rounded-2xl mx-auto"
             alt="Temidayao Eseonu"
           />
+          <div class="font-[MuseoSans] md:mb-6 text-center text-sm md:text-base lg:text-xl pt-2">
+            Research by Dr. Temidayo Eseonu
+          </div>
+        </div>
+        <div class="col-span-2 text-right md:text-left">
+          <Button @click="scrollToSection('approach')" class="text-sm md:text-base"
+            >Next: Approach</Button
+          >
         </div>
       </div>
     </ToolkitSection>
@@ -54,29 +61,29 @@ function scrollToSection(id: string) {
       next-section-name="Outcomes"
       :slide-in-direction="-1"
     >
-      <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-        <div class="w-1/3 p-8">
+      <div class="flex flex-col-reverse md:flex-row items-center gap-0 md:gap-8">
+        <div class="w-full md:w-1/3 p-1 text-center">
           <img
             src="@/assets/youth_views.jpg"
-            class="hidden md:inline-block rounded-2xl"
+            class="rounded-2xl mb-3"
             alt="Concentric Circles used during workshop as part of the Youth Views project"
           />
+          <Button @click="scrollToSection('outcomes')" class="text-sm md:text-base"
+            >Next: Outcomes & Impact</Button
+          >
         </div>
-        <div class="my-auto md:w-2/3 p-4 md:p-8 text-lg md:text-xl">
+        <div class="my-auto md:w-2/3 md:p-8 text-lg md:text-xl">
           <h2
             class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center text-slate-800 dark:text-slate-200"
           >
             <span class="text-6xl md:text-9xl align-middle">A</span>
             <span class="text-3xl md:text-6xl align-middle">pproach</span>
           </h2>
-          <p>
+          <p class="pb-2">
             Afrofuturism can be used as a critical qualitative inquiry method. As a research method
             for gathering empirical and imaginary evidence it can be used for projects such as
             public service design.
           </p>
-          <Button @click="scrollToSection('outcomes')" class="text-lg"
-            >Next: Outcomes & Impact</Button
-          >
         </div>
       </div>
     </ToolkitSection>
@@ -97,7 +104,7 @@ function scrollToSection(id: string) {
             <span class="text-3xl md:text-6xl align-middle">mpact</span>
           </h2>
         </div>
-        <div class="my-auto md:w-1/2 p-4 lg:p-8">
+        <div class="my-auto md:w-1/2 lg:p-8">
           <h3 class="font-bold mb-2">Academic Publications</h3>
           <ul class="list-disc pl-6 mb-8">
             <li>

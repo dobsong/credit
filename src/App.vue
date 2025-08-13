@@ -21,7 +21,7 @@ watch(
 <template>
   <ToolkitHeader :theme="theme"></ToolkitHeader>
   <main role="main">
-    <div class="flex flex-col w-full pt-4 md:pt-8">
+    <div class="flex flex-col w-full md:pt-4">
       <RouterView></RouterView>
     </div>
   </main>
