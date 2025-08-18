@@ -1,5 +1,8 @@
 import CaseStudyAfrofuturism from '@/components/toolkit/case-studies/CaseStudyAfrofuturism.vue'
+import CaseStudyBigWindermereSurvey from '@/components/toolkit/case-studies/CaseStudyBigWindermereSurvey.vue'
 import CaseStudyDavyNotebooks from '@/components/toolkit/case-studies/CaseStudyDavyNotebooks.vue'
+import CaseStudyHUnique from '@/components/toolkit/case-studies/CaseStudyHUnique.vue'
+import CaseStudySudanRoadAccess from '@/components/toolkit/case-studies/CaseStudySudanRoadAccess.vue'
 import ToolkitAnalysisPhase from '@/components/toolkit/ToolkitAnalysisPhase.vue'
 import ToolkitBibliography from '@/components/toolkit/ToolkitBibliography.vue'
 import ToolkitConsiderationPhase from '@/components/toolkit/ToolkitConsiderationPhase.vue'
@@ -90,6 +93,18 @@ export default createRouter({
     {
       path: '/case-studies/davy-notebooks',
       component: CaseStudyDavyNotebooks,
+    },
+    {
+      path: '/case-studies/h-unique',
+      component: CaseStudyHUnique,
+    },
+    {
+      path: '/case-studies/sudan-road-access',
+      component: CaseStudySudanRoadAccess,
+    },
+    {
+      path: '/case-studies/big-windermere-survey',
+      component: CaseStudyBigWindermereSurvey,
     },
     {
       path: '/resources',
