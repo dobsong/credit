@@ -1,4 +1,5 @@
 import CaseStudyAfrofuturism from '@/components/toolkit/case-studies/CaseStudyAfrofuturism.vue'
+import CaseStudyDavyNotebooks from '@/components/toolkit/case-studies/CaseStudyDavyNotebooks.vue'
 import ToolkitAnalysisPhase from '@/components/toolkit/ToolkitAnalysisPhase.vue'
 import ToolkitBibliography from '@/components/toolkit/ToolkitBibliography.vue'
 import ToolkitConsiderationPhase from '@/components/toolkit/ToolkitConsiderationPhase.vue'
@@ -85,6 +86,10 @@ export default createRouter({
     {
       path: '/case-studies/afrofuturism',
       component: CaseStudyAfrofuturism,
+    },
+    {
+      path: '/case-studies/davy-notebooks',
+      component: CaseStudyDavyNotebooks,
     },
     {
       path: '/resources',

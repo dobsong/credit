@@ -22,7 +22,7 @@ const props = defineProps<{
     class="w-full"
   >
     <section :id="props.sectionId" class="flex items-center justify-center">
-      <div class="p-6 rounded-2xl mb-8" :class="props.cssClass">
+      <div class="px-4 rounded-2xl mb-4" :class="props.cssClass">
         <slot></slot>
       </div>
     </section>

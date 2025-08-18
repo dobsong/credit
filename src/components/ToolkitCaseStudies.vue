@@ -9,6 +9,9 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
       <li>
         <RouterLink to="case-studies/afrofuturism"> Afrofuturism </RouterLink>
       </li>
+      <li>
+        <RouterLink to="case-studies/davy-notebooks"> Davy Notebooks </RouterLink>
+      </li>
     </ul>
   </div>
 </template>

@@ -2,7 +2,6 @@
 import ToolkitReference from '@/components/ui/ToolkitReference.vue'
 import ToolkitSection from '@/components/ui/ToolkitSection.vue'
 import Button from '@/volt/Button.vue'
-import ToolkitHeading from '../../ui/ToolkitHeading.vue'
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id)
@@ -12,10 +11,8 @@ function scrollToSection(id: string) {
 
 <template>
   <div class="container mx-auto px-2 flex flex-col">
-    <ToolkitHeading text="Afrofuturism" class="w-full" />
-
     <ToolkitSection
-      section-id="reporting"
+      section-id="background"
       css-class="bg-[var(--color-data-management)] dark:bg-slate-900"
       next-section-id="approach"
       next-section-name="Approach"
@@ -24,8 +21,8 @@ function scrollToSection(id: string) {
       <div class="grid grid-cols-3">
         <div class="col-span-3 md:col-span-2">
           <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">B</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">ackground</span>
+            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">A</span>
+            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">frofuturism</span>
           </h2>
           <p class="mb-1 md:mb-4 text-base md:text-xl">
             Afrofuturism as “both an artistic aesthetic and a framework for critical theory” is
@@ -43,7 +40,13 @@ function scrollToSection(id: string) {
             alt="Temidayao Eseonu"
           />
           <div class="font-[MuseoSans] md:mb-6 text-center text-sm md:text-base lg:text-xl pt-2">
-            Research by Dr. Temidayo Eseonu
+            Research by
+            <a
+              href="https://www.lancaster.ac.uk/global-affairs/people/temidayo-eseonu"
+              target="_blank"
+            >
+              Dr. Temidayo Eseonu
+            </a>
           </div>
         </div>
         <div class="col-span-2 text-right md:text-left">
