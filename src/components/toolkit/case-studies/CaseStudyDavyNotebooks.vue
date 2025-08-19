@@ -174,9 +174,9 @@ function scrollToSection(id: string) {
       </div>
     </ToolkitSection>
 
-    <ToolkitSection section-id="partners" css-class="" :slide-in-direction="1">
+    <ToolkitSection section-id="partners" css-class="lg:h-[90svh]" :slide-in-direction="1">
       <div class="lg:w-5/6 grid grid-cols-3 h-full pt-4 text-lg md:text-xl mx-auto">
-        <div class="col-span-3 md:col-span-1 mb-auto pb-6">
+        <div class="col-span-3 md:col-span-1 pb-6 my-auto">
           <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
             <span class="text-6xl md:text-7xl lg:text-8xl align-middle">P</span>
             <span class="text-3xl md:text-4xl lg:text-5xl align-middle">artners</span>
@@ -193,7 +193,7 @@ function scrollToSection(id: string) {
             </li>
           </ul>
         </div>
-        <div class="col-span-3 md:col-span-1 mb-auto">
+        <div class="col-span-3 md:col-span-1 my-auto">
           <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
             <span class="text-6xl md:text-7xl lg:text-8xl align-middle">E</span>
             <span class="text-3xl md:text-4xl lg:text-5xl align-middle">ngagement with </span>
@@ -204,8 +204,13 @@ function scrollToSection(id: string) {
             Website (Davy Notebooks Project), dedicated webpage and resources for U3A volunteers,
             Transcribe-a-thons, Zooniverse (talk boards, emails), social media.
           </p>
+          <div class="col-span-3 text-center mt-1 lg:mt-16">
+            <Button @click="scrollToSection('outcomes')" class="text-sm md:text-base mb-auto">
+              Next: Outcomes & Impact
+            </Button>
+          </div>
         </div>
-        <div class="col-span-3 md:col-span-1 mb-auto">
+        <div class="col-span-3 md:col-span-1 my-auto">
           <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
             <span class="text-6xl md:text-7xl lg:text-8xl align-middle">C</span>
             <span class="text-3xl md:text-4xl lg:text-5xl align-middle">hallenges</span>
@@ -214,17 +219,14 @@ function scrollToSection(id: string) {
             <li>Missing notebooks.</li>
           </ul>
         </div>
-        <div class="col-span-3 text-center mt-1 mb-2 lg:mt-16">
-          <Button @click="scrollToSection('outcomes')" class="text-sm md:text-base">
-            Next: Outcomes & Impact
-          </Button>
-        </div>
       </div>
     </ToolkitSection>
 
-    <ToolkitSection section-id="outcomes" :slide-in-direction="-1" css-class="">
-      <div class="lg:w-5/6 grid grid-cols-2 h-full pt-4 text-lg md:text-xl mx-auto">
-        <div class="col-span-2 text-center md:pb-8">
+    <ToolkitSection section-id="outcomes" :slide-in-direction="-1" css-class="lg:h-[90svh]">
+      <div
+        class="lg:w-5/6 grid grid-cols-2 h-full pt-4 text-lg md:text-xl mx-auto my-auto lg:pb-32"
+      >
+        <div class="col-span-2 text-center md:pb-8 mt-auto">
           <h2
             class="md:w-full font-[MuseoSans] font-extrabold lg:mb-6 text-center dark:text-[var(--color-analysis)]"
           >
@@ -234,7 +236,7 @@ function scrollToSection(id: string) {
             <span class="text-3xl md:text-4xl lg:text-6xl align-middle">mpact</span>
           </h2>
         </div>
-        <div class="col-span-2 md:col-span-1 mb-auto">
+        <div class="col-span-2 md:col-span-1">
           <h3 class="font-bold mb-2">Digital Collection</h3>
           <ul class="list-disc pl-6 mb-8">
             <li>

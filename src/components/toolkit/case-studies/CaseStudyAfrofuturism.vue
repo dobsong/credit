@@ -13,7 +13,7 @@ function scrollToSection(id: string) {
   <div class="container mx-auto px-2 flex flex-col">
     <ToolkitSection
       section-id="background"
-      css-class="bg-[var(--color-data-management)] dark:bg-slate-900"
+      css-class=""
       next-section-id="approach"
       next-section-name="Approach"
       :slide-in-direction="1"
@@ -59,7 +59,7 @@ function scrollToSection(id: string) {
 
     <ToolkitSection
       section-id="approach"
-      css-class="bg-[var(--color-launch)] dark:bg-cyan-900 md:w-5/6"
+      css-class=""
       next-section-id="outcomes"
       next-section-name="Outcomes"
       :slide-in-direction="-1"
@@ -91,11 +91,7 @@ function scrollToSection(id: string) {
       </div>
     </ToolkitSection>
 
-    <ToolkitSection
-      section-id="outcomes"
-      :slide-in-direction="1"
-      css-class="bg-[#aaddff] dark:bg-slate-950"
-    >
+    <ToolkitSection section-id="outcomes" :slide-in-direction="1" css-class="">
       <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
         <div class="md:w-1/2 text-center md:pb-8">
           <h2
