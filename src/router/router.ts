@@ -20,10 +20,10 @@ import ToolkitCaseStudies from '@/components/ToolkitCaseStudies.vue'
 import ToolkitGlossary from '@/components/ToolkitGlossary.vue'
 import ToolkitLandingPage from '@/components/ToolkitLandingPage.vue'
 import ToolkitResources from '@/components/ToolkitResources.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 export default createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
