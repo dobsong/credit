@@ -10,7 +10,7 @@ projectPlan.enable()
 <template>
   <div class="container mx-auto px-8 flex">
     <div class="w-full flex flex-wrap">
-      <ToolkitHeading text="Summary and Next Steps"></ToolkitHeading>
+      <ToolkitHeading text="Summary & Next Steps"></ToolkitHeading>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
           <template #title>

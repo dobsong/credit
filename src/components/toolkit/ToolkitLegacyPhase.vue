@@ -12,7 +12,7 @@ projectPlan.enable()
 <template>
   <div class="container mx-auto px-8 flex">
     <div class="w-full flex flex-wrap">
-      <ToolkitHeading text="Legacy and Impact Phase" class="w-full"></ToolkitHeading>
+      <ToolkitHeading text="Legacy & Impact Phase" class="w-full"></ToolkitHeading>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card class="md:col-span-2">
           <template #content>
@@ -74,7 +74,7 @@ projectPlan.enable()
         </Card>
         <Card>
           <template #title>
-            <h1 class="font-black text-xl">Legacy and Impact Partners and Platforms</h1>
+            <h1 class="font-black text-xl">Legacy & Impact Partners and Platforms</h1>
           </template>
           <template #content>
             <ul class="list-disc pl-6 mb-4">

@@ -1,43 +1,101 @@
 <script setup lang="ts">
 import Button from '@/volt/Button.vue'
+import { RouterLink } from 'vue-router'
 import ToolkitHeading from './ui/ToolkitHeading.vue'
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id)
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
-  <div id="landing-main" class="w-full container mx-auto px-8">
-    <ToolkitHeading text="Community Research Digital Toolkit"></ToolkitHeading>
-    <p>
-      When embarking on a research project involving participation from members of the public there
-      are many opportunities and challenges to consider. The extent of participation in this type of
-      research varies, and can involve crowd sourcing transcriptions, data collection, data
-      analysis, or co-design, among other engagement. Opportunities for participants to engage with
-      the research after the initial interaction lengthens the impact and legacy. This toolkit
-      resource has been designed to help guide researchers through some of the considerations to
-      undertake this type of research. Whether you have carried out participatory research
-      previously or are new to the methodology, this toolkit provides the opportunities to reflect
-      on your context and develop a research proposal.
-    </p>
-    <p>
-      This toolkit has been designed to support research that might come under headings such as
-      citizen science (<a href="https://www.ecsa.ngo/" target="_blank"
-        >European Citizen Science Association (ECSA)</a
-      >), participatory sciences (<a href="https://participatorysciences.org/" target="_blank"
-        >AAPS - Association for Advancing Participatory Sciences</a
-      >), or people-powered research (<a href="https://www.zooniverse.org/" target="_blank"
-        >Zooniverse</a
-      >). We are using Community Research as an encompassing term for the resource title, whilst
-      noting it is challenging to select a term that defines the full scope of the methodologies.
-      This toolkit does not cover research where members of the public are solely subjects of the
-      research question.
-    </p>
-    <p>Ready to begin? To start at the beginning use the “develop a proposal” button below.</p>
-    <p>
-      Looking for inspiration? The tabs at the top of the page can be used to navigate to Lancaster
-      University case studies used in the toolkit.
-    </p>
-    <RouterLink v-slot="{ navigate }" to="/proposal/phase/01" custom class="z-50">
-      <Button @click="navigate"> Develop a Proposal </Button>
-    </RouterLink>
+  <div id="landing-main" class="w-full container mx-auto px-2 md:px-8">
+    <section id="intro">
+      <div class="lg:h-[90svh] text-lg md:text-xl lg:mt-16">
+        <div class="grid grid-cols-3">
+          <div class="col-span-3"></div>
+          <div class="col-span-3 md:col-span-2 md:px-8 lg:px-16 my-auto">
+            <ToolkitHeading text="Welcome To CREDIT"></ToolkitHeading>
+            <p>
+              CREDIT (Community REsearch DIgital Toolkit) is designed to provide information and
+              inspiration for researchers aiming to involve and engage communities in their
+              research.
+            </p>
+            <p>
+              Ready to begin? To start at the beginning use the “develop a proposal” button below.
+            </p>
+            <p>
+              Looking for inspiration? The tabs at the top of the page can be used to navigate to
+              Lancaster University <RouterLink to="case-studies">case studies</RouterLink> used in
+              the toolkit.
+            </p>
+            <div class="text-center md:mt-8 mb-4 text-sm lg:text-lg">
+              <RouterLink v-slot="{ navigate }" to="/proposal/phase/01" class="mr-1 md:mr-4">
+                <Button @click="navigate"
+                  >Develop a Proposal <span class="pi pi-arrow-right"></span
+                ></Button>
+              </RouterLink>
+              <Button @click="scrollToSection('more')" outlined> Tell me More... </Button>
+            </div>
+          </div>
+          <div class="col-span-3 md:col-span-1 mx-auto my-auto">
+            <img
+              src="@/assets/community.jpg"
+              alt="A group of people placing hands on a tree trunk."
+              class="rounded-2xl lg:max-h-[60svh]"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="more">
+      <div class="lg:h-[35svh] text-lg md:text-xl lg:mt-16">
+        <div class="grid grid-cols-1">
+          <ToolkitHeading text="What Is CREDIT For?"></ToolkitHeading>
+          <p>
+            When embarking on a research project involving participation from members of the public
+            there are many opportunities and challenges to consider. The extent of participation in
+            this type of research varies, and can involve crowd sourcing transcriptions, data
+            collection, data analysis, or co-design, among other engagement. Opportunities for
+            participants to engage with the research after the initial interaction lengthens the
+            impact and legacy. This toolkit resource has been designed to help guide researchers
+            through some of the considerations to undertake this type of research. Whether you have
+            carried out participatory research previously or are new to the methodology,
+            <b>
+              this toolkit provides the opportunities to reflect on your context and develop a
+              research proposal
+            </b>
+            .
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="community-research">
+      <div class="lg:h-[45svh] text-lg md:text-xl lg:mt-16">
+        <div class="grid grid-cols-1">
+          <ToolkitHeading text="Community Research"></ToolkitHeading>
+          <p>
+            This toolkit has been designed to support research that might come under headings such
+            as citizen science (<a href="https://www.ecsa.ngo/" target="_blank"
+              >European Citizen Science Association (ECSA)</a
+            >), participatory sciences (<a href="https://participatorysciences.org/" target="_blank"
+              >AAPS - Association for Advancing Participatory Sciences</a
+            >), or people-powered research (<a href="https://www.zooniverse.org/" target="_blank"
+              >Zooniverse</a
+            >). We are using Community Research as an encompassing term for the resource title,
+            whilst noting it is challenging to select a term that defines the full scope of the
+            methodologies. This toolkit does not cover research where members of the public are
+            solely subjects of the research question.
+          </p>
+          <div class="text-center mt-8 text-4xl">
+            <Button @click="scrollToSection('intro')"><span class="pi pi-arrow-up"></span></Button>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
   <div id="landing-footer" class="relative w-full pt-4 sm:pt-0 lg:-mt-6">
