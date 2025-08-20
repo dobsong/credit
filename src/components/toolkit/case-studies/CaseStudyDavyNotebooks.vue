@@ -141,7 +141,7 @@ function scrollToSection(id: string) {
         <div class="w-full md:w-1/3 p-1 text-center">
           <img
             src="@/assets/zooniverse-logo-teal.svg"
-            class="rounded-2xl mb-3 lg:p-12"
+            class="rounded-2xl mb-3 lg:p-12 lg:max-w-4/5 ml-auto"
             alt="Zooniverse Emblem"
           />
         </div>
@@ -165,6 +165,13 @@ function scrollToSection(id: string) {
             </a>
             .
           </p>
+          <div
+            class="bg-amber-200 w-64 rounded-xl drop-shadow-xl drop-shadow-slate-500 text-center mx-auto my-4"
+          >
+            <span class="pi pi-exclamation-circle float-right p-2"></span>
+            <h3 class="font-bold pt-4">Challenges</h3>
+            <p class="px-4 pb-8 pt-4">Missing Notebooks.</p>
+          </div>
           <div class="text-center md:pt-8">
             <Button @click="scrollToSection('partners')" class="text-sm md:text-base"
               >Next: Partners</Button
@@ -175,8 +182,8 @@ function scrollToSection(id: string) {
     </ToolkitSection>
 
     <ToolkitSection section-id="partners" css-class="lg:h-[90svh]" :slide-in-direction="1">
-      <div class="lg:w-5/6 grid grid-cols-3 h-full pt-4 text-lg md:text-xl mx-auto">
-        <div class="col-span-3 md:col-span-1 pb-6 my-auto">
+      <div class="lg:w-5/6 grid grid-cols-2 h-full pt-4 text-lg md:text-xl mx-auto">
+        <div class="col-span-2 md:col-span-1 pb-6 my-auto">
           <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
             <span class="text-6xl md:text-7xl lg:text-8xl align-middle">P</span>
             <span class="text-3xl md:text-4xl lg:text-5xl align-middle">artners</span>
@@ -184,16 +191,17 @@ function scrollToSection(id: string) {
           <ul class="list-disc pl-6">
             <li><a href="https://www.lancaster.ac.uk/" target="_blank">Lancaster University</a></li>
             <li><a href="https://www.rigb.org/" target="_blank">Royal Institution</a></li>
-            <li><a href="https://www.zooniverse.org/" target="_blank"></a>Zooniverse</li>
+            <li><a href="https://www.zooniverse.org/" target="_blank">Zooniverse</a></li>
             <li>Zooniverse participants</li>
-            <li><a href="https://www.u3a.org.uk/" target="_blank"></a>U3A</li>
+            <li><a href="https://www.u3a.org.uk/" target="_blank">U3A</a></li>
             <li>
-              <a href="https://www.lancaster.ac.uk/library/" target="_blank"></a>Lancaster
-              University Library
+              <a href="https://www.lancaster.ac.uk/library/" target="_blank"
+                >Lancaster University Library</a
+              >
             </li>
           </ul>
         </div>
-        <div class="col-span-3 md:col-span-1 my-auto">
+        <div class="col-span-2 md:col-span-1 my-auto">
           <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
             <span class="text-6xl md:text-7xl lg:text-8xl align-middle">E</span>
             <span class="text-3xl md:text-4xl lg:text-5xl align-middle">ngagement with </span>
@@ -209,15 +217,6 @@ function scrollToSection(id: string) {
               Next: Outcomes & Impact
             </Button>
           </div>
-        </div>
-        <div class="col-span-3 md:col-span-1 my-auto">
-          <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
-            <span class="text-6xl md:text-7xl lg:text-8xl align-middle">C</span>
-            <span class="text-3xl md:text-4xl lg:text-5xl align-middle">hallenges</span>
-          </h2>
-          <ul class="list-disc pl-6">
-            <li>Missing notebooks.</li>
-          </ul>
         </div>
       </div>
     </ToolkitSection>

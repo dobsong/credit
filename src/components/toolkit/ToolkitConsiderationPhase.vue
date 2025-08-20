@@ -76,6 +76,15 @@ projectPlan.enable()
               </li>
               <li>
                 <ToolkitReference
+                  authors="Shaw, H., Brown, O., Hinds, J., Nightingale, S.J., Towse., J, Ellis, D.A."
+                  :year="2025"
+                  title="The DECIDE Framework: Describing Ethical Choices in Digital-Behavioral-Data Explorations"
+                  citation="Shaw, H., Brown, O., Hinds, J., Nightingale, S.J., Towse., J, Ellis, D.A. (2025) The DECIDE Framework: Describing Ethical Choices in Digital-Behavioral-Data Explorations. Advances in Methods and Practices in Psychological Science. 8(3). doi:10.1177/25152459251361013"
+                  url="https://journals.sagepub.com/doi/10.1177/25152459251361013"
+                ></ToolkitReference>
+              </li>
+              <li>
+                <ToolkitReference
                   short-description="Valuing Voices Tool"
                   title="Valuing Voices Tool"
                   citation="Valuing Voices Project. University of York, Mahidol University with funding from Wellcome."
