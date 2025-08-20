@@ -18,9 +18,9 @@ function scrollToSection(id: string) {
           <div class="col-span-3 md:col-span-2 md:px-8 lg:px-16 my-auto">
             <ToolkitHeading text="Welcome To CREDIT"></ToolkitHeading>
             <p>
-              CREDIT (Community REsearch DIgital Toolkit) is designed to provide information and
-              inspiration for researchers aiming to involve and engage communities in their
-              research.
+              <b>CREDIT</b> (<b>C</b>ommunity <b>RE</b>search <b>DI</b>gital <b>T</b>oolkit) is
+              designed to provide information and inspiration for researchers aiming to involve and
+              engage communities in their research.
             </p>
             <p>
               Ready to begin? To start at the beginning use the “develop a proposal” button below.
