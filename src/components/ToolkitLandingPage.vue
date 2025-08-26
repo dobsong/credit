@@ -91,7 +91,9 @@ function scrollToSection(id: string) {
             solely subjects of the research question.
           </p>
           <div class="text-center mt-8 text-4xl">
-            <Button @click="scrollToSection('intro')"><span class="pi pi-arrow-up"></span></Button>
+            <Button @click="scrollToSection('intro')" class="z-50"
+              ><span class="pi pi-arrow-up" titl="Return to Top"></span
+            ></Button>
           </div>
         </div>
       </div>
