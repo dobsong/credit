@@ -11,7 +11,7 @@ projectPlan.enable()
 <template>
   <div class="container mx-auto px-8 flex">
     <div class="w-full flex flex-wrap">
-      <ToolkitHeading text="Launch and Sustain: The Live Phase" class="w-full"></ToolkitHeading>
+      <ToolkitHeading text="Launch & Sustain: The Live Phase" class="w-full"></ToolkitHeading>
       <Card class="mb-4">
         <template #content>
           <p>
