@@ -19,11 +19,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
     references: [],
     links: [],
     notes: '',
-    prompts: [
-      'prompt 1... hjdfy jewg sdhgsadghjas gdsagh dg',
-      'prompt 2... shdgsadga sajkhdkjshd jksahdkash d',
-      'prompt 3... sadha djhkdshdksah ',
-    ],
+    prompts: [],
   },
   {
     id: 2,
@@ -32,7 +28,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
     references: [],
     links: [],
     notes: '',
-    prompts: ['prompt X', 'prompt Y', 'prompt Z'],
+    prompts: [],
   },
   {
     id: 3,
@@ -40,7 +36,9 @@ const sections: Ref<DevelopmentSection[]> = ref([
     references: [],
     links: [],
     notes: '',
-    prompts: ['prompt A', 'prompt B', 'prompt C'],
+    prompts: [],
+    sectionText:
+      ' Who are your academic partners and your community partners? What are their needs and interests?',
   },
   {
     id: 4,
@@ -48,7 +46,12 @@ const sections: Ref<DevelopmentSection[]> = ref([
     references: [],
     links: [],
     notes: '',
-    prompts: ['prompt A', 'prompt B', 'prompt C'],
+    prompts: [
+      'Consider both the aims of the project and how you will evaluate the project itself.',
+      'Is there adaptability and flexibility for if something changes?',
+      'During the course of your research, additional data may be collected which could lead to supplementary outputs.',
+      'How will you test your method?',
+    ],
   },
   {
     id: 5,
@@ -56,7 +59,8 @@ const sections: Ref<DevelopmentSection[]> = ref([
     references: [],
     links: [],
     notes: '',
-    prompts: ['prompt A', 'prompt B', 'prompt C'],
+    sectionText:
+      'What type of data are you aiming to collect? Write some bullet points/initial thoughts prior to developing a Data Management Plan',
   },
   {
     id: 6,
@@ -64,7 +68,13 @@ const sections: Ref<DevelopmentSection[]> = ref([
     references: [],
     links: [],
     notes: '',
-    prompts: ['prompt A', 'prompt B', 'prompt C'],
+    prompts: [
+      'Does your project use surveys or interviews?',
+      'Is technology being used to collect and analyse data (e.g., AI, digital devices)',
+      'What GDPR considerations are there? What type of data is being collected?',
+    ],
+    sectionText:
+      'How will people be involved in your research? Write some bullet points/initial thoughts prior to developing an Ethics plan',
   },
   {
     id: 7,
@@ -72,23 +82,31 @@ const sections: Ref<DevelopmentSection[]> = ref([
     references: [],
     links: [],
     notes: '',
-    prompts: ['prompt A', 'prompt B', 'prompt C'],
+    prompts: [
+      'How many people do you need to participate? Is there a minimum for collecting statistically relevant data.',
+      'What technology options are available, or can you create?',
+      'How will you engage with your participants (advertising, ongoing through the project, sharing results)?',
+      'How will participants know how to engage and what to do?',
+      'What support materials do you need to create? (e.g., tutorials)',
+      'What approaches will you use to provide legacy to the project?',
+    ],
+    sectionText:
+      'Where will the project activities be hosted?<ul class="list-disc pl-6"><li>Remote or in person</li><li>Virtual platform</li><li>UK or abroad?</li></ul',
   },
   {
     id: 8,
-    sectionName: 'Support materials',
-    references: [],
-    links: [],
-    notes: '',
-    prompts: ['prompt A', 'prompt B', 'prompt C'],
-  },
-  {
-    id: 9,
     sectionName: 'Costings',
     references: [],
     links: [],
     notes: '',
-    prompts: ['prompt A', 'prompt B', 'prompt C'],
+    prompts: [
+      'Internal staff time (professional, e.g., Library, and academic)',
+      'Partner costs',
+      'Participant recognition/reimbursement',
+      'Equipment and Consumables for data collection',
+      'Outsourcing, e.g. transcription services to prepare data for analysis',
+    ],
+    sectionText: 'Considering the above what needs to be costed into a funding proposal?',
   },
 ])
 
@@ -114,13 +132,11 @@ watch(activePanel, (newVal) => {
       </AccordionHeader>
       <AccordionContent>
         <div class="grid grid-cols-2 space-x-8">
-          <div>
-            <p>Content for each section here... will adjust depending on prompts selected?</p>
-            <p>Prompts selected over all sections: {{ selectedPrompts.length }}</p>
-            <h3>Notes</h3>
-            <Textarea class="w-full" title="Notes"></Textarea>
+          <div :class="activePrompts && activePrompts.length ? 'col-span-1' : 'col-span-2'">
+            <p v-if="section.sectionText" v-html="section.sectionText"></p>
+            <Textarea class="w-full" :title="section.freeTextLabel ?? 'Notes'" rows="10"></Textarea>
           </div>
-          <ul>
+          <ul v-if="activePrompts && activePrompts.length">
             <li v-for="prompt in activePrompts" :key="prompt">
               <Checkbox
                 v-model="selectedPrompts"

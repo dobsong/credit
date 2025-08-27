@@ -7,4 +7,6 @@ export interface DevelopmentSection {
   notes: string
   references: Reference[]
   links: { name: string; url: string }[]
+  sectionText?: string
+  freeTextLabel?: string
 }

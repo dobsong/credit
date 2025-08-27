@@ -12,7 +12,7 @@ projectPlan.enable()
 
 <template>
   <div class="container mx-auto px-8 flex">
-    <div class="w-full flex flex-wrap">
+    <div class="w-full grid">
       <ToolkitHeading text="Development Phase" class="w-full"></ToolkitHeading>
       <p class="w-full">
         This phase defines the space to develop the different plans required to deliver the project
@@ -27,7 +27,7 @@ projectPlan.enable()
         <template #content><ToolkitOverallPlan></ToolkitOverallPlan></template>
       </Card>
       <Card>
-        <template #title> <h1 class="font-black text-xl">Further Guidance</h1></template>
+        <template #title><h1 class="font-black text-xl">Further Guidance</h1></template>
         <template #content>
           <ToolkitReference
             title="Funding Applications UKRI core question guidance: Core section questions and how they will
