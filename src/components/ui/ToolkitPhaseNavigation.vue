@@ -87,5 +87,4 @@ const phases = [
       </span>
     </template>
   </div>
-  <div class="bg-[var(--color-base-highlight)] h-1 w-full rounded-2xl mb-2 mt-2 md:mt-0"></div>
 </template>
