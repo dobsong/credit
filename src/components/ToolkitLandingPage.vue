@@ -12,9 +12,8 @@ function scrollToSection(id: string) {
 <template>
   <div id="landing-main" class="w-full container mx-auto px-2 md:px-8">
     <section id="intro">
-      <div class="lg:h-[90svh] text-lg md:text-xl lg:mt-16">
+      <div class="lg:h-[90svh] text-base md:text-xl lg:mt-16">
         <div class="grid grid-cols-3">
-          <div class="col-span-3"></div>
           <div class="col-span-3 md:col-span-2 md:px-8 lg:px-16 my-auto">
             <ToolkitHeading text="Welcome To CREDIT"></ToolkitHeading>
             <p>
@@ -51,7 +50,7 @@ function scrollToSection(id: string) {
     </section>
 
     <section id="more">
-      <div class="lg:h-[35svh] text-lg md:text-xl lg:mt-16">
+      <div class="lg:h-[35svh] text-base md:text-xl lg:mt-16">
         <div class="grid grid-cols-1">
           <ToolkitHeading text="What Is CREDIT For?"></ToolkitHeading>
           <p>
@@ -74,7 +73,7 @@ function scrollToSection(id: string) {
     </section>
 
     <section id="community-research">
-      <div class="lg:h-[45svh] text-lg md:text-xl lg:mt-16">
+      <div class="lg:h-[45svh] text-base md:text-xl lg:mt-16">
         <div class="grid grid-cols-1">
           <ToolkitHeading text="Community Research"></ToolkitHeading>
           <p>

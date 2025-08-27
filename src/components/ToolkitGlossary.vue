@@ -66,8 +66,8 @@ const filters = ref({
 </script>
 
 <template>
-  <div class="w-full flex flex-col container mx-auto px-8 mb-8 md:mb-24">
-    <ToolkitHeading text="Glossary"></ToolkitHeading>
+  <div class="w-full flex flex-col container mx-auto mb-8 md:mb-24">
+    <ToolkitHeading text="Glossary" class="pt-4"></ToolkitHeading>
 
     <div>
       <DataTable

@@ -8,7 +8,7 @@ const restOfWords: string[] = props.text.split(' ').map((str) => str.substring(1
 </script>
 
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center my-auto">
     <h1 class="sr-only">
       {{ text }}
     </h1>

@@ -6,15 +6,18 @@ import Card from '@/volt/Card.vue'
 import Skeleton from '@/volt/Skeleton.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
 import ToolkitReference from '../ui/ToolkitReference.vue'
 import MatchingTask from './tasks/MatchingTask.vue'
 
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
+const phase = 0
 </script>
 
 <template>
   <div class="w-full flex flex-col container mx-auto px-8">
+    <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
     <ToolkitHeading text="Introduction"></ToolkitHeading>
     <p>
       This introductory task encourages you to experience participatory research from the
@@ -203,8 +206,7 @@ projectPlan.enable()
       </Card>
     </div>
     <p class="w-full mt-4 text-right">
-      <ToolkitNextButton :phase="3" text="Get Started"></ToolkitNextButton>
-      <!--<ToolkitNextButton :phase="2" text="Initial Evaluation"> </ToolkitNextButton>-->
+      <ToolkitNextButton :currentPhase="phase" text="Get Started"></ToolkitNextButton>
     </p>
   </div>
 </template>

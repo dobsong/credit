@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useBibliographyStore } from '@/stores/bibliography'
-import ToolkitHeading from '../ui/ToolkitHeading.vue'
+import ToolkitHeading from './ui/ToolkitHeading.vue'
 const bibliography = useBibliographyStore()
 </script>
 
 <template>
   <div class="w-full flex flex-col container mx-auto px-8 pb-8 md:pb-16">
-    <ToolkitHeading text="Your Bibliography"></ToolkitHeading>
+    <ToolkitHeading text="Your Bibliography" class="pt-4"></ToolkitHeading>
     <h2 class="text-xl font-bold mb-4">
       Here you can store a personalised set of references for later reading. You'll find links
       throughout the toolkit next to relevant material.

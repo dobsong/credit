@@ -3,16 +3,19 @@ import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '@/volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
 import ToolkitReference from '../ui/ToolkitReference.vue'
 import ToolkitOverallPlan from './ToolkitOverallPlan.vue'
 
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
+const phase = 3
 </script>
 
 <template>
   <div class="container mx-auto px-8 flex">
     <div class="w-full grid">
+      <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
       <ToolkitHeading text="Development Phase" class="w-full"></ToolkitHeading>
       <p class="w-full">
         This phase defines the space to develop the different plans required to deliver the project
@@ -40,7 +43,7 @@ projectPlan.enable()
         </template>
       </Card>
       <p class="w-full mt-4 text-right">
-        <ToolkitNextButton :phase="6" text="Launch and Sustain"></ToolkitNextButton>
+        <ToolkitNextButton :currentPhase="phase" text="Launch and Sustain"></ToolkitNextButton>
       </p>
     </div>
   </div>

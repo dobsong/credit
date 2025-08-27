@@ -101,7 +101,7 @@ projectPlan.enable()
       </Card>
     </div>
     <div>
-      <ToolkitNextButton :phase="3" text="Get Started"></ToolkitNextButton>
+      <ToolkitNextButton :currentPhase="3" text="Get Started"></ToolkitNextButton>
     </div>
   </div>
 </template>

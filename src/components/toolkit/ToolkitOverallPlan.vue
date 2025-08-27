@@ -145,7 +145,9 @@ watch(activePanel, (newVal) => {
                 :value="prompt"
                 class="mr-2"
               />
-              <label :for="prompt">{{ prompt }}</label>
+              <label :for="prompt" :class="selectedPrompts.includes(prompt) ? 'font-bold' : ''">{{
+                prompt
+              }}</label>
             </li>
           </ul>
         </div>

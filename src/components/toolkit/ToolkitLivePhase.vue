@@ -3,14 +3,17 @@ import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '@/volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
 
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
+const phase = 4
 </script>
 
 <template>
   <div class="container mx-auto px-8 flex">
     <div class="w-full flex flex-wrap">
+      <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
       <ToolkitHeading text="Launch & Sustain: The Live Phase" class="w-full"></ToolkitHeading>
       <Card class="mb-4">
         <template #content>
@@ -49,7 +52,7 @@ projectPlan.enable()
         </template>
       </Card>
       <p class="w-full mt-4 text-right">
-        <ToolkitNextButton :phase="7" text="Analysis and Evaluation"></ToolkitNextButton>
+        <ToolkitNextButton :currentPhase="phase" text="Analysis and Evaluation"></ToolkitNextButton>
       </p>
     </div>
   </div>

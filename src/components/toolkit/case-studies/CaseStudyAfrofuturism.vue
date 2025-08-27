@@ -11,7 +11,7 @@ function scrollToSection(id: string) {
 
 <template>
   <div
-    class="w-full bg-[url('@/assets/inclusion.svg')] bg-no-repeat bg-top-left bg-size-[50%] md:bg-size-[25%] bg-fixed flex flex-col"
+    class="w-full bg-[url('@/assets/inclusion.svg')] dark:bg-[url('@/assets/dark/inclusion.svg')] bg-no-repeat bg-top-left bg-size-[50%] md:bg-size-[25%] bg-fixed flex flex-col"
   >
     <ToolkitSection section-id="background" css-class="" :slide-in-direction="1">
       <div class="grid grid-cols-3 pt-4 lg:h-[90svh]">

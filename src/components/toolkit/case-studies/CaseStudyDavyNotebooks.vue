@@ -11,7 +11,7 @@ function scrollToSection(id: string) {
 
 <template>
   <div
-    class="w-full bg-[url('@/assets/inclusion.svg')] bg-no-repeat bg-top-left bg-size-[50%] md:bg-size-[25%] bg-fixed flex flex-col"
+    class="w-full bg-[url('@/assets/inclusion.svg')] dark:bg-[url('@/assets/dark/inclusion.svg')] bg-no-repeat bg-top-left bg-size-[50%] md:bg-size-[25%] bg-fixed flex flex-col"
   >
     <ToolkitSection section-id="background" css-class="" :slide-in-direction="1">
       <div class="grid grid-cols-3 h-full pt-4">
@@ -166,7 +166,7 @@ function scrollToSection(id: string) {
             .
           </p>
           <div
-            class="bg-amber-200 w-64 rounded-xl drop-shadow-xl drop-shadow-slate-500 text-center mx-auto my-4"
+            class="bg-amber-200 text-gray-900 w-64 rounded-xl drop-shadow-xl drop-shadow-slate-500 dark:drop-shadow-gray-950 text-center mx-auto my-4"
           >
             <span class="pi pi-exclamation-circle float-right p-2"></span>
             <h3 class="font-bold pt-4">Challenges</h3>

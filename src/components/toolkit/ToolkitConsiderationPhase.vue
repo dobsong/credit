@@ -3,17 +3,20 @@ import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '../../volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
 import ToolkitReference from '../ui/ToolkitReference.vue'
 import CharacterConsideration from './characters/CharacterConsideration.vue'
 
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
+const phase = 1
 </script>
 
 <template>
   <div class="container mx-auto px-8 flex">
     <div class="w-full flex flex-wrap">
-      <ToolkitHeading text="Consideration Phase"></ToolkitHeading>
+      <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
+      <ToolkitHeading text="Consideration Phase" class="mx-auto"></ToolkitHeading>
       <p>
         Before embarking on designing a participatory research or citizen science project it is
         first important to consider whether it is an appropriate approach. Then the context of the
@@ -96,7 +99,7 @@ projectPlan.enable()
         </Card>
       </div>
       <p class="w-full mt-4 text-right">
-        <ToolkitNextButton :phase="4" text="Preparation"></ToolkitNextButton>
+        <ToolkitNextButton :currentPhase="phase" text="Preparation"></ToolkitNextButton>
       </p>
     </div>
   </div>

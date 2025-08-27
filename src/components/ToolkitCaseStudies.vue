@@ -5,15 +5,14 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
 </script>
 
 <template>
-  <ToolkitHeading text="Case Studies"></ToolkitHeading>
-
+  <ToolkitHeading text="Case Studies" class="pt-4"></ToolkitHeading>
   <div
-    class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-20 gap-x-14 mt-4 mb-5"
+    class="w-fit mx-auto grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 justify-items-center justify-center gap-y-8 lg:gap-y-20 gap-x-6 lg:gap-x-14 mt-4 mb-5"
   >
     <div
       v-for="caseStudy in caseStudySummaries"
       v-bind:key="caseStudy.id"
-      class="w-88 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl"
+      class="w-88 shadow-md rounded-xl duration-500 hover:scale-105 hover:shadow-xl dark:bg-[var(--p-surface-900)]"
     >
       <RouterLink v-slot="routerProps" :to="'/case-studies/' + caseStudy.route">
         <a :href="routerProps.href" @click="routerProps.navigate">

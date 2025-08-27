@@ -4,8 +4,8 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
 
 <template>
   <div class="w-full flex flex-col container mx-auto px-8">
-    <ToolkitHeading text="About"></ToolkitHeading>
-    <p>
+    <ToolkitHeading text="About" class="mt-4"></ToolkitHeading>
+    <p class="mb-8">
       This toolkit has been designed by members of the “Reimagining research practices: towards a
       sustainable, ethical and inclusive future” project team at Lancaster University, which brought
       together various departments and services within Lancaster University, including LICA, the

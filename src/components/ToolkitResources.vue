@@ -6,8 +6,8 @@ const baseUrl = import.meta.env.BASE_URL
 
 <template>
   <div class="w-full flex flex-col container mx-auto px-8">
-    <ToolkitHeading text="Resources"></ToolkitHeading>
-    <h3 class="text-xl font-bold pb-4">Downloadable CREDIT documents</h3>
+    <ToolkitHeading text="Resources" class="py-4"></ToolkitHeading>
+    <h3 class="text-base md:text-xl font-bold pb-4 text-center">Downloadable CREDIT documents</h3>
     <p>
       These are downloadable documents that encapsulate some of the considerations highlighted by
       CREDIT. Download them for offline usage/printing.

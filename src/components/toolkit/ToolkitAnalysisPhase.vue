@@ -3,7 +3,10 @@ import Button from '@/volt/Button.vue'
 import { Motion } from 'motion-v'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
 import ToolkitReference from '../ui/ToolkitReference.vue'
+
+const phase = 5
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id)
@@ -13,6 +16,7 @@ function scrollToSection(id: string) {
 
 <template>
   <div class="container mx-auto px-4 flex flex-col">
+    <ToolkitPhaseNavigation :phase="phase" />
     <ToolkitHeading text="Analysis, Reporting & Evaluation Phase" class="w-full" />
     <p class="text-base md:text-xl">
       Participants may play a role in collecting or analysing data for the project. Their views are
@@ -219,7 +223,7 @@ function scrollToSection(id: string) {
       </section>
     </Motion>
     <p class="w-full text-right">
-      <ToolkitNextButton :phase="8" text="Legacy and Impact" />
+      <ToolkitNextButton :currentPhase="phase" text="Legacy and Impact" />
     </p>
   </div>
   <img

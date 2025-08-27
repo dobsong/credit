@@ -3,15 +3,19 @@ import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '@/volt/Card.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
+import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
 import ToolkitReference from '../ui/ToolkitReference.vue'
 
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
+
+const phase = 7
 </script>
 
 <template>
   <div class="container mx-auto px-8 flex">
     <div class="w-full flex flex-wrap">
+      <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
       <ToolkitHeading text="Data Management" class="w-full"></ToolkitHeading>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Card>
@@ -136,7 +140,7 @@ projectPlan.enable()
         </Card>
       </div>
       <p class="w-full mt-4 text-right">
-        <ToolkitNextButton :phase="10" text="Final Summary"></ToolkitNextButton>
+        <ToolkitNextButton :currentPhase="phase" text="Final Summary"></ToolkitNextButton>
       </p>
     </div>
   </div>
