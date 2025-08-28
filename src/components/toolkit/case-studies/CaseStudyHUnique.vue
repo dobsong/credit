@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import ToolkitReference from '@/components/ui/ToolkitReference.vue'
 import ToolkitSection from '@/components/ui/ToolkitSection.vue'
+import { scrollToSection } from '@/utility'
 import Button from '@/volt/Button.vue'
-
-function scrollToSection(id: string) {
-  const el = document.getElementById(id)
-  if (el) el.scrollIntoView({ behavior: 'smooth' })
-}
 </script>
 
 <template>

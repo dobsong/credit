@@ -12,10 +12,10 @@ function scrollToSection(id: string) {
 <template>
   <div id="landing-main" class="w-full container mx-auto px-2 md:px-8">
     <section id="intro">
-      <div class="lg:h-[90svh] text-base md:text-xl lg:mt-16">
+      <div class="lg:h-[90svh] text-base md:text-xl lg:mt-16 mb-8">
         <div class="grid grid-cols-3">
-          <div class="col-span-3 md:col-span-2 md:px-8 lg:px-16 my-auto">
-            <ToolkitHeading text="Welcome To CREDIT"></ToolkitHeading>
+          <div class="col-span-3 md:col-span-2 md:px-4 lg:px-16 my-auto">
+            <ToolkitHeading text="Welcome To CREDIT" class="py-4"></ToolkitHeading>
             <p>
               <b>CREDIT</b> (<b>C</b>ommunity <b>RE</b>search <b>DI</b>gital <b>T</b>oolkit) is
               designed to provide information and inspiration for researchers aiming to involve and
@@ -38,11 +38,11 @@ function scrollToSection(id: string) {
               <Button @click="scrollToSection('more')" outlined> Tell me More... </Button>
             </div>
           </div>
-          <div class="col-span-3 md:col-span-1 mx-auto my-auto">
+          <div class="col-span-3 md:col-span-1 w-full my-auto">
             <img
               src="@/assets/community.jpg"
               alt="A group of people placing hands on a tree trunk."
-              class="rounded-2xl lg:max-h-[60svh]"
+              class="rounded-2xl object-none md:object-cover w-full h-70 md:h-full"
             />
           </div>
         </div>
@@ -52,8 +52,8 @@ function scrollToSection(id: string) {
     <section id="more">
       <div class="lg:h-[35svh] text-base md:text-xl lg:mt-16">
         <div class="grid grid-cols-1">
-          <ToolkitHeading text="What Is CREDIT For?"></ToolkitHeading>
-          <p>
+          <ToolkitHeading text="What Is CREDIT?"></ToolkitHeading>
+          <p class="md:px-4">
             When embarking on a research project involving participation from members of the public
             there are many opportunities and challenges to consider. The extent of participation in
             this type of research varies, and can involve crowd sourcing transcriptions, data
@@ -76,7 +76,7 @@ function scrollToSection(id: string) {
       <div class="lg:h-[45svh] text-base md:text-xl lg:mt-16">
         <div class="grid grid-cols-1">
           <ToolkitHeading text="Community Research"></ToolkitHeading>
-          <p>
+          <p class="md:px-4">
             This toolkit has been designed to support research that might come under headings such
             as citizen science (<a href="https://www.ecsa.ngo/" target="_blank"
               >European Citizen Science Association (ECSA)</a
@@ -90,9 +90,9 @@ function scrollToSection(id: string) {
             solely subjects of the research question.
           </p>
           <div class="text-center mt-8 text-4xl">
-            <Button @click="scrollToSection('intro')" class="z-50"
-              ><span class="pi pi-arrow-up" titl="Return to Top"></span
-            ></Button>
+            <Button @click="scrollToSection('header')" class="z-50">
+              <span class="pi pi-arrow-up" titl="Return to Top"></span>
+            </Button>
           </div>
         </div>
       </div>

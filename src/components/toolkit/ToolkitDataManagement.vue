@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '@/volt/Card.vue'
+import Skeleton from '@/volt/Skeleton.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
