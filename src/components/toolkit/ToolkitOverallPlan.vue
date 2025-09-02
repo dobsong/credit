@@ -5,12 +5,14 @@ import Accordion from '@/volt/Accordion.vue'
 import AccordionHeader from '@/volt/AccordionHeader.vue'
 import AccordionPanel from '@/volt/AccordionPanel.vue'
 import Checkbox from '@/volt/Checkbox.vue'
+import InputText from '@/volt/InputText.vue'
 import Textarea from '@/volt/Textarea.vue'
+import { storeToRefs } from 'pinia'
 import { ref, watch, type Ref } from 'vue'
 import AccordionContent from '../../volt/AccordionContent.vue'
 
 const projectPlan = useProjectPlanStore()
-projectPlan.enable()
+const projectPlanRefs = storeToRefs(projectPlan)
 
 const sections: Ref<DevelopmentSection[]> = ref([
   {
@@ -20,6 +22,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
     links: [],
     notes: '',
     prompts: [],
+    storeBinding: projectPlanRefs.vision,
   },
   {
     id: 2,
@@ -29,6 +32,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
     links: [],
     notes: '',
     prompts: [],
+    storeBinding: projectPlanRefs.laymansSummary,
   },
   {
     id: 3,
@@ -39,6 +43,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
     prompts: [],
     sectionText:
       ' Who are your academic partners and your community partners? What are their needs and interests?',
+    storeBinding: projectPlanRefs.stakeholderAnalysis,
   },
   {
     id: 4,
@@ -52,6 +57,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
       'During the course of your research, additional data may be collected which could lead to supplementary outputs.',
       'How will you test your method?',
     ],
+    storeBinding: projectPlanRefs.approach,
   },
   {
     id: 5,
@@ -59,8 +65,10 @@ const sections: Ref<DevelopmentSection[]> = ref([
     references: [],
     links: [],
     notes: '',
+    prompts: [],
     sectionText:
       'What type of data are you aiming to collect? Write some bullet points/initial thoughts prior to developing a Data Management Plan',
+    storeBinding: projectPlanRefs.data,
   },
   {
     id: 6,
@@ -75,6 +83,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
     ],
     sectionText:
       'How will people be involved in your research? Write some bullet points/initial thoughts prior to developing an Ethics plan',
+    storeBinding: projectPlanRefs.ethics,
   },
   {
     id: 7,
@@ -92,6 +101,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
     ],
     sectionText:
       'Where will the project activities be hosted?<ul class="list-disc pl-6"><li>Remote or in person</li><li>Virtual platform</li><li>UK or abroad?</li></ul',
+    storeBinding: projectPlanRefs.platform,
   },
   {
     id: 8,
@@ -107,12 +117,13 @@ const sections: Ref<DevelopmentSection[]> = ref([
       'Outsourcing, e.g. transcription services to prepare data for analysis',
     ],
     sectionText: 'Considering the above what needs to be costed into a funding proposal?',
+    storeBinding: projectPlanRefs.costings,
   },
 ])
 
 const activePanel = ref(1) // Start with the first panel open
 
-const activePrompts: Ref<string[]> = ref(sections.value[0].prompts)
+const activePrompts: Ref<string[] | undefined> = ref(sections.value[0].prompts)
 const selectedPrompts: Ref<string[]> = ref([])
 
 // Watch for changes to activePanel and update activePrompts
@@ -125,6 +136,7 @@ watch(activePanel, (newVal) => {
 </script>
 
 <template>
+  <InputText placeholder="Project Title" class="mb-4" v-model="projectPlan.title"></InputText>
   <Accordion v-model:value="activePanel" class="w-full">
     <AccordionPanel v-for="section in sections" :key="section.id" :value="section.id">
       <AccordionHeader class="text-left">
@@ -134,7 +146,12 @@ watch(activePanel, (newVal) => {
         <div class="grid grid-cols-2 space-x-8">
           <div :class="activePrompts && activePrompts.length ? 'col-span-1' : 'col-span-2'">
             <p v-if="section.sectionText" v-html="section.sectionText"></p>
-            <Textarea class="w-full" :title="section.freeTextLabel ?? 'Notes'" rows="10"></Textarea>
+            <Textarea
+              class="w-full"
+              :title="section.freeTextLabel ?? 'Notes'"
+              rows="10"
+              v-model="section.storeBinding"
+            ></Textarea>
           </div>
           <ul v-if="activePrompts && activePrompts.length">
             <li v-for="prompt in activePrompts" :key="prompt">

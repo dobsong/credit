@@ -228,7 +228,7 @@ function scrollToSection(id: string) {
   </div>
   <img
     src="@/assets/ribbon_analysis.svg"
-    alt="Consideration Phase Image"
+    alt="Analysis Phase Image"
     class="w-full h-32 object-cover object-right sm:h-auto sm:object-contain"
   />
 </template>

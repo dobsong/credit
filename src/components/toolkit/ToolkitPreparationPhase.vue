@@ -90,7 +90,7 @@ const phase = 2
   <img
     src="@/assets/ribbon_preparation.svg"
     class="w-full h-32 object-cover object-right sm:h-auto sm:object-contain"
-    alt="Consideration Phase Image"
+    alt="Preparation Phase Image"
   />
 </template>
 

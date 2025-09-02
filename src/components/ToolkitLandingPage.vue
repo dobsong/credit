@@ -12,18 +12,16 @@ function scrollToSection(id: string) {
 <template>
   <div id="landing-main" class="w-full container mx-auto px-2 md:px-8">
     <section id="intro">
-      <div class="lg:h-[90svh] text-base md:text-xl lg:mt-16 mb-8">
+      <div class="text-base md:text-xl lg:mt-16 mb-8">
         <div class="grid grid-cols-3">
-          <div class="col-span-3 md:col-span-2 md:px-4 lg:px-16 my-auto">
+          <div class="col-span-3 md:col-span-2 md:px-4 lg:px-16 my-auto lg:pb-24">
             <ToolkitHeading text="Welcome To CREDIT" class="py-4"></ToolkitHeading>
             <p>
               <b>CREDIT</b> (<b>C</b>ommunity <b>RE</b>search <b>DI</b>gital <b>T</b>oolkit) is
               designed to provide information and inspiration for researchers aiming to involve and
               engage communities in their research.
             </p>
-            <p>
-              Ready to begin? To start at the beginning use the “develop a proposal” button below.
-            </p>
+            <p>To start at the beginning use the “develop a proposal” button below.</p>
             <p>
               Looking for inspiration? The tabs at the top of the page can be used to navigate to
               Lancaster University <RouterLink to="case-studies">case studies</RouterLink> used in
@@ -50,7 +48,7 @@ function scrollToSection(id: string) {
     </section>
 
     <section id="more">
-      <div class="lg:h-[35svh] text-base md:text-xl lg:mt-16">
+      <div class="text-base md:text-xl lg:mt-16">
         <div class="grid grid-cols-1">
           <ToolkitHeading text="What Is CREDIT?"></ToolkitHeading>
           <p class="md:px-4">
@@ -73,7 +71,7 @@ function scrollToSection(id: string) {
     </section>
 
     <section id="community-research">
-      <div class="lg:h-[45svh] text-base md:text-xl lg:mt-16">
+      <div class="text-base md:text-xl lg:mt-16">
         <div class="grid grid-cols-1">
           <ToolkitHeading text="Community Research"></ToolkitHeading>
           <p class="md:px-4">

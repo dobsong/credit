@@ -10,7 +10,7 @@ import Button from '@/volt/Button.vue'
     class="w-full bg-[url('@/assets/inclusion.svg')] dark:bg-[url('@/assets/dark/inclusion.svg')] bg-no-repeat bg-top-left bg-size-[50%] md:bg-size-[25%] bg-fixed flex flex-col"
   >
     <ToolkitSection section-id="background" css-class="" :slide-in-direction="1">
-      <div class="grid grid-cols-3 h-full pt-4 md:h-[90svh] md:pb-64">
+      <div class="grid grid-cols-3 h-full pt-4 md:pb-64">
         <div class="col-span-3 md:col-span-2 my-auto">
           <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
             <span class="text-6xl md:text-7xl lg:text-9xl align-middle">T</span>

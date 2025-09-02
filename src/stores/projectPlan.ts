@@ -7,11 +7,16 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
   const hasStarted: Ref<boolean> = ref(false)
   const projectSize: Ref<'Large' | 'Small' | 'Unknown'> = ref('Unknown')
   const country: Ref<'United Kingdom' | 'Other' | 'Unknown'> = ref('Unknown')
-  const projectTitle: Ref<string> = ref('')
-  const projectDescription: Ref<string> = ref('')
-
-  /* getters */
-  //const doubleCount = computed(() => count.value * 2)
+  const title: Ref<string> = ref('')
+  const vision: Ref<string> = ref('')
+  const laymansSummary: Ref<string> = ref('')
+  const stakeholderAnalysis: Ref<string> = ref('')
+  const approach: Ref<string> = ref('')
+  const data: Ref<string> = ref('')
+  const ethics: Ref<string> = ref('')
+  const platform: Ref<string> = ref('')
+  const supportMaterials: Ref<string> = ref('')
+  const costings: Ref<string> = ref('')
 
   /* actions */
   function enable() {
@@ -25,13 +30,21 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
   }
 
   return {
+    enable,
+    setPreviousEngagement,
     previousEngagement,
     projectSize,
     country,
     hasStarted,
-    projectTitle,
-    projectDescription,
-    enable,
-    setPreviousEngagement,
+    title: title,
+    vision: vision,
+    laymansSummary: laymansSummary,
+    stakeholderAnalysis: stakeholderAnalysis,
+    approach: approach,
+    data: data,
+    ethics: ethics,
+    platform: platform,
+    supportMaterials: supportMaterials,
+    costings: costings,
   }
 })

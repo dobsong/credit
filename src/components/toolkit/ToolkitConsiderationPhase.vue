@@ -17,7 +17,7 @@ const phase = 1
 <template>
   <div class="container mx-auto flex">
     <div class="w-full flex flex-wrap">
-      <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
+      <ToolkitPhaseNavigation :phase="phase" class="px-4"></ToolkitPhaseNavigation>
 
       <ToolkitSection section-id="intro" css-class="" :slide-in-direction="1">
         <div class="grid grid-cols-1 lg:h-[80svh]">
@@ -143,17 +143,17 @@ const phase = 1
             </ul>
           </div>
         </div>
-        <div class="text-center mt-4 text-4xl">
+        <div class="text-center my-4 text-4xl">
           <Button @click="scrollToSection('header')" class="z-50">
             <span class="pi pi-arrow-up" titl="Return to Top"></span>
           </Button>
         </div>
-        <p class="w-full text-right">
-          <ToolkitNextButton :currentPhase="phase" text="Preparation"></ToolkitNextButton>
-        </p>
       </ToolkitSection>
     </div>
   </div>
+  <p class="w-full text-right container mx-auto px-4">
+    <ToolkitNextButton :currentPhase="phase" text="Preparation"></ToolkitNextButton>
+  </p>
   <img
     src="@/assets/ribbon_consideration.svg"
     alt="Consideration Phase Image"

@@ -148,7 +148,7 @@ const phase = 7
   <img
     src="@/assets/ribbon_data.svg"
     class="w-full h-32 object-cover object-left sm:h-auto sm:object-contain"
-    alt="Legacy Phase Image"
+    alt="Data Management Phase Image"
   />
 </template>
 

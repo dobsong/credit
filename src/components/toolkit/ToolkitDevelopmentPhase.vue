@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import Card from '@/volt/Card.vue'
+import ToolkitExportButtons from '../ui/ToolkitExportButtons.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
@@ -27,7 +28,10 @@ const phase = 3
       </ul>
 
       <Card class="mb-4">
-        <template #content><ToolkitOverallPlan></ToolkitOverallPlan></template>
+        <template #content>
+          <ToolkitOverallPlan></ToolkitOverallPlan>
+          <ToolkitExportButtons></ToolkitExportButtons>
+        </template>
       </Card>
       <Card>
         <template #title><h1 class="font-black text-xl">Further Guidance</h1></template>
@@ -50,7 +54,7 @@ const phase = 3
   <img
     src="@/assets/ribbon_development.svg"
     class="w-full h-32 object-cover object-left sm:h-auto sm:object-contain"
-    alt="Consideration Phase Image"
+    alt="Development Phase Image"
   />
 </template>
 
