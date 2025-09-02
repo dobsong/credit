@@ -44,8 +44,8 @@ const toggle = (event: MouseEvent) => {
 </script>
 
 <template>
-  <header class="pt-2 pb-4 md:pt-3 md:pb-6 lg:pt-4 lg:pb-8 bg-[var(--color-base-highlight)]">
-    <section id="header">
+  <section id="header">
+    <header class="pt-2 pb-4 md:pt-3 md:pb-6 lg:pt-4 lg:pb-8 bg-[var(--color-base-highlight)]">
       <div class="flex container mx-auto pl-4">
         <RouterLink to="/">
           <img
@@ -97,8 +97,6 @@ const toggle = (event: MouseEvent) => {
           </Menu>
         </div>
       </div>
-    </section>
-  </header>
+    </header>
+  </section>
 </template>
-
-<style scoped></style>

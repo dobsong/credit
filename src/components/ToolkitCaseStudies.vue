@@ -18,7 +18,7 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
         <a :href="routerProps.href" @click="routerProps.navigate">
           <img
             :src="caseStudy.imageSrc"
-            alt="Product"
+            :alt="`Illustrative Case Study image for ${caseStudy.title}`"
             class="h-75 w-88 object-cover rounded-t-xl"
           />
           <div class="px-4 py-3 w-72">
