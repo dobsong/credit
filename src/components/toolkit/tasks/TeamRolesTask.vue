@@ -54,9 +54,9 @@ const roleDescriptions: Record<string, string> = {
 </script>
 
 <template>
-  <div class="flex items-center">
+  <div class="flex flex-wrap">
     <!-- Left side boxes -->
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-3 flex-1 px-1 pb-4">
       <Button
         v-for="(role, i) in leftRoles"
         :key="role"
@@ -66,11 +66,11 @@ const roleDescriptions: Record<string, string> = {
       />
     </div>
     <!-- Center icon -->
-    <div class="flex flex-col items-center mx-8">
-      <img src="@/assets/users.svg" alt="Users" class="w-20 h-20" />
+    <div class="hidden md:block mx-auto my-auto">
+      <img src="@/assets/users.svg" alt="Users" class="w-20 h-20 mx-8" />
     </div>
     <!-- Right side boxes -->
-    <div class="flex flex-col gap-3">
+    <div class="flex flex-col gap-3 flex-1 px-1">
       <Button
         v-for="(role, i) in rightRoles"
         :key="role"
@@ -83,8 +83,4 @@ const roleDescriptions: Record<string, string> = {
   <Dialog v-model:visible="dialogVisible" modal :header="selectedRole" class="sm:w-100 w-9/10">
     <div>{{ roleDescriptions[selectedRole] }}</div>
   </Dialog>
-  <p class="mt-4">
-    <span class="pi pi-exclamation-triangle text-orange-500 mr-2"></span>TODO - Need a more compact
-    small-screen version!
-  </p>
 </template>
