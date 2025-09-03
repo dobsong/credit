@@ -23,16 +23,18 @@ const sections: Ref<DevelopmentSection[]> = ref([
     notes: '',
     prompts: [],
     storeBinding: projectPlanRefs.vision,
+    sectionText: ' Write a Headline statement for your project.',
   },
   {
     id: 2,
-    sectionName:
-      "Layman's summary, important both for funding proposals and communicating to participants",
+    sectionName: "Layman's summary",
     references: [],
     links: [],
     notes: '',
     prompts: [],
     storeBinding: projectPlanRefs.laymansSummary,
+    sectionText:
+      'Write a 250 word summary for a general audience. Important both for funding proposals and communicating to participants.',
   },
   {
     id: 3,
@@ -42,7 +44,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
     notes: '',
     prompts: [],
     sectionText:
-      ' Who are your academic partners and your community partners? What are their needs and interests?',
+      'Who are your academic partners and your community partners? What are their needs and interests?',
     storeBinding: projectPlanRefs.stakeholderAnalysis,
   },
   {
@@ -58,6 +60,7 @@ const sections: Ref<DevelopmentSection[]> = ref([
       'How will you test your method?',
     ],
     storeBinding: projectPlanRefs.approach,
+    sectionText: 'What are your initial plans?',
   },
   {
     id: 5,
@@ -116,7 +119,8 @@ const sections: Ref<DevelopmentSection[]> = ref([
       'Equipment and Consumables for data collection',
       'Outsourcing, e.g. transcription services to prepare data for analysis',
     ],
-    sectionText: 'Considering the above what needs to be costed into a funding proposal?',
+    sectionText:
+      'Considering the above what needs to be costed into a funding proposal? As with any research proposal there a various costs that need to be considered. See the prompts for some costs that might be involved in participatory research.',
     storeBinding: projectPlanRefs.costings,
   },
 ])
@@ -144,7 +148,11 @@ watch(activePanel, (newVal) => {
       </AccordionHeader>
       <AccordionContent>
         <div class="grid grid-cols-2 space-x-8">
-          <div :class="activePrompts && activePrompts.length ? 'col-span-1' : 'col-span-2'">
+          <div
+            :class="
+              activePrompts && activePrompts.length ? 'col-span-2 md:col-span-1' : 'col-span-2'
+            "
+          >
             <p v-if="section.sectionText" v-html="section.sectionText"></p>
             <Textarea
               class="w-full"
@@ -153,7 +161,7 @@ watch(activePanel, (newVal) => {
               v-model="section.storeBinding"
             ></Textarea>
           </div>
-          <ul v-if="activePrompts && activePrompts.length">
+          <ul v-if="activePrompts && activePrompts.length" class="col-span-2 md:col-span-1">
             <li v-for="prompt in activePrompts" :key="prompt">
               <Checkbox
                 v-model="selectedPrompts"

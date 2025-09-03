@@ -51,7 +51,6 @@ const phase = 1
               </Button>
             </div>
           </div>
-          <div class="col-span-1"></div>
         </div>
       </ToolkitSection>
 

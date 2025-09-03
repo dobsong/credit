@@ -19,6 +19,8 @@ const props = defineProps<{
 const bouncing = ref(true)
 const settling = ref(false)
 
+const inBibliography = ref(bibliography.items.some((x) => x.citation === props.citation))
+
 onMounted(() => {
   setTimeout(() => {
     bouncing.value = false
@@ -39,28 +41,36 @@ const stopBounce = () => {
 }
 
 const addToBibliography = () => {
-  // Add the current reference to the bibliography
-  bibliography.add({
-    title: props.title || '',
-    authors: props.authors || '',
-    citation: props.citation,
-    url: props.url,
-    year: props.year || 0,
-  })
+  if (!inBibliography.value) {
+    // Add the current reference to the bibliography
+    bibliography.add({
+      title: props.title || '',
+      authors: props.authors || '',
+      citation: props.citation,
+      url: props.url,
+      year: props.year || 0,
+    })
 
-  // Show a toast message to confirm addition
-  toast.add({
-    severity: 'success',
-    summary: 'Reference Added',
-    detail: 'The reference has been added to your bibliography.',
-    life: 3000,
-  })
+    // Show a toast message to confirm addition
+    toast.add({
+      severity: 'success',
+      summary: 'Reference Added',
+      detail: 'The reference has been added to your bibliography. Access it from the topbar.',
+      life: 3000,
+    })
+
+    inBibliography.value = true
+  }
 }
 </script>
 <template>
   <span>
     <a class="italic" :href="url" target="_blank">{{ shortDescription || title }}</a>
-    <button title="Add to your bibliography to review later" @click="addToBibliography()">
+    <button
+      title="Add to your bibliography to review later"
+      @click="addToBibliography()"
+      v-if="!inBibliography"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

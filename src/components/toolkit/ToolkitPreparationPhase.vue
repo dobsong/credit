@@ -56,7 +56,6 @@ const phase = 2
               </Button>
             </div>
           </div>
-          <div class="col-span-1"></div>
         </div>
       </ToolkitSection>
 
@@ -66,9 +65,14 @@ const phase = 2
         </div>
         <p class="md:mb-4 text-base md:text-xl lg:mx-24">
           Below are a range of different roles that your project might need. Click on each one to
-          learn about suggested responsibilities. Then download and complete the Team Roles Table.
+          learn about suggested responsibilities.
         </p>
         <TeamRolesTask></TeamRolesTask>
+        <p class="md:mb-4 text-base md:text-xl lg:mx-24 pt-4">
+          There are many roles required to deliver participatory projects. Can you allocate roles to
+          existing members of your research team, or do you need to seek internal/external
+          collaborators?
+        </p>
         <p class="md:mb-4 text-base md:text-xl lg:mx-24">
           A Team Roles table can be downloaded
           <RouterLink to="/resources">the Resource section</RouterLink> to assist you in assembling
@@ -78,7 +82,7 @@ const phase = 2
 
       <ToolkitSection section-id="intro" css-class="" :slide-in-direction="1">
         <div class="grid grid-cols-1">
-          <h1 class="font-black text-xl">Trainings & further resources</h1>
+          <h1 class="font-black text-xl pb-4 mx-auto">Further Resources</h1>
           <ul class="md:mb-4 text-base md:text-xl">
             <li>
               <ToolkitReference

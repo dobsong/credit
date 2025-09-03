@@ -11,6 +11,10 @@ const bibliography = useBibliographyStore()
       Here you can store a personalised set of references for later reading. You'll find links
       throughout the toolkit next to relevant material.
     </h2>
+    <p>
+      Note that no data is saved in this beta version. Refreshing or navigating away from CREDIT
+      will lose this data.
+    </p>
     <ul v-if="bibliography.items.length > 0" class="space-y-2">
       <li v-for="ref in bibliography.items" :key="ref.citation" class="border-b pb-2">
         <a :href="ref.url" target="_blank" class="font-semibold hover:underline">
