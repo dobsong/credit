@@ -2,15 +2,21 @@
 import { caseStudySummaries } from '@/data/case-study-summaries'
 import { onMounted, onUnmounted, ref } from 'vue'
 
-let currentIndex = 0
+const props = defineProps<{
+  caseStudyIndex?: number
+}>()
+
+let currentIndex = props.caseStudyIndex ?? 0
 const currentCaseStudy = ref(caseStudySummaries[currentIndex])
 let interval: number | undefined
 
 onMounted(() => {
-  interval = window.setInterval(() => {
-    currentIndex = (currentIndex + 1) % caseStudySummaries.length
-    currentCaseStudy.value = caseStudySummaries[currentIndex]
-  }, 5000)
+  if (props.caseStudyIndex === undefined) {
+    interval = window.setInterval(() => {
+      currentIndex = (currentIndex + 1) % caseStudySummaries.length
+      currentCaseStudy.value = caseStudySummaries[currentIndex]
+    }, 5000)
+  }
 })
 
 onUnmounted(() => {

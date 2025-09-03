@@ -19,8 +19,8 @@ const phase = 1
     <div class="w-full flex flex-wrap">
       <ToolkitPhaseNavigation :phase="phase" class="px-4"></ToolkitPhaseNavigation>
 
-      <ToolkitSection section-id="intro" css-class="" :slide-in-direction="1">
-        <div class="grid grid-cols-1 lg:h-[80svh]">
+      <ToolkitSection section-id="intro" :slide-in-direction="1">
+        <div class="grid grid-cols-1 lg:min-h-[65svh]">
           <div class="lg:mt-auto">
             <ToolkitHeading text="Consideration Phase" class="mx-auto"></ToolkitHeading>
           </div>
@@ -59,7 +59,7 @@ const phase = 1
         css-class="md:w-9/10 lg:w-5/6"
         :slide-in-direction="-1"
       >
-        <div class="flex flex-col-reverse md:flex-row items-center gap-0 lg:gap-8 lg:h-[95svh]">
+        <div class="flex flex-col-reverse md:flex-row items-center gap-0 lg:gap-8 lg:min-h-[95svh]">
           <div class="w-full md:w-1/3 text-center">
             <img
               src="@/assets/decision.jpg"
@@ -89,7 +89,7 @@ const phase = 1
         </div>
       </ToolkitSection>
 
-      <ToolkitSection section-id="ethics" :slide-in-direction="1" css-class="lg:h-[60svh] lg:w-4/5">
+      <ToolkitSection section-id="ethics" :slide-in-direction="1" css-class="lg:w-4/5">
         <div class="grid grid-cols-1">
           <div>
             <ToolkitHeading text="Ethics"></ToolkitHeading>

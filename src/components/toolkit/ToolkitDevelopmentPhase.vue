@@ -22,7 +22,7 @@ const phase = 3
       <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
 
       <ToolkitSection section-id="intro" css-class="" :slide-in-direction="1">
-        <div class="flex flex-wrap lg:min-h-[80svh]">
+        <div class="flex flex-wrap lg:min-h-[65svh] lg:mb-[11svh]">
           <div class="lg:mt-auto w-full">
             <ToolkitHeading text="Development Phase" class="mx-auto"></ToolkitHeading>
           </div>
@@ -55,7 +55,11 @@ const phase = 3
               >
                 Next: Planning
               </Button>
-              <Button @click="scrollToSection('further-guidance')" outlined>
+              <Button
+                @click="scrollToSection('further-guidance')"
+                outlined
+                class="text-sm md:text-base mr-1 md:mr-4"
+              >
                 Further Guidance...
               </Button>
             </div>
@@ -75,7 +79,7 @@ const phase = 3
 
       <ToolkitSection section-id="further-guidance" :slide-in-direction="-1">
         <ToolkitHeading text="Further Guidance"></ToolkitHeading>
-        <h3 class="font-bold text-2xl pb-4">Funding</h3>
+        <h3 class="font-bold text-xl md:text-2xl pb-4 pt-4">Funding</h3>
         <ul class="list-disc pl-6 mb-4">
           <li>
             <ToolkitReference
@@ -88,7 +92,7 @@ const phase = 3
             ></ToolkitReference>
           </li>
         </ul>
-        <h3 class="font-bold text-2xl pb-4">Guides & Toolkits</h3>
+        <h3 class="font-bold text-xl md:text-2xl pb-4">Guides & Toolkits</h3>
         <ul class="list-disc pl-6">
           <li>
             <ToolkitReference

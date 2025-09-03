@@ -22,7 +22,7 @@ const phase = 2
       <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
 
       <ToolkitSection section-id="intro" css-class="" :slide-in-direction="1">
-        <div class="grid grid-cols-1 lg:h-[80svh]">
+        <div class="grid grid-cols-1 lg:min-h-[65svh] lg:mb-[11svh]">
           <div class="lg:mt-auto">
             <ToolkitHeading text="Preparation Phase" class="mx-auto"></ToolkitHeading>
           </div>
@@ -59,7 +59,7 @@ const phase = 2
         </div>
       </ToolkitSection>
 
-      <ToolkitSection section-id="team-roles" :slide-in-direction="-1">
+      <ToolkitSection section-id="team-roles" :slide-in-direction="-1" css-class="lg:min-h-[95svh]">
         <div>
           <ToolkitHeading text="Team Roles" class="mx-auto"></ToolkitHeading>
         </div>

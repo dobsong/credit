@@ -17,7 +17,7 @@ function scrollToSection(id: string) {
 <template>
   <div class="container mx-auto px-4 flex flex-col">
     <ToolkitPhaseNavigation :phase="phase" />
-    <ToolkitHeading text="Analysis, Reporting & Evaluation Phase" class="w-full" />
+    <ToolkitHeading text="Analysis, Reporting & Evaluation" class="w-full" />
     <p class="text-base md:text-xl">
       Participants may play a role in collecting or analysing data for the project. Their views are
       also important for evaluating the project.
