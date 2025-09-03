@@ -78,8 +78,15 @@ const phases = [
         <span
           v-if="phase !== phaseItem.number"
           class="font-medium font-sans hidden md:inline-block"
-          >{{ phaseItem.name }}</span
         >
+          {{ phaseItem.name }}
+        </span>
+        <span
+          v-if="phase !== phaseItem.number"
+          class="font-medium font-sans inline-block md:hidden"
+        >
+          {{ phaseItem.number }}
+        </span>
         <span v-if="phase === phaseItem.number" class="pi pi-sort-up-fill"></span>
       </div>
       <span class="max-sm:hidden" v-if="phaseItem.number < phases.length">

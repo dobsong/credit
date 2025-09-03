@@ -42,9 +42,9 @@ function scrollToSection(id: string) {
             </div>
             <div class="text-center md:mt-8 mb-4 text-sm lg:text-lg">
               <RouterLink v-slot="{ navigate }" to="/proposal/phase/01" class="mr-1 md:mr-4">
-                <Button @click="navigate"
-                  >Develop a Proposal <span class="pi pi-arrow-right"></span
-                ></Button>
+                <Button @click="navigate">
+                  Develop a Proposal <span class="pi pi-arrow-right"> </span>
+                </Button>
               </RouterLink>
               <Button @click="scrollToSection('more')" outlined> Tell me More... </Button>
             </div>
