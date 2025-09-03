@@ -67,7 +67,7 @@ const roleDescriptions: Record<string, string> = {
     </div>
     <!-- Center icon -->
     <div class="hidden md:block mx-auto my-auto">
-      <img src="@/assets/users.svg" alt="Users" class="w-20 h-20 mx-8" />
+      <img src="@/assets/team.svg" alt="Group of characters" class="md:w-24 lg:w-64 mx-6" />
     </div>
     <!-- Right side boxes -->
     <div class="flex flex-col gap-3 flex-1 px-1">

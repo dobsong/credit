@@ -17,7 +17,7 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
     <h3 class="font-bold">Beta Version</h3>
     <p>
       We'd value any feedback you have to provide on this beta version. You can do so using our
-      <a href="https://forms.office.com/e/xrv5N2XtvA" target="blank">feedback form</a>. In this
+      <a href="https://forms.office.com/e/xrv5N2XtvA" target="_blank">feedback form</a>. In this
       early version of the toolkit we have not yet added the ability to login and save your project
       plan. Please be aware that refreshing your browser or navigating away will lose any unsaved
       data. We are working on this functionality for the full release. You can however export your
