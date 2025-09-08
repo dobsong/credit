@@ -19,7 +19,7 @@ const phase = 0
 <template>
   <div class="w-full container mx-auto px-2 grid grid-cols-2 gap-4">
     <ToolkitPhaseNavigation :phase="phase" class="col-span-2"></ToolkitPhaseNavigation>
-    <ToolkitHeading text="Introduction" class="pt-4 col-span-2"></ToolkitHeading>
+    <ToolkitHeading text="Introduction" class="md:pt-4 col-span-2"></ToolkitHeading>
     <p class="col-span-2 text-base md:text-xl">
       This introductory task encourages you to experience participatory research from the
       perspective of the participant. Insight from existing projects can be used to inform the

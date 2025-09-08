@@ -22,7 +22,7 @@ const phase = 6
       <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
 
       <ToolkitSection section-id="intro" :slide-in-direction="1">
-        <div class="grid grid-cols-1 lg:min-h-[65svh]">
+        <div class="grid grid-cols-1 lg:min-h-[65svh] lg:mb-[11svh]">
           <div class="lg:mt-auto">
             <ToolkitHeading text="Legacy & Impact Phase" class="mx-auto"></ToolkitHeading>
           </div>
@@ -59,7 +59,7 @@ const phase = 6
       </ToolkitSection>
 
       <ToolkitSection section-id="case-studies" :slide-in-direction="-1">
-        <div class="flex lg:min-h-[50svh]">
+        <div class="flex lg:min-h-[95svh]">
           <div class="lg:w-4/5 mx-auto">
             <ToolkitHeading text="Case Studies" class="w-full"></ToolkitHeading>
             <p class="md:mb-4 text-base md:text-xl my-auto w-full">

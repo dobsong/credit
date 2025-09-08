@@ -92,8 +92,8 @@ const phase = 4
             <ToolkitHeading text="Case Studies" class="w-full"></ToolkitHeading>
 
             <p class="md:mb-4 text-base md:text-xl lg:mx-24 my-auto w-full">
-              Consider the challenges of going live, and developing an engagement strategy, in light
-              of the case studies, such as The Big Windermere Survey.
+              Consider the challenges of going live, and developing an engagement strategy in light
+              of the case studies - such as The Big Windermere Survey.
             </p>
             <div class="md:px-4 my-auto md:w-1/2 lg:w-1/3 mx-auto">
               <CaseStudyLink :case-study-index="4"></CaseStudyLink>

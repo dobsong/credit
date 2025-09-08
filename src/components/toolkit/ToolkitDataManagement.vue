@@ -116,7 +116,7 @@ const phase = 7
       </ToolkitSection>
 
       <ToolkitSection section-id="considerations" :slide-in-direction="-1">
-        <div class="grid grid-cols-2 gap-0 lg:gap-8 text-lg md:text-xl mx-auto lg:min-h-[50svh]">
+        <div class="grid grid-cols-2 gap-0 lg:gap-8 text-lg md:text-xl mx-auto lg:min-h-[95svh]">
           <ToolkitHeading
             text="Key Considerations"
             class="col-span-2 md:col-span-1 my-auto"
