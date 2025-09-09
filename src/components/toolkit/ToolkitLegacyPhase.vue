@@ -17,7 +17,7 @@ const phase = 6
 </script>
 
 <template>
-  <div class="container mx-auto p-2 flex">
+  <div class="container mx-auto px-2 flex">
     <div class="w-full flex flex-wrap">
       <ToolkitPhaseNavigation :phase="phase"></ToolkitPhaseNavigation>
 
