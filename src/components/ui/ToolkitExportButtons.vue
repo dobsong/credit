@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import imgFooter from '@/assets/credit-footer.png'
 import imgCreditLogo from '@/assets/credit-logo.png'
+import imgLuLogo from '@/assets/lu-logo.jpg'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import Button from '@/volt/Button.vue'
 import { jsPDF } from 'jspdf'
@@ -15,7 +17,7 @@ const generateCompletePlanPDF = (filename: string) => {
   doc
     .html(
       `<div style="margin-left: 20px; margin-right:20px; margin-bottom: 20px; font-family: helvetica">
-      <div><img src='${imgCreditLogo}' width='95' height='36'></img></div>
+      <div><img src='${imgLuLogo}' width='95' height='36' style='float:right;'></img><img src='${imgCreditLogo}' width='95' height='36'></img></div>
        <h1 style="font-weight: bold; margin-block-end: 1.2em; font-size: 2em; text-align:center; font-size: 20px;">Overall Plan</h1>
        <p><b>Project Title: </b> ${projectPlan.title}</p>
        <h2 style="font-weight: bold; margin-block-end: 0.83em; font-size: 14px;">Project Vision:</h2>
@@ -34,7 +36,10 @@ const generateCompletePlanPDF = (filename: string) => {
         <p>${projectPlan.platform.replace(/\n/g, '<br/>')}</p>
         <h2 style="font-weight: bold; margin-block-end: 0.83em; font-size: 14px;">Costings:</h2>
         <p>${projectPlan.costings.replace(/\n/g, '<br/>')}</p>
-        </div
+        <br/></br/>
+        <img src='${imgFooter}' width='595' height='200'></img>
+         <p style="font-size:12px; color: darkgray;">This plan was exported from the CREDIT resource, created by the Reimagining Research Practices Project, Lancaster University 2024-2026.</p>
+        </div>
        `,
       {
         x: 0,
