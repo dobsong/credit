@@ -141,26 +141,27 @@ const phase = 0
         </ul></template
       >
     </Card>
-    <Card class="col-span-2">
-      <template #title>
-        <h1 class="font-black text-xl">Participatory research is a broad field</h1>
-      </template>
-      <template #content>
-        <p>
-          Match the activity focus to the definition to explore some approaches defined by
-          <ToolkitReference
-            shortDescription="Wiggins and Crowston (2015)"
-            title="From conservation to crowdsourcing: A typology of citizen science"
-            authors="Wiggins, A., & Crowston, K."
-            citation="Wiggins, A., & Crowston, K. (2015). From conservation to crowdsourcing: A typology of citizen science. In Proceedings of the 44th Hawaii international conference on system sciences (pp. 1-10)."
-            url="https://citsci.syr.edu/sites/crowston.syr.edu/files/hicss-44.pdf"
-            :year="2015"
-          ></ToolkitReference>
-          in their typology study of citizen science.
-        </p>
-        <MatchingTask :items="typologyDefinitions"></MatchingTask>
-      </template>
-    </Card>
+    <div class="col-span-2">
+      <h1 class="font-black text-xl"></h1>
+      <h1
+        class="font-[MuseoSans] uppercase text-xl font-extrabold mb-4 md:mb-6 md:text-3xl lg:text-5xl align-middle pt-4"
+      >
+        Participatory research is a broad field
+      </h1>
+      <p>
+        Match the activity focus to the definition to explore some approaches defined by
+        <ToolkitReference
+          shortDescription="Wiggins and Crowston (2015)"
+          title="From conservation to crowdsourcing: A typology of citizen science"
+          authors="Wiggins, A., & Crowston, K."
+          citation="Wiggins, A., & Crowston, K. (2015). From conservation to crowdsourcing: A typology of citizen science. In Proceedings of the 44th Hawaii international conference on system sciences (pp. 1-10)."
+          url="https://citsci.syr.edu/sites/crowston.syr.edu/files/hicss-44.pdf"
+          :year="2015"
+        ></ToolkitReference>
+        in their typology study of citizen science.
+      </p>
+      <MatchingTask :items="typologyDefinitions"></MatchingTask>
+    </div>
     <Card class="col-span-2 md:col-span-1">
       <template #title><h1 class="font-black text-xl">Practitioner communities</h1></template>
       <template #content>

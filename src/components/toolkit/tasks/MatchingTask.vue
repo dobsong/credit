@@ -148,9 +148,39 @@ const onSelect = (event: { value: string }, definition: string) => {
 </script>
 
 <template>
-  <div class="pt-4 flex flex-wrap">
+  <div class="pt-4 grid grid-cols-2 gap-2">
+    <div class="col-span-2 md:col-span-1">
+      <h3 class="mb-2 font-bold hidden md:block">
+        Match these definitions to the corresponding terms by dragging them to the correct place or
+        selecting the correct option
+      </h3>
+      <h3 class="mb-2 font-bold md:hidden">
+        Match these definitions to the corresponding terms by selecting the correct option
+      </h3>
+      <ul>
+        <li v-for="defn in definitions" :key="defn">
+          <Chip
+            class="my-1 cursor-move term translate-x-0 w-full"
+            draggable="true"
+            @dragstart="startDrag($event, defn)"
+          >
+            <div class="flex flex-1 items-start">
+              <span class="flex-1">{{ defn }}</span>
+              <Select
+                :options="unassignedTerms.sort((a, b) => a.localeCompare(b))"
+                placeholder="Match..."
+                checkmark
+                :highlightOnSelect="true"
+                class="ml-1"
+                @change="onSelect($event, defn)"
+              />
+            </div>
+          </Chip>
+        </li>
+      </ul>
+    </div>
     <table
-      class="w-full sm:w-1/2 table-fixed text-left border-collapse mb-4 border-1 border-solid border-gray-300"
+      class="col-span-2 md:col-span-1 table-fixed text-left border-collapse mb-4 border-1 border-solid border-gray-300"
     >
       <thead>
         <tr>
@@ -193,37 +223,13 @@ const onSelect = (event: { value: string }, definition: string) => {
                 ></TimesIcon>
               </Transition>
             </template>
-            <template v-else><div class="text-center">Drag a definition here...</div></template>
+            <template v-else><div class="text-center">Select matching definition...</div></template>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="w-full sm:w-3/7 ml-2">
-      <h3 class="mb-2 font-bold">
-        Match these definitions to the corresponding terms by dragging them to the correct place or
-        selecting the correct option
-      </h3>
-      <ul>
-        <li v-for="defn in definitions" :key="defn">
-          <Chip
-            class="m-1 cursor-move term translate-x-0 w-full"
-            draggable="true"
-            @dragstart="startDrag($event, defn)"
-          >
-            <div class="flex flex-1 items-start">
-              <span class="flex-1">{{ defn }}</span>
-              <Select
-                :options="unassignedTerms.sort((a, b) => a.localeCompare(b))"
-                placeholder="Match..."
-                checkmark
-                :highlightOnSelect="true"
-                class="max-w-32 ml-2"
-                @change="onSelect($event, defn)"
-              /></div
-          ></Chip>
-        </li>
-      </ul>
-    </div>
+  </div>
+  <div class="text-center">
     <Button label="Check Your Answers" class="mt-4 mr-4" @click="checkAnswers()"></Button>
     <Button label="Reset" class="mt-4" @click="initialiseAnswers()"></Button>
   </div>
