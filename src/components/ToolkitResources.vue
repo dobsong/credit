@@ -16,7 +16,7 @@ const baseUrl = import.meta.env.BASE_URL
       <li>
         Project Considerations Checklist -
         <a
-          :href="baseUrl + 'public/resources/CREDIT_checklist.docx'"
+          :href="baseUrl + 'resources/CREDIT_checklist.docx'"
           download="CREDIT_checklist.docx"
           target="_blank"
         >
@@ -24,7 +24,7 @@ const baseUrl = import.meta.env.BASE_URL
         </a>
         |
         <a
-          :href="baseUrl + 'public/resources/CREDIT_checklist.pdf'"
+          :href="baseUrl + 'resources/CREDIT_checklist.pdf'"
           download="CREDIT_checklist.pdf"
           target="_blank"
         >
@@ -34,7 +34,7 @@ const baseUrl = import.meta.env.BASE_URL
       <li>
         Overall Plan -
         <a
-          :href="baseUrl + 'public/resources/CREDIT_overallplan.docx'"
+          :href="baseUrl + 'resources/CREDIT_overallplan.docx'"
           download="CREDIT_overallplan.docx"
           target="_blank"
         >
@@ -42,7 +42,7 @@ const baseUrl = import.meta.env.BASE_URL
         </a>
         |
         <a
-          :href="baseUrl + 'public/resources/CREDIT_overallplan.pdf'"
+          :href="baseUrl + 'resources/CREDIT_overallplan.pdf'"
           download="CREDIT_overallplan.pdf"
           target="_blank"
         >
@@ -52,7 +52,7 @@ const baseUrl = import.meta.env.BASE_URL
       <li>
         Project Team Plan -
         <a
-          :href="baseUrl + 'public/resources/CREDIT_projectteamplan.docx'"
+          :href="baseUrl + 'resources/CREDIT_projectteamplan.docx'"
           download="CREDIT_projectteamplan.docx"
           target="_blank"
         >
@@ -60,7 +60,7 @@ const baseUrl = import.meta.env.BASE_URL
         </a>
         |
         <a
-          :href="baseUrl + 'public/resources/CREDIT_projectteamplan.pdf'"
+          :href="baseUrl + 'resources/CREDIT_projectteamplan.pdf'"
           download="CREDIT_projectteamplan.pdf"
           target="_blank"
         >
@@ -70,7 +70,7 @@ const baseUrl = import.meta.env.BASE_URL
       <li>
         Data Management Plan -
         <a
-          :href="baseUrl + 'public/resources/CREDIT_datamanagementplan.docx'"
+          :href="baseUrl + 'resources/CREDIT_datamanagementplan.docx'"
           download="CREDIT_datamanagementplan.docx"
           target="_blank"
         >
@@ -78,7 +78,7 @@ const baseUrl = import.meta.env.BASE_URL
         </a>
         |
         <a
-          :href="baseUrl + 'public/resources/CREDIT_datamanagementplan.pdf'"
+          :href="baseUrl + 'resources/CREDIT_datamanagementplan.pdf'"
           download="CREDIT_datamanagementplan.pdf"
           target="_blank"
         >
