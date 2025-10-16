@@ -95,9 +95,16 @@ const phase = 2
             <li>
               <ToolkitReference
                 citation="https://eu-citizen.science/"
-                authors="European Citizen Science Platform "
-                title="European Citizen Science Platform "
+                authors="European Citizen Science Platform"
+                title="European Citizen Science Platform"
                 url="https://eu-citizen.science/"
+              ></ToolkitReference>
+            </li>
+            <li>
+              <ToolkitReference
+                citation="Working Well Together resource, How do you want to work well together? Bristol University, 2025."
+                title="Working Well Together resource, How do you want to work well together? Bristol University, 2025."
+                url="https://workingwelltogether.co.uk/"
               ></ToolkitReference>
             </li>
           </ul>

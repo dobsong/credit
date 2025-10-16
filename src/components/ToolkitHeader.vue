@@ -45,7 +45,7 @@ const toggle = (event: MouseEvent) => {
 
 <template>
   <section id="header">
-    <header class="pt-2 pb-4 md:pt-3 md:pb-6 lg:pt-4 lg:pb-8 bg-[var(--color-base-highlight)]">
+    <header class="pt-2 pb-4 md:pt-3 md:pb-6 lg:pt-4 lg:pb-8 bg-cyan-900">
       <div class="flex container mx-auto pl-4">
         <RouterLink to="/">
           <img

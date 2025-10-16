@@ -143,8 +143,15 @@ const phase = 3
             <ToolkitReference
               :year="2024"
               title="Communities & Crowds: a toolkit for hybrid volunteering with cultural heritage collections"
-              citation="G. Belknap et al., Communities & Crowds: a toolkit for hybrid volunteering with cultural heritage collections, Science Museum Group Journal, 2024, https://dx.doi.org/10.15180/242209 "
+              citation="G. Belknap et al., Communities & Crowds: a toolkit for hybrid volunteering with cultural heritage collections, Science Museum Group Journal, 2024, https://dx.doi.org/10.15180/242209"
               url="https://dx.doi.org/10.15180/242209"
+            ></ToolkitReference>
+          </li>
+          <li>
+            <ToolkitReference
+              title="National Centre for Research Methods (NCRM) (quantitative, qualitative, digital, creative, visual, mixed and multimodal methods)"
+              citation="National Centre for Research Methods (NCRM) (quantitative, qualitative, digital, creative, visual, mixed and multimodal methods)"
+              url="https://www.ncrm.ac.uk/"
             ></ToolkitReference>
           </li>
         </ul>

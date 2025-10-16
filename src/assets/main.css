@@ -10,6 +10,8 @@
   }
   p {
     @apply pb-4;
+    word-spacing: 0.25rem;
+    line-height: 1.75em !important;
   }
 }
 

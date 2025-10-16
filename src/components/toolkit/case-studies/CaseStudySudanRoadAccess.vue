@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ToolkitHeading from '@/components/ui/ToolkitHeading.vue'
 import ToolkitSection from '@/components/ui/ToolkitSection.vue'
 import { scrollToSection } from '@/utility'
 import Button from '@/volt/Button.vue'
@@ -11,14 +12,7 @@ import Button from '@/volt/Button.vue'
     <ToolkitSection section-id="background" css-class="" :slide-in-direction="1">
       <div class="grid grid-cols-3 h-full pt-4">
         <div class="col-span-3 md:col-span-2 my-auto">
-          <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">S</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">udan </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">R</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">oad </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">A</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">ccess</span>
-          </h2>
+          <ToolkitHeading text="Sudan Road Access"></ToolkitHeading>
           <p class="md:mb-4 text-base md:text-xl lg:mx-24">
             In Sudan, numerous wadis (dry riverbeds) cross over roads, and during the rainy season,
             these fill up and flood the road. This makes it very difficult for aid vehicles to pass
@@ -75,12 +69,7 @@ import Button from '@/volt/Button.vue'
           />
         </div>
         <div class="my-auto md:w-2/3 md:p-8 text-lg md:text-xl">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center text-slate-800 dark:text-slate-200"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">A</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">pproach</span>
-          </h2>
+          <ToolkitHeading text="Approach"></ToolkitHeading>
           <p class="pb-2">
             The Sudan Road Access project uses data analysis via the Zooniverse platform to mark the
             location of where wadis cross roads, and other pertinent information. The project
@@ -105,14 +94,7 @@ import Button from '@/volt/Button.vue'
         class="lg:w-2/3 grid grid-cols-1 h-full pt-4 text-lg md:text-xl mx-auto my-auto lg:pb-32"
       >
         <div class="col-span-2 text-center md:pb-8 mt-auto">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold lg:mb-6 text-center dark:text-[var(--color-analysis)]"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">O</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">utcomes & </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">I</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">mpact</span>
-          </h2>
+          <ToolkitHeading text="Outcomes & Impact"></ToolkitHeading>
         </div>
         <div class="col-span-2 md:col-span-1 mx-4">
           <ul class="list-disc pl-4">

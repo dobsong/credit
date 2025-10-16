@@ -119,7 +119,12 @@ const phase = 6
         <ul class="list-disc pl-6 mb-4 md:mb-8 md:text-xl lg:mx-24">
           <li>Libraries (public and research)</li>
           <li>Museums and attractions (free and pay for entry)</li>
-          <li>Education platforms (e.g., STEM Learning, Teaching resources - Tes)</li>
+          <li>
+            Education platforms (e.g.,
+            <a href="https://www.tes.com/teaching-resources" target="_blank"
+              >STEM Learning, Teaching resources - Tes</a
+            >)
+          </li>
         </ul>
 
         <div class="text-center my-4 text-4xl">

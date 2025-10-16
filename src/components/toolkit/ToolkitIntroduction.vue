@@ -144,9 +144,9 @@ const phase = 0
     <div class="col-span-2">
       <h1 class="font-black text-xl"></h1>
       <h1
-        class="font-[MuseoSans] uppercase text-xl font-extrabold mb-4 md:mb-6 md:text-3xl lg:text-5xl align-middle pt-4"
+        class="font-[MuseoSans] text-xl font-extrabold mb-4 md:mb-6 md:text-3xl lg:text-5xl align-middle pt-4"
       >
-        Participatory research is a broad field
+        Participatory Research is a Broad Field
       </h1>
       <p>
         Match the activity focus to the definition to explore some approaches defined by
@@ -189,8 +189,13 @@ const phase = 0
             >
           </li>
           <li>
-            Lancaster network for members of Lancaster University- Teams group Grp-Public &
-            Community Engagement Network
+            <a
+              href="https://teams.microsoft.com/l/team/19%3AjVuK9kngFIubvTZeWJ9OGoJfG4pYRDp2nLMx7DTJgP81%40thread.tacv2/conversations?groupId=77dfe3eb-bad9-41e7-9477-a8c6f3d6d04c&tenantId=9c9bcd11-977a-4e9c-a9a0-bc734090164a"
+              target="_blank"
+            >
+              Lancaster network for members of Lancaster University- Teams group Grp-Public &
+              Community Engagement Network
+            </a>
           </li>
         </ul>
       </template>

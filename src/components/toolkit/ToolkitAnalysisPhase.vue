@@ -117,7 +117,7 @@ function scrollToSection(id: string) {
             publication, made available via a website, or stored in a repository. There are open
             access and ethical considerations around data collected from participatory methods.
           </p>
-          <ul class="list-disc pl-6 mb-8">
+          <ul class="list-disc pl-6 mb-8 text-lg md:text-xl">
             <li>
               <ToolkitReference
                 authors="Özgün Ünver and Julie Jordens"
@@ -168,13 +168,100 @@ function scrollToSection(id: string) {
             <li>Review the subsequent actions taken by stakeholders.</li>
           </ul>
           <p>
-            Further training on Evaluation can be found in the
+            For researchers at Lancaster University, further training on Evaluation can be found in
+            the
             <a
               href="https://www.lancaster.ac.uk/research/research-services/research-integrity-ethics--governance/research-integrity-ethical-research-and-research-impact-training/"
               target="_blank"
               >Research Impact training</a
             >
           </p>
+          <h3 class="font-bold mb-2">Resources for Evaluation methods</h3>
+          <ul class="list-disc pl-6 mb-8">
+            <li>
+              <ToolkitReference
+                title="The Little Book of Creative Evaluation, Imagination Lancaster"
+                authors="Elisavet Christou, Violet Owen & Pınar Ceyhan"
+                citation="Elisavet Christou, Violet Owen & Pınar Ceyhan, “The Little Book of Creative Evaluation”, Imagination Lancaster, Lancaster University"
+                url="https://creativeevaluation.uk/home"
+              ></ToolkitReference>
+            </li>
+            <li>
+              <ToolkitReference
+                title="Hosting your Café Culture discussion, Wellcome"
+                citation="Café Culture toolkit, Wellcome, Hosting your Café Culture discussion | Research Culture | Wellcome"
+                url="https://wellcome.org/what-we-do/our-work/research-culture/hosting-your-cafe-culture-discussion"
+              ></ToolkitReference>
+            </li>
+          </ul>
+          <h3 class="font-bold mb-2">Resources for measuring outcomes, impact and evaluating</h3>
+          <ul class="list-disc pl-6 mb-8">
+            <li>
+              <ToolkitReference
+                title="MICS: Measuring the impact of citizen science, The MICS project"
+                citation="“MICS: Measuring the impact of citizen science”, The MICS project"
+                url="https://mics.tools/"
+              ></ToolkitReference>
+            </li>
+            <li>
+              <ToolkitReference
+                title="Tools for Measuring Outcomes and Evaluating Citizen Science, Cornell University"
+                citation="“Tools for Measuring Outcomes and Evaluating Citizen Science”, Cornell University, Measuring Outcomes : Citizen Science"
+                url="https://www.birds.cornell.edu/citizenscience/measuring-outcomes/"
+              ></ToolkitReference>
+            </li>
+          </ul>
+          <h3 class="font-bold mb-2">Further Resources</h3>
+          <ul class="list-disc pl-6 mb-8">
+            <li>
+              <ToolkitReference
+                title="Citizen Science/Participatory Science, Evaluating participatory science data, LibGuides at University of Illinois at Urbana-Champaign"
+                citation="Citizen Science/Participatory Science, Evaluating participatory science data, University of Illinois Urbana-Champaign, Evaluating Citizen Science - Citizen Science/Participatory Science - LibGuides at University of Illinois at Urbana-Champaign"
+                url="https://guides.library.illinois.edu/citizen-science/evaluation"
+              ></ToolkitReference>
+            </li>
+            <li>
+              <ToolkitReference
+                title="Evaluation and impact assessment of Citizen Science: what’s the value for projects and for research funding policies?"
+                authors="Barbara Kieslingerm"
+                citation="Barbara Kieslingerm, “Evaluation and impact assessment of Citizen Science: what’s the value for projects and for research funding policies?”, Centre for Social Innovation - ZSI."
+                url="https://ecsa.citizen-science.net/wp-content/uploads/2020/03/2017_bki_evaluation_cs.pdf"
+              ></ToolkitReference>
+            </li>
+            <li>
+              <ToolkitReference
+                title="Evaluating a citizen science project, Video, UKEOF"
+                authors="Andrew Sier (UKCEH) and Hilary Geoghegan (University of Reading)"
+                citation="Andrew Sier (UKCEH) and Hilary Geoghegan (University of Reading), “Evaluating a citizen science project”, Video, UKEOF"
+                url="https://ukeof.org.uk/our-work/citizen-science/cswg-outputs/cit-sci-evaluation-video"
+              ></ToolkitReference>
+            </li>
+            <li>
+              <ToolkitReference
+                title="Evaluation in Citizen Science: The Art of Tracing a Moving Target"
+                authors="Schaefer, T., Kieslinger, B., Brandt, M., van den Bogaert, V"
+                :year="2021"
+                citation="Schaefer, T., Kieslinger, B., Brandt, M., van den Bogaert, V. (2021). Evaluation in Citizen Science: The Art of Tracing a Moving Target. In: Vohland, K., et al. The Science of Citizen Science. Springer, Cham. https://doi.org/10.1007/978-3-030-58278-4_25"
+                url="https://link.springer.com/chapter/10.1007/978-3-030-58278-4_25"
+              ></ToolkitReference>
+            </li>
+            <li>
+              <ToolkitReference
+                title="The Challenge of Evaluation: An Open Framework for Evaluating Citizen Science Activities"
+                authors="Barbara Kieslinger, Teresa Schäfer, Florian Heigl, Daniel Dörler, Anett Richter, and Aletta Bonn"
+                :year="2017"
+                citation="Barbara Kieslinger, Teresa Schäfer, Florian Heigl, Daniel Dörler, Anett Richter, and Aletta Bonn. “The Challenge of Evaluation: An Open Framework for Evaluating Citizen Science Activities”, 2017. https://doi.org/10.17605/OSF.IO/ENZC9."
+                url="https://eu-citizen.science/resource/85"
+              ></ToolkitReference>
+            </li>
+            <li>
+              <ToolkitReference
+                title="“Evaluation”, National Co-ordinating Centre for Public Engagement"
+                citation="“Evaluation”, National Co-ordinating Centre for Public Engagement"
+                url="https://www.publicengagement.ac.uk/evaluation"
+              ></ToolkitReference>
+            </li>
+          </ul>
         </div>
         <div class="w-1/3 pb-8">
           <img
@@ -184,6 +271,7 @@ function scrollToSection(id: string) {
           />
         </div>
       </div>
+
       <div class="text-center my-4 text-4xl">
         <Button @click="scrollToSection('header')" class="z-50">
           <span class="pi pi-arrow-up" titl="Return to Top"></span>

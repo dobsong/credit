@@ -70,14 +70,7 @@ import Button from '@/volt/Button.vue'
     <ToolkitSection section-id="funding" :slide-in-direction="-1" css-class="">
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 text-center md:pb-8">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold md:mb-6 text-center dark:text-[var(--color-analysis)]"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">F</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">unding & </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">S</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">upport</span>
-          </h2>
+          <ToolkitHeading text="Funding & Support"></ToolkitHeading>
         </div>
         <div class="my-auto md:w-1/2 lg:p-8">
           <p class="mb-1 md:mb-4 text-base md:text-xl">
@@ -108,12 +101,7 @@ import Button from '@/volt/Button.vue'
           />
         </div>
         <div class="my-auto md:w-2/3 md:p-8 text-lg md:text-xl">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center text-slate-800 dark:text-slate-200"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">A</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">pproach</span>
-          </h2>
+          <ToolkitHeading text="Approach"></ToolkitHeading>
           <p class="`pb-2">
             Ten surveys have been conducted seasonally (Spring, Summer, Autumn and Winter) over two
             and a half years between June 2022 and November 2024. During a two-hour window in each
@@ -149,12 +137,7 @@ import Button from '@/volt/Button.vue'
     <ToolkitSection section-id="challenges" :slide-in-direction="1" css-class="">
       <div class="grid grid-cols-1 md:w-2/3 mx-auto">
         <div>
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold md:mb-6 text-center dark:text-[var(--color-analysis)]"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">C</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">hallenges</span>
-          </h2>
+          <ToolkitHeading text="Challenges"></ToolkitHeading>
         </div>
 
         <ul class="list-disc pl-6 mb-4 text-base md:text-xl">
@@ -182,14 +165,7 @@ import Button from '@/volt/Button.vue'
         class="lg:w-2/3 grid grid-cols-1 h-full pt-4 text-lg md:text-xl mx-auto my-auto lg:pb-32"
       >
         <div class="col-span-2 text-center md:pb-8 mt-auto">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold lg:mb-6 text-center dark:text-[var(--color-analysis)]"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">O</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">utcomes & </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">I</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">mpact</span>
-          </h2>
+          <ToolkitHeading text="Outcomes & Impact"></ToolkitHeading>
         </div>
         <div class="col-span-2 md:col-span-1 mx-4">
           <ul class="list-disc pl-4">

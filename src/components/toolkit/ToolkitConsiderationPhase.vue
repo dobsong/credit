@@ -69,7 +69,7 @@ const phase = 1
           </div>
           <div class="my-auto md:w-2/3 md:p-8 text-lg md:text-xl">
             <ToolkitHeading text="Decision Making"></ToolkitHeading>
-            <h4 class="font-bold text-lg md:text-xl pb-4 text-center">Is is the Right Approach?</h4>
+            <h4 class="font-bold text-lg md:text-xl pb-4 text-center">Is it the Right Approach?</h4>
             <p class="pb-2">
               The “<a
                 href="https://www.ceh.ac.uk/sites/default/files/sepa_choosingandusingcitizenscience_interactive_4web_final_amended-blue1.pdf"
@@ -112,7 +112,8 @@ const phase = 1
                 research ethics webpage</a
               >.
             </p>
-            <h3 class="font-bold text-2xl pb-4">Suggested Reading List</h3>
+
+            <h4 class="font-bold text-lg md:text-xl pb-4 text-center">Suggested Reading List</h4>
             <ul class="list-disc pl-6 mb-1 md:mb-4 text-base md:text-xl">
               <li>
                 <ToolkitReference
@@ -133,10 +134,17 @@ const phase = 1
               </li>
               <li>
                 <ToolkitReference
-                  short-description="Valuing Voices Tool"
+                  short-description="Valuing Voices Tool. A toolkit to support the design and delivery of equitable and responsible research projects"
                   title="Valuing Voices Tool"
                   citation="Valuing Voices Project. University of York, Mahidol University with funding from Wellcome."
                   url="https://valuing-voices.ac.uk/"
+                ></ToolkitReference>
+              </li>
+              <li>
+                <ToolkitReference
+                  title="Ethics in Community-Based Participatory Research - Durham University"
+                  citation="Ethics in Community-Based Participatory Research - Durham University"
+                  url="https://www.durham.ac.uk/research/institutes-and-centres/social-justice-community-action/research-areas/ethics-consultation/"
                 ></ToolkitReference>
               </li>
             </ul>

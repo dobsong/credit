@@ -78,13 +78,13 @@ const phase = 7
             <ToolkitHeading text="Data Management Plan"></ToolkitHeading>
             <p>
               A Data Management Plan encourages consideration before the project starts and for
-              participatory project may link to the project Ethics plan. The
+              participatory project may link to the project Ethics plan. The LU Data Management Plan
+              Template (available
               <a
-                href="https://portal.lancaster.ac.uk/ask/download?document=/media/ask/ask-assets/documents/study/2025LancasterUniversityDataManagementTemplate.docx"
+                href="https://portal.lancaster.ac.uk/ask/study/library/open-research/research-data-management/data-management-plans/"
                 target="_blank"
-                >LU Data Management Plan Template 2025</a
-              >
-              is suitable for use where there are no funder requirements
+                >on the intranet</a
+              >) is suitable for use where there are no funder requirements.
             </p>
             <div class="text-center md:pt-8">
               <Button @click="scrollToSection('case-studies')" class="text-sm md:text-base">
@@ -156,7 +156,7 @@ const phase = 7
           </li>
           <li>
             <ToolkitReference
-              title="DMPonline"
+              title="DMPonline, a tool and community for developing data management plans"
               short-description="DMPonline"
               url="https://dmponline.dcc.ac.uk/"
               :year="2019"

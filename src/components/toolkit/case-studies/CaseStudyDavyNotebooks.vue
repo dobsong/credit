@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ToolkitHeading from '@/components/ui/ToolkitHeading.vue'
 import ToolkitReference from '@/components/ui/ToolkitReference.vue'
 import ToolkitSection from '@/components/ui/ToolkitSection.vue'
 import { scrollToSection } from '@/utility'
@@ -12,12 +13,7 @@ import Button from '@/volt/Button.vue'
     <ToolkitSection section-id="background" css-class="" :slide-in-direction="1">
       <div class="grid grid-cols-3 h-full pt-4">
         <div class="col-span-3 md:col-span-2 my-auto">
-          <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">D</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">avy </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">N</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">otebooks</span>
-          </h2>
+          <ToolkitHeading text="The Davy Notebooks Project"></ToolkitHeading>
           <p class="md:mb-4 text-base md:text-xl lg:mx-24">
             The
             <a href="https://www.rigb.org/about-us/our-history" target="_blank"
@@ -64,14 +60,7 @@ import Button from '@/volt/Button.vue'
           />
         </div>
         <div class="my-auto md:w-2/3 md:p-8 text-lg md:text-xl">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center text-slate-800 dark:text-slate-200"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">A</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">bout </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">D</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">avy</span>
-          </h2>
+          <ToolkitHeading text="About Davy"></ToolkitHeading>
           <p class="pb-2">
             Davy’s scientific accomplishments include: researching nitrous oxide (often called
             ‘laughing gas’); isolating seven chemical elements (magnesium, calcium, potassium,
@@ -92,14 +81,7 @@ import Button from '@/volt/Button.vue'
     <ToolkitSection section-id="funding" :slide-in-direction="1" css-class="">
       <div class="flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 text-center md:pb-8">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold md:mb-6 text-center dark:text-[var(--color-analysis)]"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">F</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">unding & </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">S</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">upport</span>
-          </h2>
+          <ToolkitHeading text="Funding & Support"></ToolkitHeading>
         </div>
         <div class="my-auto md:w-1/2 lg:p-8">
           <p class="mb-1 md:mb-4 text-base md:text-xl">
@@ -142,12 +124,7 @@ import Button from '@/volt/Button.vue'
           />
         </div>
         <div class="my-auto md:w-2/3 md:p-8 text-lg md:text-xl">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold mb-6 text-center text-slate-800 dark:text-slate-200"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">A</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">pproach</span>
-          </h2>
+          <ToolkitHeading text="Approach"></ToolkitHeading>
           <p class="`pb-2">
             The Davy Notebooks Project (2019-24) used crowd sourcing transcription via the
             Zooniverse platform (over 3,800 volunteer transcribers), to learn more about Davy, his
@@ -180,10 +157,7 @@ import Button from '@/volt/Button.vue'
     <ToolkitSection section-id="partners" css-class="lg:h-[90svh]" :slide-in-direction="1">
       <div class="lg:w-5/6 grid grid-cols-2 h-full pt-4 text-lg md:text-xl mx-auto">
         <div class="col-span-2 md:col-span-1 pb-6 my-auto">
-          <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
-            <span class="text-6xl md:text-7xl lg:text-8xl align-middle">P</span>
-            <span class="text-3xl md:text-4xl lg:text-5xl align-middle">artners</span>
-          </h2>
+          <ToolkitHeading text="Partners"></ToolkitHeading>
           <ul class="list-disc pl-6">
             <li><a href="https://www.lancaster.ac.uk/" target="_blank">Lancaster University</a></li>
             <li><a href="https://www.rigb.org/" target="_blank">Royal Institution</a></li>
@@ -198,12 +172,7 @@ import Button from '@/volt/Button.vue'
           </ul>
         </div>
         <div class="col-span-2 md:col-span-1 my-auto">
-          <h2 class="font-[MuseoSans] font-extrabold md:mb-6 text-center">
-            <span class="text-6xl md:text-7xl lg:text-8xl align-middle">E</span>
-            <span class="text-3xl md:text-4xl lg:text-5xl align-middle">ngagement with </span>
-            <span class="text-6xl md:text-7xl lg:text-8xl align-middle">P</span>
-            <span class="text-3xl md:text-4xl lg:text-5xl align-middle">articipants</span>
-          </h2>
+          <ToolkitHeading text="Engagement with Participants"></ToolkitHeading>
           <p>
             Website (Davy Notebooks Project), dedicated webpage and resources for U3A volunteers,
             Transcribe-a-thons, Zooniverse (talk boards, emails), social media.
@@ -222,14 +191,7 @@ import Button from '@/volt/Button.vue'
         class="lg:w-5/6 grid grid-cols-2 h-full pt-4 text-lg md:text-xl mx-auto my-auto lg:pb-32"
       >
         <div class="col-span-2 text-center md:pb-8 mt-auto">
-          <h2
-            class="md:w-full font-[MuseoSans] font-extrabold lg:mb-6 text-center dark:text-[var(--color-analysis)]"
-          >
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">O</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">utcomes & </span>
-            <span class="text-6xl md:text-7xl lg:text-9xl align-middle">I</span>
-            <span class="text-3xl md:text-4xl lg:text-6xl align-middle">mpact</span>
-          </h2>
+          <ToolkitHeading text="Outcomes & Impact"></ToolkitHeading>
         </div>
         <div class="col-span-2 md:col-span-1">
           <h3 class="font-bold mb-2">Digital Collection</h3>
