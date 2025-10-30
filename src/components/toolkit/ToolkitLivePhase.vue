@@ -51,7 +51,7 @@ const phase = 4
             </p>
             <div class="col-span-2 text-center mt-1 mb-2 lg:mt-16">
               <Button @click="scrollToSection('considerations')" class="text-sm md:text-base">
-                Next: Considerations
+                Next: Strategy
               </Button>
             </div>
           </div>
@@ -62,10 +62,7 @@ const phase = 4
         <div
           class="grid grid-cols-2 gap-0 lg:gap-8 text-lg md:text-xl lg:w-4/5 mx-auto lg:min-h-[50svh]"
         >
-          <ToolkitHeading
-            text="Considerations"
-            class="col-span-2 md:col-span-1 my-auto"
-          ></ToolkitHeading>
+          <ToolkitHeading text="Strategy" class="col-span-2 md:col-span-1 my-auto"></ToolkitHeading>
           <div class="col-span-2 md:col-span-1 my-auto pb-8">
             <h3 class="md:mb-4 text-base md:text-xl lg:mx-24 font-bold">
               Prompts for developing your strategy

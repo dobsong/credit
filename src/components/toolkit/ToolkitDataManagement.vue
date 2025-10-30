@@ -108,7 +108,7 @@ const phase = 7
             </div>
             <div class="w-full text-center pt-8">
               <Button @click="scrollToSection('considerations')" class="text-sm md:text-base">
-                Next: Key Considerations
+                Next: Key Areas
               </Button>
             </div>
           </div>
@@ -118,7 +118,7 @@ const phase = 7
       <ToolkitSection section-id="considerations" :slide-in-direction="-1">
         <div class="grid grid-cols-2 gap-0 lg:gap-8 text-lg md:text-xl mx-auto lg:min-h-[95svh]">
           <ToolkitHeading
-            text="Key Considerations"
+            text="Key Areas"
             class="col-span-2 md:col-span-1 my-auto"
           ></ToolkitHeading>
           <div class="col-span-2 md:col-span-1 my-auto pb-8">
