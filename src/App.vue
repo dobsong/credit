@@ -10,6 +10,7 @@ const theme: string = window.matchMedia('(prefers-color-scheme: dark)').matches 
 const route = useRoute()
 const showHeader = ref(true)
 
+// Show footer only on specific routes
 watch(
   () => route.path,
   (path) => {
@@ -20,6 +21,7 @@ watch(
 
 <template>
   <ToolkitHeader :theme="theme"></ToolkitHeader>
+
   <main role="main">
     <div class="flex flex-col w-full md:">
       <RouterView></RouterView>

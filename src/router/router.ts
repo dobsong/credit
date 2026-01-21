@@ -20,6 +20,7 @@ import ToolkitCaseStudies from '@/components/ToolkitCaseStudies.vue'
 import ToolkitGlossary from '@/components/ToolkitGlossary.vue'
 import ToolkitLandingPage from '@/components/ToolkitLandingPage.vue'
 import ToolkitResources from '@/components/ToolkitResources.vue'
+import UserProfile from '@/components/ui/UserProfile.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 export default createRouter({
@@ -28,6 +29,10 @@ export default createRouter({
     {
       path: '/',
       component: ToolkitLandingPage,
+    },
+    {
+      path: '/profile',
+      component: UserProfile,
     },
     {
       path: '/proposal/phase/01',

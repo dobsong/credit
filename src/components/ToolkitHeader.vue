@@ -2,6 +2,7 @@
 import Button from '@/volt/Button.vue'
 import Menu from '@/volt/Menu.vue'
 import { ref } from 'vue'
+import UserAccountButtons from './ui/UserAccountButtons.vue'
 
 defineProps<{
   theme: string
@@ -95,6 +96,7 @@ const toggle = (event: MouseEvent) => {
               </RouterLink>
             </template>
           </Menu>
+          <UserAccountButtons />
         </div>
       </div>
     </header>

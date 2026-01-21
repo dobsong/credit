@@ -20,6 +20,9 @@ importers:
       jspdf:
         specifier: ^3.0.2
         version: 3.0.2
+      keycloak-js:
+        specifier: ^26.2.2
+        version: 26.2.2
       motion-v:
         specifier: ^1.7.0
         version: 1.7.0(@vueuse/core@13.6.0(vue@3.5.20(typescript@5.8.3)))(vue@3.5.20(typescript@5.8.3))
@@ -1740,6 +1743,9 @@ packages:
 
   jspdf@3.0.2:
     resolution: {integrity: sha512-G0fQDJ5fAm6UW78HG6lNXyq09l0PrA1rpNY5i+ly17Zb1fMMFSmS+3lw4cnrAPGyouv2Y0ylujbY2Ieq3DSlKA==}
+
+  keycloak-js@26.2.2:
+    resolution: {integrity: sha512-ug7pNZ1xNkd7PPkerOJCEU2VnUhS7CYStDOCFJgqCNQ64h53ppxaKrh4iXH0xM8hFu5b1W6e6lsyYWqBMvaQFg==}
 
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
@@ -4183,6 +4189,8 @@ snapshots:
       core-js: 3.45.1
       dompurify: 3.2.6
       html2canvas: 1.4.1
+
+  keycloak-js@26.2.2: {}
 
   keyv@4.5.4:
     dependencies:
