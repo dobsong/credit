@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { useKeycloak } from '@/composables/keycloak'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import { scrollToSection } from '@/utility'
 import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
+import axios from 'axios'
+import { onMounted } from 'vue'
 import ToolkitExportButtons from '../ui/ToolkitExportButtons.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
@@ -11,9 +14,43 @@ import ToolkitReference from '../ui/ToolkitReference.vue'
 import ToolkitSection from '../ui/ToolkitSection.vue'
 import ToolkitOverallPlan from './ToolkitOverallPlan.vue'
 
+const { authenticated, getToken } = useKeycloak()
+
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
 const phase = 3
+
+onMounted(async () => {
+  if (authenticated.value) {
+    try {
+      const token: string | null = await getToken()
+      await axios
+        .get('http://localhost:3000/project_plan', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          if (response.data) {
+            projectPlan.title = response.data[0].title || ''
+            projectPlan.vision = response.data[0].vision || ''
+            projectPlan.laymansSummary = response.data[0].laymans_summary || ''
+            projectPlan.stakeholderAnalysis = response.data[0].stakeholder_analysis || ''
+            projectPlan.approach = response.data[0].approach || ''
+            projectPlan.data = response.data[0].data || ''
+            projectPlan.ethics = response.data[0].ethics || ''
+            projectPlan.platform = response.data[0].platform || ''
+            projectPlan.costings = response.data[0].costings || ''
+          }
+        })
+        .catch((error) => {
+          console.error('Failed to fetch project plan:', error)
+        })
+    } catch (error) {
+      console.error('Failed to get token:', error)
+    }
+  }
+})
 </script>
 
 <template>
@@ -69,6 +106,14 @@ const phase = 3
 
       <section id="planning">
         <ToolkitHeading text="Planning"></ToolkitHeading>
+        <Card v-if="!authenticated" class="mb-4">
+          <template #content>
+            <div>
+              <span class="pi pi-info-circle"></span> You can login using the button at the top if
+              you want your plan to be saved to revisit later
+            </div>
+          </template>
+        </Card>
         <Card class="mb-4">
           <template #content>
             <ToolkitOverallPlan></ToolkitOverallPlan>

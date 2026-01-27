@@ -23,6 +23,7 @@ export function useKeycloak() {
           onLoad: 'check-sso',
           checkLoginIframe: false, // Disabled to avoid potential issues in some browsers
           responseMode: 'query', // This avoids problems because I am using hash routing to make the github pages versions of the app work
+          pkceMethod: 'S256',
           ...options, // Allows provision of other custom init options in main.ts initialisation
         })
         isInitialized.value = true
@@ -41,6 +42,21 @@ export function useKeycloak() {
     async loadUserInfo(): Promise<Keycloak.KeycloakUserInfo> {
       return await keycloak.loadUserInfo()
     },
-    // Add other methods as needed, e.g., loadUserProfile
+    async getToken(): Promise<string | null> {
+      const minValidity = 30 // seconds
+      const isTokenExpiring = keycloak.isTokenExpired(minValidity)
+      if (isTokenExpiring) {
+        try {
+          await keycloak.updateToken(minValidity)
+          console.log('Token refreshed')
+          return keycloak.token as string
+        } catch (error) {
+          console.error('Failed to refresh token:', error)
+          throw error
+        }
+      }
+
+      return keycloak.token as string
+    },
   }
 }
