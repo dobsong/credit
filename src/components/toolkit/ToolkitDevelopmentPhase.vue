@@ -4,8 +4,8 @@ import { useProjectPlanStore } from '@/stores/projectPlan'
 import { scrollToSection } from '@/utility'
 import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
-import axios from 'axios'
-import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import ToolkitExportButtons from '../ui/ToolkitExportButtons.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
@@ -19,37 +19,79 @@ const { authenticated, getToken } = useKeycloak()
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
 const phase = 3
+const loaded = ref(false)
 
-onMounted(async () => {
+const {
+  title,
+  vision,
+  laymansSummary,
+  stakeholderAnalysis,
+  approach,
+  data,
+  ethics,
+  platform,
+  costings,
+} = storeToRefs(projectPlan)
+
+// Simple debounce function
+function debounce(func: Function, delay: number) {
+  let timeoutId: any
+  return (...args: any[]) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => func.apply(null, args), delay)
+  }
+}
+
+// Debounced save
+const debouncedSave = debounce(async () => {
   if (authenticated.value) {
     try {
       const token: string | null = await getToken()
-      await axios
-        .get('http://localhost:3000/project_plan', {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => {
-          if (response.data) {
-            projectPlan.title = response.data[0].title || ''
-            projectPlan.vision = response.data[0].vision || ''
-            projectPlan.laymansSummary = response.data[0].laymans_summary || ''
-            projectPlan.stakeholderAnalysis = response.data[0].stakeholder_analysis || ''
-            projectPlan.approach = response.data[0].approach || ''
-            projectPlan.data = response.data[0].data || ''
-            projectPlan.ethics = response.data[0].ethics || ''
-            projectPlan.platform = response.data[0].platform || ''
-            projectPlan.costings = response.data[0].costings || ''
-          }
-        })
-        .catch((error) => {
-          console.error('Failed to fetch project plan:', error)
-        })
+      if (token) {
+        await projectPlan.save(token)
+      }
+    } catch (error) {
+      console.error('Failed to save:', error)
+    }
+  }
+}, 2000)
+
+// Watch fields and set dirty, trigger save
+watch(
+  [title, vision, laymansSummary, stakeholderAnalysis, approach, data, ethics, platform, costings],
+  () => {
+    if (loaded.value) {
+      projectPlan.dirty = true
+      debouncedSave()
+    }
+  },
+)
+
+// Navigation guard
+const handleBeforeUnload = (event: BeforeUnloadEvent) => {
+  if (projectPlan.dirty) {
+    event.preventDefault()
+    event.returnValue = ''
+  }
+}
+
+onMounted(async () => {
+  window.addEventListener('beforeunload', handleBeforeUnload)
+  if (authenticated.value) {
+    try {
+      const token: string | null = await getToken()
+      if (token) {
+        await projectPlan.load(token)
+      }
     } catch (error) {
       console.error('Failed to get token:', error)
     }
   }
+  loaded.value = true
+})
+
+onUnmounted(() => {
+  window.removeEventListener('beforeunload', handleBeforeUnload)
 })
 </script>
 
@@ -212,7 +254,16 @@ onMounted(async () => {
         <ToolkitNextButton :currentPhase="phase" text="Launch and Sustain"></ToolkitNextButton>
       </p>
     </div>
+
+    <!-- Floating save indicator -->
+    <div
+      v-if="authenticated && projectPlan.dirty"
+      class="fixed bottom-4 right-4 z-50 px-3 py-2 rounded-lg shadow-lg text-sm font-medium transition-opacity duration-300 bg-primary-500 opacity-50 text-white"
+    >
+      <div class="pi pi-save"></div>
+    </div>
   </div>
+
   <img
     src="@/assets/ribbon_development.svg"
     class="w-full h-32 object-cover object-left sm:h-auto sm:object-contain"
