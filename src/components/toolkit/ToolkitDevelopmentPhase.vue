@@ -31,7 +31,14 @@ const {
   ethics,
   platform,
   costings,
+  dirty,
+  isLoading,
+  error,
+  retrying,
 } = storeToRefs(projectPlan)
+
+// provide auth provider to store so store can handle tokens
+projectPlan.setAuth({ authenticated, getToken })
 
 // Simple debounce function
 function debounce(func: Function, delay: number) {
@@ -44,15 +51,10 @@ function debounce(func: Function, delay: number) {
 
 // Debounced save
 const debouncedSave = debounce(async () => {
-  if (authenticated.value) {
-    try {
-      const token: string | null = await getToken()
-      if (token) {
-        await projectPlan.save(token)
-      }
-    } catch (error) {
-      console.error('Failed to save:', error)
-    }
+  try {
+    await projectPlan.save()
+  } catch (err) {
+    console.error('Failed to save:', err)
   }
 }, 2000)
 
@@ -257,10 +259,16 @@ onUnmounted(() => {
 
     <!-- Floating save indicator -->
     <div
-      v-if="authenticated && projectPlan.dirty"
-      class="fixed bottom-4 right-4 z-50 px-3 py-2 rounded-lg shadow-lg text-sm font-medium transition-opacity duration-300 bg-primary-500 opacity-50 text-white"
+      v-if="authenticated && (isLoading || dirty || error)"
+      class="fixed bottom-4 right-4 z-50 px-4 py-2 rounded-4xl transition-opacity duration-300 opacity-80 bg-primary-500 text-white"
     >
-      <div class="pi pi-save"></div>
+      <div v-if="error || retrying" class="text-center">
+        <div class="pi pi-exclamation-triangle"></div>
+        <div>{{ error }}</div>
+        <div v-if="retrying">Retrying...</div>
+      </div>
+      <span v-else-if="isLoading" class="pi pi-spin pi-spinner"></span>
+      <span v-else-if="dirty" class="pi pi-save"></span>
     </div>
   </div>
 

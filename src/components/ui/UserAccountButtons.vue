@@ -4,15 +4,11 @@ import Button from '@/volt/Button.vue'
 import { onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
-const { authenticated, keycloak, login } = useKeycloak()
+const { authenticated, login } = useKeycloak()
 
 onMounted(async () => {
   // Keycloak is already initialized in main.ts, so just handle post-init logic if needed
-  if (authenticated.value) {
-    // todo remove these console logs
-    console.log('User is authenticated')
-    console.log('Token:', keycloak.token)
-  } else {
+  if (!authenticated.value) {
     console.log('User is not authenticated')
   }
 })

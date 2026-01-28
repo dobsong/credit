@@ -19,6 +19,19 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
   const supportMaterials: Ref<string> = ref('')
   const costings: Ref<string> = ref('')
   const dirty: Ref<boolean> = ref(false)
+  const isLoading: Ref<boolean> = ref(false)
+  const error: Ref<string | null> = ref(null)
+  const retrying: Ref<boolean> = ref(false)
+
+  // Auth provider set by component: { authenticated, getToken }
+  let authProvider: { authenticated?: Ref<boolean>; getToken?: () => Promise<string | null> } = {}
+
+  function setAuth(provider: {
+    authenticated?: Ref<boolean>
+    getToken?: () => Promise<string | null>
+  }) {
+    authProvider = provider
+  }
 
   /* actions */
   function enable() {
@@ -31,8 +44,13 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
     previousEngagement.value = newValue
   }
 
-  // Save project plan to backend
-  async function save(token: string) {
+  // Helper function to sleep
+  function sleep(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+  }
+
+  // Save project plan to backend with retry logic
+  async function save(token?: string, maxRetries = 3) {
     const payload = {
       title: title.value,
       vision: vision.value,
@@ -44,24 +62,66 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
       platform: platform.value,
       costings: costings.value,
     }
-    try {
-      await axios.put('http://localhost:3000/project_plan', payload, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      dirty.value = false
-    } catch (error) {
-      console.error('Failed to save project plan:', error)
+
+    let lastError: any = null
+
+    for (let attempt = 0; attempt <= maxRetries; attempt++) {
+      try {
+        error.value = null
+        retrying.value = attempt > 0
+        isLoading.value = true
+
+        let t: string | null | undefined = token ?? null
+        if (!t && authProvider.getToken) {
+          t = await authProvider.getToken()
+        }
+        if (!t) {
+          throw new Error('No auth token available for save')
+        }
+
+        await axios.put('http://localhost:3000/project_plan', payload, {
+          headers: {
+            Authorization: `Bearer ${t}`,
+          },
+        })
+
+        dirty.value = false
+        retrying.value = false
+        isLoading.value = false
+        return // Success
+      } catch (err: any) {
+        lastError = err
+
+        if (attempt < maxRetries) {
+          // Exponential backoff: 1s, 2s, 4s
+          const delayMs = Math.pow(2, attempt) * 1000
+          await sleep(delayMs)
+        }
+      }
     }
+
+    // All retries exhausted
+    error.value = lastError?.message || String(lastError)
+    retrying.value = false
+    isLoading.value = false
+    console.error('Failed to save project plan after retries:', lastError)
   }
 
   // Load project plan from backend
-  async function load(token: string) {
+  async function load(token?: string) {
     try {
+      error.value = null
+      isLoading.value = true
+      let t: string | null | undefined = token ?? null
+      if (!t && authProvider.getToken) {
+        t = await authProvider.getToken()
+      }
+      if (!t) {
+        throw new Error('No auth token available for load')
+      }
       const response = await axios.get('http://localhost:3000/project_plan', {
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${t}`,
         },
       })
       if (response.data) {
@@ -74,9 +134,13 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
         ethics.value = response.data.ethics || ''
         platform.value = response.data.platform || ''
         costings.value = response.data.costings || ''
+        dirty.value = false
       }
-    } catch (error) {
-      console.error('Failed to load project plan:', error)
+    } catch (err: any) {
+      error.value = err?.message || String(err)
+      console.error('Failed to load project plan:', err)
+    } finally {
+      isLoading.value = false
     }
   }
 
@@ -85,6 +149,7 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
     setPreviousEngagement,
     save,
     load,
+    setAuth,
     previousEngagement,
     projectSize,
     country,
@@ -100,5 +165,8 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
     supportMaterials,
     costings,
     dirty,
+    isLoading,
+    error,
+    retrying,
   }
 })
