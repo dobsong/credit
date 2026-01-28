@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useKeycloak } from '@/composables/keycloak'
+import { useProjectPlanStore } from '@/stores/projectPlan'
 import Button from '@/volt/Button.vue'
 import { onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const { authenticated, login } = useKeycloak()
+const projectPlan = useProjectPlanStore()
 
 onMounted(async () => {
   // Keycloak is already initialized in main.ts, so just handle post-init logic if needed
@@ -14,6 +16,8 @@ onMounted(async () => {
 })
 
 function handleLogin() {
+  // Save current project plan data to localStorage before redirect
+  projectPlan.saveToLocalStorage()
   login()
 }
 </script>

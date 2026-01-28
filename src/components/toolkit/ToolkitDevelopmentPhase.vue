@@ -20,6 +20,7 @@ const projectPlan = useProjectPlanStore()
 projectPlan.enable()
 const phase = 3
 const loaded = ref(false)
+const copySuccess = ref(false)
 
 const {
   title,
@@ -35,10 +36,47 @@ const {
   isLoading,
   error,
   retrying,
+  previousData,
 } = storeToRefs(projectPlan)
 
 // provide auth provider to store so store can handle tokens
 projectPlan.setAuth({ authenticated, getToken })
+
+// Copy previous data to clipboard as plain text
+async function copyPreviousDataToClipboard() {
+  if (!previousData.value) return
+  try {
+    const fields = [
+      { label: 'Project Title', key: 'title' },
+      { label: 'Vision', key: 'vision' },
+      { label: "Layman's Summary", key: 'laymansSummary' },
+      { label: 'Stakeholder Analysis', key: 'stakeholderAnalysis' },
+      { label: 'Approach', key: 'approach' },
+      { label: 'Data', key: 'data' },
+      { label: 'Ethics', key: 'ethics' },
+      { label: 'Platform', key: 'platform' },
+      { label: 'Support Materials', key: 'supportMaterials' },
+      { label: 'Costings', key: 'costings' },
+    ]
+
+    const lines = fields
+      .map((field) => {
+        const value = previousData.value?.[field.key as keyof typeof previousData.value]
+        if (!value) return null
+        return `${field.label}:\n${value}`
+      })
+      .filter(Boolean)
+      .join('\n\n')
+
+    await navigator.clipboard.writeText(lines)
+    copySuccess.value = true
+    setTimeout(() => {
+      copySuccess.value = false
+    }, 2000)
+  } catch (err) {
+    console.error('Failed to copy to clipboard:', err)
+  }
+}
 
 // Simple debounce function
 function debounce(func: Function, delay: number) {
@@ -79,6 +117,10 @@ const handleBeforeUnload = (event: BeforeUnloadEvent) => {
 
 onMounted(async () => {
   window.addEventListener('beforeunload', handleBeforeUnload)
+
+  // Restore any data that was saved before login redirect
+  projectPlan.restoreFromLocalStorage()
+
   if (authenticated.value) {
     try {
       const token: string | null = await getToken()
@@ -155,6 +197,37 @@ onUnmounted(() => {
             <div>
               <span class="pi pi-info-circle"></span> You can login using the button at the top if
               you want your plan to be saved to revisit later
+            </div>
+          </template>
+        </Card>
+        <Card v-if="previousData" class="mb-4">
+          <template #content>
+            <div class="flex items-start gap-3">
+              <span class="text-lg pi pi-info-circle text-amber-500 mt-1"></span>
+              <div>
+                <h4 class="font-bold mb-2">Previous Data Detected</h4>
+                <p class="mb-3">
+                  We found data you were working on before logging in. The server has now loaded
+                  your saved project plan, which may differ from what you were editing. You can copy
+                  this data to your clipboard to inspect it.
+                </p>
+                <div class="flex gap-2">
+                  <Button
+                    @click="copyPreviousDataToClipboard()"
+                    class="text-sm px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors flex items-center gap-2"
+                  >
+                    <span class="pi" :class="copySuccess ? 'pi-check' : 'pi-copy'"></span>
+                    {{ copySuccess ? 'Copied!' : 'Copy Data' }}
+                  </Button>
+                  <Button
+                    @click="projectPlan.clearPreviousData()"
+                    variant="outlined"
+                    class="text-sm px-3 py-1 bg-gray-400 hover:bg-gray-500 text-white rounded transition-colors"
+                  >
+                    Dismiss
+                  </Button>
+                </div>
+              </div>
             </div>
           </template>
         </Card>

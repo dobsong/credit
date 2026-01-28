@@ -22,6 +22,7 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
   const isLoading: Ref<boolean> = ref(false)
   const error: Ref<string | null> = ref(null)
   const retrying: Ref<boolean> = ref(false)
+  const previousData: Ref<Record<string, string> | null> = ref(null)
 
   // Auth provider set by component: { authenticated, getToken }
   let authProvider: { authenticated?: Ref<boolean>; getToken?: () => Promise<string | null> } = {}
@@ -144,6 +145,48 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
     }
   }
 
+  // Save current state to localStorage
+  function saveToLocalStorage() {
+    try {
+      const state = {
+        title: title.value,
+        vision: vision.value,
+        laymansSummary: laymansSummary.value,
+        stakeholderAnalysis: stakeholderAnalysis.value,
+        approach: approach.value,
+        data: data.value,
+        ethics: ethics.value,
+        platform: platform.value,
+        supportMaterials: supportMaterials.value,
+        costings: costings.value,
+      }
+      localStorage.setItem('projectPlan_backup', JSON.stringify(state))
+    } catch (err) {
+      console.error('Failed to save project plan to localStorage:', err)
+    }
+  }
+
+  // Restore data from localStorage and clear it
+  function restoreFromLocalStorage() {
+    try {
+      const saved = localStorage.getItem('projectPlan_backup')
+      if (saved) {
+        const state = JSON.parse(saved)
+        previousData.value = state
+        localStorage.removeItem('projectPlan_backup')
+        return state
+      }
+    } catch (err) {
+      console.error('Failed to restore project plan from localStorage:', err)
+    }
+    return null
+  }
+
+  // Clear previous data notification
+  function clearPreviousData() {
+    previousData.value = null
+  }
+
   return {
     enable,
     setPreviousEngagement,
@@ -168,5 +211,9 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
     isLoading,
     error,
     retrying,
+    previousData,
+    saveToLocalStorage,
+    restoreFromLocalStorage,
+    clearPreviousData,
   }
 })
