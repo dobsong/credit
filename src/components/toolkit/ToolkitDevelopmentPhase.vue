@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import { useKeycloak } from '@/composables/keycloak'
+import { useClipboard } from '@/composables/useClipboard'
+import { useProjectPlanAutoSave } from '@/composables/useProjectPlanAutoSave'
+import { useProjectPlanData } from '@/composables/useProjectPlanData'
+import { useUnsavedChangesGuard } from '@/composables/useUnsavedChangesGuard'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import { scrollToSection } from '@/utility'
 import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
 import { storeToRefs } from 'pinia'
-import { onMounted, onUnmounted, ref, watch } from 'vue'
 import ToolkitExportButtons from '../ui/ToolkitExportButtons.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
@@ -19,8 +22,6 @@ const { authenticated, getToken } = useKeycloak()
 const projectPlan = useProjectPlanStore()
 projectPlan.enable()
 const phase = 3
-const loaded = ref(false)
-const copySuccess = ref(false)
 
 const {
   title,
@@ -39,104 +40,28 @@ const {
   previousData,
 } = storeToRefs(projectPlan)
 
-// provide auth provider to store so store can handle tokens
-projectPlan.setAuth({ authenticated, getToken })
+// Composable hooks
+const { loaded } = useProjectPlanAutoSave(projectPlan, [
+  title,
+  vision,
+  laymansSummary,
+  stakeholderAnalysis,
+  approach,
+  data,
+  ethics,
+  platform,
+  costings,
+])
+
+useProjectPlanData(projectPlan, authenticated, getToken)
+useUnsavedChangesGuard(projectPlan)
+const { copySuccess, copyDataAsPlainText } = useClipboard()
 
 // Copy previous data to clipboard as plain text
 async function copyPreviousDataToClipboard() {
   if (!previousData.value) return
-  try {
-    const fields = [
-      { label: 'Project Title', key: 'title' },
-      { label: 'Vision', key: 'vision' },
-      { label: "Layman's Summary", key: 'laymansSummary' },
-      { label: 'Stakeholder Analysis', key: 'stakeholderAnalysis' },
-      { label: 'Approach', key: 'approach' },
-      { label: 'Data', key: 'data' },
-      { label: 'Ethics', key: 'ethics' },
-      { label: 'Platform', key: 'platform' },
-      { label: 'Support Materials', key: 'supportMaterials' },
-      { label: 'Costings', key: 'costings' },
-    ]
-
-    const lines = fields
-      .map((field) => {
-        const value = previousData.value?.[field.key as keyof typeof previousData.value]
-        if (!value) return null
-        return `${field.label}:\n${value}`
-      })
-      .filter(Boolean)
-      .join('\n\n')
-
-    await navigator.clipboard.writeText(lines)
-    copySuccess.value = true
-    setTimeout(() => {
-      copySuccess.value = false
-    }, 2000)
-  } catch (err) {
-    console.error('Failed to copy to clipboard:', err)
-  }
+  await copyDataAsPlainText(previousData.value)
 }
-
-// Simple debounce function
-function debounce(func: Function, delay: number) {
-  let timeoutId: any
-  return (...args: any[]) => {
-    clearTimeout(timeoutId)
-    timeoutId = setTimeout(() => func.apply(null, args), delay)
-  }
-}
-
-// Debounced save
-const debouncedSave = debounce(async () => {
-  try {
-    await projectPlan.save()
-  } catch (err) {
-    console.error('Failed to save:', err)
-  }
-}, 2000)
-
-// Watch fields and set dirty, trigger save
-watch(
-  [title, vision, laymansSummary, stakeholderAnalysis, approach, data, ethics, platform, costings],
-  () => {
-    if (loaded.value) {
-      projectPlan.dirty = true
-      debouncedSave()
-    }
-  },
-)
-
-// Navigation guard
-const handleBeforeUnload = (event: BeforeUnloadEvent) => {
-  if (projectPlan.dirty) {
-    event.preventDefault()
-    event.returnValue = ''
-  }
-}
-
-onMounted(async () => {
-  window.addEventListener('beforeunload', handleBeforeUnload)
-
-  // Restore any data that was saved before login redirect
-  projectPlan.restoreFromLocalStorage()
-
-  if (authenticated.value) {
-    try {
-      const token: string | null = await getToken()
-      if (token) {
-        await projectPlan.load(token)
-      }
-    } catch (error) {
-      console.error('Failed to get token:', error)
-    }
-  }
-  loaded.value = true
-})
-
-onUnmounted(() => {
-  window.removeEventListener('beforeunload', handleBeforeUnload)
-})
 </script>
 
 <template>

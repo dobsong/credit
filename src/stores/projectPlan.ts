@@ -160,6 +160,13 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
         supportMaterials: supportMaterials.value,
         costings: costings.value,
       }
+
+      // Check if all fields are empty
+      const hasContent = Object.values(state).some((value) => value && value.trim() !== '')
+      if (!hasContent) {
+        return // Don't save if everything is empty
+      }
+
       localStorage.setItem('projectPlan_backup', JSON.stringify(state))
     } catch (err) {
       console.error('Failed to save project plan to localStorage:', err)
