@@ -1,3 +1,5 @@
+import type { AuthProvider } from '@/types/authProvider'
+import { getErrorMessage } from '@/utility'
 import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
@@ -25,12 +27,9 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
   const previousData: Ref<Record<string, string> | null> = ref(null)
 
   // Auth provider set by component: { authenticated, getToken }
-  let authProvider: { authenticated?: Ref<boolean>; getToken?: () => Promise<string | null> } = {}
+  let authProvider: AuthProvider = {}
 
-  function setAuth(provider: {
-    authenticated?: Ref<boolean>
-    getToken?: () => Promise<string | null>
-  }) {
+  function setAuth(provider: AuthProvider) {
     authProvider = provider
   }
 
@@ -64,7 +63,7 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
       costings: costings.value,
     }
 
-    let lastError: any = null
+    let lastError: unknown = null
 
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
@@ -90,7 +89,7 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
         retrying.value = false
         isLoading.value = false
         return // Success
-      } catch (err: any) {
+      } catch (err: unknown) {
         lastError = err
 
         if (attempt < maxRetries) {
@@ -102,14 +101,14 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
     }
 
     // All retries exhausted
-    error.value = lastError?.message || String(lastError)
+    error.value = getErrorMessage(lastError)
     retrying.value = false
     isLoading.value = false
     console.error('Failed to save project plan after retries:', lastError)
   }
 
   // Load project plan from backend
-  async function load(token?: string) {
+  async function load(token?: string): Promise<void> {
     try {
       error.value = null
       isLoading.value = true
@@ -137,8 +136,8 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
         costings.value = response.data.costings || ''
         dirty.value = false
       }
-    } catch (err: any) {
-      error.value = err?.message || String(err)
+    } catch (err: unknown) {
+      error.value = getErrorMessage(err)
       console.error('Failed to load project plan:', err)
     } finally {
       isLoading.value = false
