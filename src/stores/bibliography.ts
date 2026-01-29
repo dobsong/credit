@@ -62,11 +62,9 @@ export const useBibliographyStore = defineStore('bibliography', () => {
   }
 
   // Save a reference to the backend
-  async function save(ref: Reference, token?: string): Promise<void> {
-    console.log('Saving reference to bibliography: [0]', ref, token)
+  async function save(ref: Reference, token?: string): Promise<number> {
     try {
       error.value = null
-      console.log('Saving reference to bibliography [1]:', ref)
       let t: string | null | undefined = token ?? null
       if (!t && authProvider.getToken) {
         t = await authProvider.getToken()
@@ -74,7 +72,6 @@ export const useBibliographyStore = defineStore('bibliography', () => {
       if (!t) {
         throw new Error('No auth token available for save')
       }
-      console.log('Saving reference to bibliography [2]:', ref, token)
       const payload = {
         reading_list: {
           title: ref.title,
@@ -84,12 +81,26 @@ export const useBibliographyStore = defineStore('bibliography', () => {
           citation: ref.citation,
         },
       }
-      console.log('Saving reference to bibliography [3]:', payload, token)
-      await axios.post('http://localhost:3000/reading_lists', payload, {
-        headers: {
-          Authorization: `Bearer ${t}`,
+      const response = await axios.post<{ id: number }>(
+        'http://localhost:3000/reading_lists',
+        payload,
+        {
+          headers: {
+            Authorization: `Bearer ${t}`,
+          },
         },
-      })
+      )
+
+      // If API returned an id, attach it to the passed reference object and return it
+      const createdId = response?.data?.id
+      if (createdId) {
+        // mutate the passed object so it is added to the store with id present (simplifies later removal)
+        ;(ref as Reference & { id?: number }).id = createdId
+        return createdId
+      }
+
+      // Fallback: return -1 if no id provided
+      return -1
     } catch (err: unknown) {
       error.value = getErrorMessage(err)
       console.error('Failed to save reference to bibliography:', err)

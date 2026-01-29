@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useKeycloak } from '@/composables/keycloak'
 import { useBibliographyStore } from '@/stores/bibliography'
+import type { Reference } from '@/types/reference'
 import { useToast } from 'primevue/usetoast'
 
 const bibliography = useBibliographyStore()
@@ -45,7 +46,7 @@ const stopBounce = () => {
 
 const addToBibliography = async () => {
   if (!inBibliography.value) {
-    const reference = {
+    const reference: Reference = {
       title: props.title || '',
       authors: props.authors || '',
       citation: props.citation,
@@ -53,15 +54,18 @@ const addToBibliography = async () => {
       year: props.year || 0,
     }
 
-    // If authenticated, try to save to backend first
+    // If authenticated, try to save to backend first and capture returned id
     if (authenticated.value) {
       try {
         const token = await getToken()
         if (token) {
           console.log('Saving reference to backend bibliography')
-          await bibliography.save(reference, token)
+          const createdId = await bibliography.save(reference, token)
+          if (createdId && createdId > 0) {
+            reference.id = createdId
+          }
         }
-      } catch (error) {
+      } catch {
         // Show error toast and don't add to store
         toast.add({
           severity: 'error',
@@ -73,7 +77,7 @@ const addToBibliography = async () => {
       }
     }
 
-    // Add to local store
+    // Add to local store (will include id if backend returned one)
     bibliography.add(reference)
 
     // Show a toast message to confirm addition
