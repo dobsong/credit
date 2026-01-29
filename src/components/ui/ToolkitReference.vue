@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { useKeycloak } from '@/composables/keycloak'
 import { useBibliographyStore } from '@/stores/bibliography'
 import { useToast } from 'primevue/usetoast'
 
 const bibliography = useBibliographyStore()
+const { authenticated, getToken } = useKeycloak()
 const toast = useToast() // instance to create messages
 
 import { onMounted, ref } from 'vue'
@@ -29,6 +31,7 @@ onMounted(() => {
   }, 3000)
 })
 
+// Start bounce animation (called on initial load and on hover)
 const startBounce = () => {
   bouncing.value = true
   settling.value = false
@@ -40,16 +43,38 @@ const stopBounce = () => {
   setTimeout(() => (settling.value = false), 400)
 }
 
-const addToBibliography = () => {
+const addToBibliography = async () => {
   if (!inBibliography.value) {
-    // Add the current reference to the bibliography
-    bibliography.add({
+    const reference = {
       title: props.title || '',
       authors: props.authors || '',
       citation: props.citation,
       url: props.url,
       year: props.year || 0,
-    })
+    }
+
+    // If authenticated, try to save to backend first
+    if (authenticated.value) {
+      try {
+        const token = await getToken()
+        if (token) {
+          console.log('Saving reference to backend bibliography')
+          await bibliography.save(reference, token)
+        }
+      } catch (error) {
+        // Show error toast and don't add to store
+        toast.add({
+          severity: 'error',
+          summary: 'Failed to Save Reference',
+          detail: 'The reference could not be saved to your bibliography.',
+          life: 3000,
+        })
+        return
+      }
+    }
+
+    // Add to local store
+    bibliography.add(reference)
 
     // Show a toast message to confirm addition
     toast.add({

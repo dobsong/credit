@@ -18,6 +18,7 @@ const DEFAULT_FIELDS: FieldConfig[] = [
   { label: 'Costings', key: 'costings' },
 ]
 
+// Composable for copying project plan details to clipboard. Used in toolkit development phase where user has a local copy of data before logging in.
 export function useClipboard() {
   const copySuccess = ref(false)
 
@@ -36,7 +37,7 @@ export function useClipboard() {
   }
 
   function formatAsPlainText(
-    data: Record<string, any>,
+    data: Record<string, string>,
     fields: FieldConfig[] = DEFAULT_FIELDS,
   ): string {
     const lines = fields
@@ -51,7 +52,7 @@ export function useClipboard() {
   }
 
   async function copyDataAsPlainText(
-    data: Record<string, any>,
+    data: Record<string, string>,
     fields?: FieldConfig[],
   ): Promise<boolean> {
     const text = formatAsPlainText(data, fields)

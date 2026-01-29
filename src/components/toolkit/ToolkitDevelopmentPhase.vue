@@ -41,7 +41,7 @@ const {
 } = storeToRefs(projectPlan)
 
 // Composable hooks
-const { loaded } = useProjectPlanAutoSave(projectPlan, [
+useProjectPlanAutoSave(projectPlan, [
   title,
   vision,
   laymansSummary,
@@ -53,8 +53,11 @@ const { loaded } = useProjectPlanAutoSave(projectPlan, [
   costings,
 ])
 
+// Use the pinia store and load/save from API if authenticated
 useProjectPlanData(projectPlan, authenticated, getToken)
+// Warn about navigation with unsaved changes
 useUnsavedChangesGuard(projectPlan)
+
 const { copySuccess, copyDataAsPlainText } = useClipboard()
 
 // Copy previous data to clipboard as plain text
@@ -174,7 +177,8 @@ async function copyPreviousDataToClipboard() {
           be assessed -UKRI"
               short-description="Funding Applications UKRI core question guidance: Core section questions and how they will
           be assessed -UKRI"
-              citation=""
+              citation="Funding Applications UKRI core question guidance: Core section questions and how they will
+          be assessed -UKRI"
               url="https://www.ukri.org/apply-for-funding/develop-your-application/responsive-mode-opportunities-funding-service-core-application-section-questions-and-assessment/core-section-questions-and-how-they-will-be-assessed/#contents-list"
             ></ToolkitReference>
           </li>
