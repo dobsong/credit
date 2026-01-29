@@ -108,6 +108,32 @@ export const useBibliographyStore = defineStore('bibliography', () => {
     }
   }
 
+  // Delete a reference from the backend
+  async function deleteReference(ref: Reference, token?: string): Promise<void> {
+    // If there's a valid id, try to delete from backend first
+    if (ref.id && ref.id > 0) {
+      try {
+        error.value = null
+        let t: string | null | undefined = token ?? null
+        if (!t && authProvider.getToken) {
+          t = await authProvider.getToken()
+        }
+        if (!t) {
+          throw new Error('No auth token available for delete')
+        }
+        await axios.delete(`http://localhost:3000/reading_lists/${ref.id}`, {
+          headers: {
+            Authorization: `Bearer ${t}`,
+          },
+        })
+      } catch (err: unknown) {
+        error.value = getErrorMessage(err)
+        console.error('Failed to delete reference from backend:', err)
+        throw err // Re-throw so the component knows not to remove from store
+      }
+    }
+  }
+
   return {
     items,
     isLoading,
@@ -118,5 +144,6 @@ export const useBibliographyStore = defineStore('bibliography', () => {
     clear,
     load,
     save,
+    deleteReference,
   }
 })
