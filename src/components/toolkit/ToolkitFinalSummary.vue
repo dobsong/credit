@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useKeycloak } from '@/composables/keycloak'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import { scrollToSection } from '@/utility'
 import Button from '@/volt/Button.vue'
@@ -6,6 +7,7 @@ import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitSection from '../ui/ToolkitSection.vue'
 
 const projectPlan = useProjectPlanStore()
+const { authenticated } = useKeycloak()
 projectPlan.enable()
 </script>
 
@@ -15,7 +17,7 @@ projectPlan.enable()
       <ToolkitSection section-id="intro" :slide-in-direction="1">
         <div class="grid grid-cols-1 lg:min-h-[65svh] lg:pb-[11svh]">
           <div class="lg:mt-auto">
-            <ToolkitHeading text="Summary & Next Steps" class="mx-auto"></ToolkitHeading>
+            <ToolkitHeading text="Summary & Next Steps" class="mx-auto md:pt-4"></ToolkitHeading>
           </div>
           <div class="my-auto lg:mb-auto lg:mt-0 lg:w-4/5 mx-auto">
             <img
@@ -57,9 +59,14 @@ projectPlan.enable()
           </div>
           <div class="my-auto lg:mb-auto lg:mt-0 lg:w-4/5 mx-auto">
             <p class="md:mb-4 text-base md:text-xl lg:mx-16">
-              In the final version of CREDIT the aim is that you will have the option to log in, so
-              so you could come back and work on your notes, your plans, review your reading list,
-              etc.
+              You can access your project plan at any time by clicking the
+              <RouterLink to="/plan"><span class="pi pi-pen-to-square"></span></RouterLink>
+              icon in the top right of the screen. Your reading list can be found by clicking the
+              <RouterLink to="/bibliography"><span class="pi pi-bookmark"></span></RouterLink> icon.
+            </p>
+            <p v-if="!authenticated" class="md:mb-4 text-base md:text-xl lg:mx-16">
+              Since you chose not to create an account, your data will not be saved between
+              sessions. You can visit your project plan now and export it.
             </p>
             <p class="md:mb-4 text-base md:text-xl lg:mx-16"></p>
             <div class="text-center my-4 text-4xl">
