@@ -16,6 +16,14 @@ export function useBibliographyData(
   getToken: () => Promise<string | null>,
 ) {
   onMounted(async () => {
+    // Restore any data that was saved before login redirect
+    if ((bibliography as any).restoreFromLocalStorage) {
+      try {
+        ;(bibliography as any).restoreFromLocalStorage()
+      } catch (err) {
+        console.error('Failed to restore bibliography from localStorage:', err)
+      }
+    }
     // Provide auth provider to store so store can handle tokens
     bibliography.setAuth({ authenticated, getToken })
 

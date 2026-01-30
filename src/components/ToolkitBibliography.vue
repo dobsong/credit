@@ -5,6 +5,7 @@ import { useBibliographyStore } from '@/stores/bibliography'
 import type { Reference } from '@/types/reference'
 import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
+import { storeToRefs } from 'pinia'
 import { useToast } from 'primevue/usetoast'
 import ToolkitHeading from './ui/ToolkitHeading.vue'
 
@@ -13,6 +14,64 @@ const { authenticated, getToken } = useKeycloak()
 const toast = useToast()
 
 useBibliographyData(bibliography, authenticated, getToken)
+
+const { previousItems } = storeToRefs(bibliography)
+
+async function mergePreviousItems() {
+  if (!previousItems.value || previousItems.value.length === 0) return
+  let token: string | null = null
+  try {
+    token = await getToken()
+  } catch (err) {
+    console.error('Failed to get token for merging bibliography:', err)
+  }
+
+  for (const item of previousItems.value) {
+    // Skip if already present by citation
+    if (bibliography.items.some((x) => x.citation === item.citation)) continue
+
+    const ref: Reference = { ...item }
+
+    // If authenticated, require successful backend save; abort on any failure
+    if (authenticated.value) {
+      try {
+        // Ensure we have a token
+        if (!token) {
+          token = await getToken()
+        }
+        if (!token) {
+          throw new Error('No auth token available for merge')
+        }
+
+        const createdId = await bibliography.save(ref, token)
+        if (createdId && createdId > 0) {
+          ;(ref as Reference & { id?: number }).id = createdId
+        }
+      } catch (err) {
+        console.error('Merge halted due to backend save failure:', err)
+        toast.add({
+          severity: 'error',
+          summary: 'Merge Failed',
+          detail: 'Failed to save references to the server. Merge halted — please try again.',
+          life: 5000,
+        })
+        return
+      }
+    }
+
+    // Add to local store (only reached if backend save succeeded or user not authenticated)
+    bibliography.add(ref)
+  }
+
+  // Clear the previous items notification
+  bibliography.clearPreviousData()
+  toast.add({
+    severity: 'success',
+    summary: 'Bibliography Merged',
+    detail: 'References merged from your backup.',
+    life: 3000,
+  })
+}
 
 const deleteItem = async (ref: Reference) => {
   const shouldDeleteFromBackend = authenticated.value && ref.id && ref.id > 0
@@ -57,6 +116,26 @@ const deleteItem = async (ref: Reference) => {
         <div>
           <span class="pi pi-info-circle"></span> You can login using the button at the top if you
           want your personal reading list to be saved to revisit later
+        </div>
+      </template>
+    </Card>
+    <Card v-if="authenticated && previousItems && previousItems.length > 0" class="mb-4">
+      <template #content>
+        <div class="flex items-start gap-3">
+          <span class="text-lg pi pi-info-circle text-amber-500 mt-1"></span>
+          <div>
+            <h4 class="font-bold mb-2">Previous Bibliography Detected</h4>
+            <p class="mb-3">
+              We found items you added before logging in. You can merge any extra references into
+              your account or dismiss this backup.
+            </p>
+            <div class="flex gap-2">
+              <Button @click="mergePreviousItems" class="px-3 py-1">Merge References</Button>
+              <Button @click="bibliography.clearPreviousData()" variant="outlined" class="px-3 py-1"
+                >Dismiss</Button
+              >
+            </div>
+          </div>
         </div>
       </template>
     </Card>

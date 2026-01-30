@@ -13,6 +13,7 @@ export const useBibliographyStore = defineStore('bibliography', () => {
   const items: Ref<Reference[]> = ref([])
   const isLoading: Ref<boolean> = ref(false)
   const error: Ref<string | null> = ref(null)
+  const previousItems: Ref<Reference[] | null> = ref(null)
 
   // Auth provider set by component: { authenticated, getToken }
   let authProvider: AuthProvider = {}
@@ -34,6 +35,16 @@ export const useBibliographyStore = defineStore('bibliography', () => {
 
   function clear() {
     items.value = []
+  }
+
+  // Save current bibliography to localStorage before redirect/login
+  function saveToLocalStorage() {
+    try {
+      if (!items.value || items.value.length === 0) return
+      localStorage.setItem('bibliography_backup', JSON.stringify(items.value))
+    } catch (err) {
+      console.error('Failed to save bibliography to localStorage:', err)
+    }
   }
 
   // Load bibliography from backend
@@ -133,6 +144,26 @@ export const useBibliographyStore = defineStore('bibliography', () => {
     }
   }
 
+  // Restore bibliography backup from localStorage (and clear it)
+  function restoreFromLocalStorage() {
+    try {
+      const saved = localStorage.getItem('bibliography_backup')
+      if (saved) {
+        const parsed = JSON.parse(saved) as Reference[]
+        previousItems.value = parsed
+        localStorage.removeItem('bibliography_backup')
+        return parsed
+      }
+    } catch (err) {
+      console.error('Failed to restore bibliography from localStorage:', err)
+    }
+    return null
+  }
+
+  function clearPreviousData() {
+    previousItems.value = null
+  }
+
   return {
     items,
     isLoading,
@@ -144,5 +175,9 @@ export const useBibliographyStore = defineStore('bibliography', () => {
     load,
     save,
     deleteReference,
+    previousItems,
+    saveToLocalStorage,
+    restoreFromLocalStorage,
+    clearPreviousData,
   }
 })
