@@ -1,9 +1,11 @@
 import Keycloak from 'keycloak-js'
 import { readonly, ref } from 'vue'
 
-// todo move Keycloak config to env vars
+// Get Keycloak URL from environment, fallback to localhost for development
+const keycloakUrl = import.meta.env.VITE_KEYCLOAK_URL || 'http://localhost:8080'
+
 const keycloak = new Keycloak({
-  url: 'http://localhost:8080',
+  url: keycloakUrl,
   realm: 'credit',
   clientId: 'credit',
 })

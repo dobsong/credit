@@ -4,6 +4,9 @@ import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
 
+// Get API base URL from environment, fallback to localhost for development
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+
 export const useProjectPlanStore = defineStore('projectPlan', () => {
   /* state */
   const previousEngagement: Ref<'Yes' | 'No' | 'Unknown'> = ref('Unknown')
@@ -79,7 +82,7 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
           throw new Error('No auth token available for save')
         }
 
-        await axios.put('http://localhost:3000/project_plan', payload, {
+        await axios.put(`${apiBaseUrl}/project_plan`, payload, {
           headers: {
             Authorization: `Bearer ${t}`,
           },
@@ -119,7 +122,7 @@ export const useProjectPlanStore = defineStore('projectPlan', () => {
       if (!t) {
         throw new Error('No auth token available for load')
       }
-      const response = await axios.get('http://localhost:3000/project_plan', {
+      const response = await axios.get(`${apiBaseUrl}/project_plan`, {
         headers: {
           Authorization: `Bearer ${t}`,
         },

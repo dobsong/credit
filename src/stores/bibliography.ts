@@ -5,6 +5,9 @@ import axios from 'axios'
 import { defineStore } from 'pinia'
 import { ref, type Ref } from 'vue'
 
+// Get API base URL from environment, fallback to localhost for development
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'
+
 export const useBibliographyStore = defineStore('bibliography', () => {
   /* state */
   const items: Ref<Reference[]> = ref([])
@@ -45,7 +48,7 @@ export const useBibliographyStore = defineStore('bibliography', () => {
       if (!t) {
         throw new Error('No auth token available for load')
       }
-      const response = await axios.get<Reference[]>('http://localhost:3000/reading_lists', {
+      const response = await axios.get<Reference[]>(`${apiBaseUrl}/reading_lists`, {
         headers: {
           Authorization: `Bearer ${t}`,
         },
@@ -81,15 +84,11 @@ export const useBibliographyStore = defineStore('bibliography', () => {
           citation: ref.citation,
         },
       }
-      const response = await axios.post<{ id: number }>(
-        'http://localhost:3000/reading_lists',
-        payload,
-        {
-          headers: {
-            Authorization: `Bearer ${t}`,
-          },
+      const response = await axios.post<{ id: number }>(`${apiBaseUrl}/reading_lists`, payload, {
+        headers: {
+          Authorization: `Bearer ${t}`,
         },
-      )
+      })
 
       // If API returned an id, attach it to the passed reference object and return it
       const createdId = response?.data?.id
@@ -121,7 +120,7 @@ export const useBibliographyStore = defineStore('bibliography', () => {
         if (!t) {
           throw new Error('No auth token available for delete')
         }
-        await axios.delete(`http://localhost:3000/reading_lists/${ref.id}`, {
+        await axios.delete(`${apiBaseUrl}/reading_lists/${ref.id}`, {
           headers: {
             Authorization: `Bearer ${t}`,
           },
