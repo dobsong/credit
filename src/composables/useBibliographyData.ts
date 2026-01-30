@@ -21,7 +21,7 @@ export function useBibliographyData(
       try {
         ;(bibliography as any).restoreFromLocalStorage()
       } catch (err) {
-        console.error('Failed to restore bibliography from localStorage:', err)
+        console.error('Failed to restore reading list from localStorage:', err)
       }
     }
     // Provide auth provider to store so store can handle tokens

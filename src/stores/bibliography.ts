@@ -43,7 +43,7 @@ export const useBibliographyStore = defineStore('bibliography', () => {
       if (!items.value || items.value.length === 0) return
       localStorage.setItem('bibliography_backup', JSON.stringify(items.value))
     } catch (err) {
-      console.error('Failed to save bibliography to localStorage:', err)
+      console.error('Failed to save reading list to localStorage:', err)
     }
   }
 
@@ -69,7 +69,7 @@ export const useBibliographyStore = defineStore('bibliography', () => {
       }
     } catch (err: unknown) {
       error.value = getErrorMessage(err)
-      console.error('Failed to load bibliography:', err)
+      console.error('Failed to load reading list:', err)
     } finally {
       isLoading.value = false
     }
@@ -113,7 +113,7 @@ export const useBibliographyStore = defineStore('bibliography', () => {
       return -1
     } catch (err: unknown) {
       error.value = getErrorMessage(err)
-      console.error('Failed to save reference to bibliography:', err)
+      console.error('Failed to save reference to reading list:', err)
       throw err // Re-throw so the component can handle the error
     }
   }
@@ -155,7 +155,7 @@ export const useBibliographyStore = defineStore('bibliography', () => {
         return parsed
       }
     } catch (err) {
-      console.error('Failed to restore bibliography from localStorage:', err)
+      console.error('Failed to restore reading list from localStorage:', err)
     }
     return null
   }

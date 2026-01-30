@@ -59,7 +59,7 @@ const addToBibliography = async () => {
       try {
         const token = await getToken()
         if (token) {
-          console.log('Saving reference to backend bibliography')
+          console.log('Saving reference to backend reading list')
           const createdId = await bibliography.save(reference, token)
           if (createdId && createdId > 0) {
             reference.id = createdId
@@ -70,7 +70,7 @@ const addToBibliography = async () => {
         toast.add({
           severity: 'error',
           summary: 'Failed to Save Reference',
-          detail: 'The reference could not be saved to your bibliography.',
+          detail: 'The reference could not be saved to your reading list.',
           life: 3000,
         })
         return
@@ -84,7 +84,7 @@ const addToBibliography = async () => {
     toast.add({
       severity: 'success',
       summary: 'Reference Added',
-      detail: 'The reference has been added to your bibliography. Access it from the topbar.',
+      detail: 'The reference has been added to your reading list. Access it from the topbar.',
       life: 3000,
     })
 
@@ -96,7 +96,7 @@ const addToBibliography = async () => {
   <span>
     <a class="italic" :href="url" target="_blank">{{ shortDescription || title }}</a>
     <button
-      title="Add to your bibliography to review later"
+      title="Add to your reading list to review later"
       @click="addToBibliography()"
       v-if="!inBibliography"
     >

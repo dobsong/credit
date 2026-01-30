@@ -71,7 +71,7 @@ const toggle = (event: MouseEvent) => {
             icon="pi pi-bookmark text-white"
             variant="text"
             @click="$router.push('/bibliography')"
-            title="Your Bibliography"
+            title="Your Reading List"
             class="ml-2 enabled:hover:p-text:bg-primary-400"
           />
           <Button

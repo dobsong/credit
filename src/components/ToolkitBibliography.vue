@@ -23,7 +23,7 @@ async function mergePreviousItems() {
   try {
     token = await getToken()
   } catch (err) {
-    console.error('Failed to get token for merging bibliography:', err)
+    console.error('Failed to get token for merging reading list:', err)
   }
 
   for (const item of previousItems.value) {
@@ -67,7 +67,7 @@ async function mergePreviousItems() {
   bibliography.clearPreviousData()
   toast.add({
     severity: 'success',
-    summary: 'Bibliography Merged',
+    summary: 'Reading List Merged',
     detail: 'References merged from your backup.',
     life: 3000,
   })
@@ -98,7 +98,7 @@ const deleteItem = async (ref: Reference) => {
   toast.add({
     severity: 'success',
     summary: 'Reference Removed',
-    detail: 'The reference has been removed from your bibliography.',
+    detail: 'The reference has been removed from your reading list.',
     life: 3000,
   })
 }
@@ -106,7 +106,7 @@ const deleteItem = async (ref: Reference) => {
 
 <template>
   <div class="w-full flex flex-col container mx-auto px-8 pb-8 md:pb-16">
-    <ToolkitHeading text="Your Bibliography" class="pt-4"></ToolkitHeading>
+    <ToolkitHeading text="Your Reading List" class="pt-4"></ToolkitHeading>
     <h2 class="text-xl font-bold mb-4">
       Here you can store a personalised set of references for later reading. You'll find links
       throughout the toolkit next to relevant material.
@@ -124,7 +124,7 @@ const deleteItem = async (ref: Reference) => {
         <div class="flex items-start gap-3">
           <span class="text-lg pi pi-info-circle text-amber-500 mt-1"></span>
           <div>
-            <h4 class="font-bold mb-2">Previous Bibliography Detected</h4>
+            <h4 class="font-bold mb-2">Previous Reading List Detected</h4>
             <p class="mb-3">
               We found items you added before logging in. You can merge any extra references into
               your account or dismiss this backup.
@@ -161,10 +161,9 @@ const deleteItem = async (ref: Reference) => {
         <Button
           @click="deleteItem(ref)"
           class="ml-2 flex-shrink-0"
-          title="Remove from bibliography"
+          title="Remove from reading list"
           icon="pi pi-trash"
-        >
-        </Button>
+        />
       </li>
     </ul>
     <div v-else class="text-muted-color">No references added yet.</div>
