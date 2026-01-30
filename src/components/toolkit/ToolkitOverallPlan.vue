@@ -44,17 +44,11 @@ const {
 } = projectPlanRefs
 
 // Composable hooks
-useProjectPlanAutoSave(projectPlan, [
-  title,
-  vision,
-  laymansSummary,
-  stakeholderAnalysis,
-  approach,
-  data,
-  ethics,
-  platform,
-  costings,
-], authenticated)
+useProjectPlanAutoSave(
+  projectPlan,
+  [title, vision, laymansSummary, stakeholderAnalysis, approach, data, ethics, platform, costings],
+  authenticated,
+)
 
 // Use the pinia store and load/save from API if authenticated
 useProjectPlanData(projectPlan, authenticated, getToken)
