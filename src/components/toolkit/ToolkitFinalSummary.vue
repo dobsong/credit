@@ -31,7 +31,7 @@ projectPlan.enable()
               section.
             </p>
             <p class="md:mb-4 text-base md:text-xl lg:mx-16">
-              We'd welcome your feeback on this beta version of CREDIT
+              We'd welcome your feedback on CREDIT to help us improve it.
             </p>
             <div class="text-center md:mt-8 mb-4 text-sm lg:text-lg">
               <Button

@@ -78,17 +78,6 @@ async function copyPreviousDataToClipboard() {
             <ToolkitHeading text="Development Phase" class="mx-auto"></ToolkitHeading>
           </div>
           <div class="w-full mx-auto lg:w-4/5">
-            <div
-              class="md:float-right bg-amber-200 text-gray-900 w-64 rounded-xl drop-shadow-xl drop-shadow-slate-500 dark:drop-shadow-gray-950 text-center mx-auto my-4"
-            >
-              <span class="pi pi-exclamation-circle float-right p-2"></span>
-              <h3 class="font-bold pt-4">Beta Version</h3>
-              <p class="px-4 pb-8 pt-4">
-                Your input is not saved in this beta version. For now, you can use the export button
-                at the bottom of this section or download templates in the
-                <RouterLink to="/resources">resources</RouterLink> section for offline use.
-              </p>
-            </div>
             <p class="md:mb-4 text-base md:text-xl">
               This phase defines the space to develop the different plans required to deliver the
               project.
@@ -124,7 +113,11 @@ async function copyPreviousDataToClipboard() {
           <template #content>
             <div>
               <span class="pi pi-info-circle"></span> You can login using the button at the top if
-              you want your plan to be saved to revisit later
+              you want your plan to be saved to revisit later. We advise against adding any
+              confidential information here, although we will store it securely. You are also free
+              to use the tool without an account, but please be aware that refreshing your browser
+              or navigating away will lose any unsaved data. Use the export button at the bottom of
+              the page to keep a copy of your plan.
             </div>
           </template>
         </Card>
