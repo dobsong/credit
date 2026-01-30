@@ -33,7 +33,7 @@ function scrollToSection(id: string) {
               <span class="pi pi-exclamation-circle float-right p-2"></span>
               <h3 class="font-bold pt-4">Feedback</h3>
               <p class="px-4 pb-8 pt-4">
-                Thanks for taking a look at the CREDIT. We'd love
+                Thanks for taking a look at CREDIT. We'd love
                 <a href="https://forms.office.com/e/xrv5N2XtvA" target="_blank">
                   to hear your thoughts
                 </a>

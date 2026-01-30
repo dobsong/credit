@@ -1,15 +1,10 @@
 <script setup lang="ts">
 import { useKeycloak } from '@/composables/keycloak'
-import { useClipboard } from '@/composables/useClipboard'
-import { useProjectPlanAutoSave } from '@/composables/useProjectPlanAutoSave'
-import { useProjectPlanData } from '@/composables/useProjectPlanData'
-import { useUnsavedChangesGuard } from '@/composables/useUnsavedChangesGuard'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import { scrollToSection } from '@/utility'
 import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
 import { storeToRefs } from 'pinia'
-import ToolkitExportButtons from '../ui/ToolkitExportButtons.vue'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
@@ -17,54 +12,12 @@ import ToolkitReference from '../ui/ToolkitReference.vue'
 import ToolkitSection from '../ui/ToolkitSection.vue'
 import ToolkitOverallPlan from './ToolkitOverallPlan.vue'
 
-const { authenticated, getToken } = useKeycloak()
+const { authenticated } = useKeycloak()
 
 const projectPlan = useProjectPlanStore()
-projectPlan.enable()
 const phase = 3
 
-const {
-  title,
-  vision,
-  laymansSummary,
-  stakeholderAnalysis,
-  approach,
-  data,
-  ethics,
-  platform,
-  costings,
-  dirty,
-  isLoading,
-  error,
-  retrying,
-  previousData,
-} = storeToRefs(projectPlan)
-
-// Composable hooks
-useProjectPlanAutoSave(projectPlan, [
-  title,
-  vision,
-  laymansSummary,
-  stakeholderAnalysis,
-  approach,
-  data,
-  ethics,
-  platform,
-  costings,
-])
-
-// Use the pinia store and load/save from API if authenticated
-useProjectPlanData(projectPlan, authenticated, getToken)
-// Warn about navigation with unsaved changes
-useUnsavedChangesGuard(projectPlan)
-
-const { copySuccess, copyDataAsPlainText } = useClipboard()
-
-// Copy previous data to clipboard as plain text
-async function copyPreviousDataToClipboard() {
-  if (!previousData.value) return
-  await copyDataAsPlainText(previousData.value)
-}
+const { dirty, isLoading, error, retrying } = storeToRefs(projectPlan)
 </script>
 
 <template>
@@ -121,41 +74,9 @@ async function copyPreviousDataToClipboard() {
             </div>
           </template>
         </Card>
-        <Card v-if="previousData" class="mb-4">
-          <template #content>
-            <div class="flex items-start gap-3">
-              <span class="text-lg pi pi-info-circle text-amber-500 mt-1"></span>
-              <div>
-                <h4 class="font-bold mb-2">Previous Data Detected</h4>
-                <p class="mb-3">
-                  We found data you were working on before logging in. The server has now loaded
-                  your saved project plan, which may differ from what you were editing. You can copy
-                  this data to your clipboard to inspect it.
-                </p>
-                <div class="flex gap-2">
-                  <Button
-                    @click="copyPreviousDataToClipboard()"
-                    class="text-sm px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors flex items-center gap-2"
-                  >
-                    <span class="pi" :class="copySuccess ? 'pi-check' : 'pi-copy'"></span>
-                    {{ copySuccess ? 'Copied!' : 'Copy Data' }}
-                  </Button>
-                  <Button
-                    @click="projectPlan.clearPreviousData()"
-                    variant="outlined"
-                    class="text-sm px-3 py-1 bg-gray-400 hover:bg-gray-500 text-white rounded transition-colors"
-                  >
-                    Dismiss
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </template>
-        </Card>
         <Card class="mb-4">
           <template #content>
             <ToolkitOverallPlan></ToolkitOverallPlan>
-            <ToolkitExportButtons></ToolkitExportButtons>
           </template>
         </Card>
       </section>

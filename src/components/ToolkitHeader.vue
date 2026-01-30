@@ -77,10 +77,10 @@ const toggle = (event: MouseEvent) => {
           <Button
             icon="pi pi-pen-to-square text-white"
             variant="text"
+            @click="$router.push('/plan')"
             class="enabled:hover:p-text:bg-primary-400"
-            disabled
+            title="Your Project Plan"
           />
-          <Button icon="pi pi-clipboard text-white" variant="text" disabled />
           <Button
             variant="text"
             @click="toggle"
