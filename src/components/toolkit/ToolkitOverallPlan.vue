@@ -54,7 +54,7 @@ useProjectPlanAutoSave(projectPlan, [
   ethics,
   platform,
   costings,
-])
+], authenticated)
 
 // Use the pinia store and load/save from API if authenticated
 useProjectPlanData(projectPlan, authenticated, getToken)
