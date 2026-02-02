@@ -117,7 +117,8 @@ Vue Router configuration is in `src/router/router.ts`. The app structure follows
 - `/resources` – Resource downloads and templates
 - `/glossary` – Term definitions
 - `/case-studies` – Example projects
-- `/bibliography` – References
+- `/bibliography` – Personalised Reading List References Added by User
+- `plan` - User's overall plan outline. Likely produced in the Development Phase.
 - `/profile` – User profile (requires auth)
 
 #### Navigation Patterns
@@ -158,6 +159,26 @@ pnpm run format
 # Build for production
 pnpm run build
 ```
+
+## Docker Deployment
+
+The application can be containerized using the included Dockerfile:
+
+```bash
+# Build the Docker image
+docker build -t credit-toolkit .
+
+# Run the container on port 5173 (remember that you'll need to setup the CORS settings of the API and keycloak appropriately to reflect this)
+docker run -p 5173:80 credit-toolkit
+```
+
+The Dockerfile uses a **multi-stage build**:
+
+1. **Build stage:** Uses Node.js Alpine with pnpm to install dependencies and build the production bundle
+2. **Production stage:** Serves the static build via nginx on port 80
+
+**Environment Configuration:** The build uses `VITE_BASE_URL` from `.env.production` to set the base path (defaults to `/`).
+`VITE_API_BASE_URL` and `VITE_API_BASE_URL` can be used to configure API and keycloak locations.
 
 ## Key Dependencies
 
