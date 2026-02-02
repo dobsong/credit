@@ -107,10 +107,19 @@ const deleteItem = async (ref: Reference) => {
 <template>
   <div class="w-full flex flex-col container mx-auto px-8 pb-8 md:pb-16">
     <ToolkitHeading text="Your Reading List" class="pt-4"></ToolkitHeading>
-    <h2 class="text-xl font-bold mb-4">
-      Here you can store a personalised set of references for later reading. You'll find links
-      throughout the toolkit next to relevant material.
-    </h2>
+    <Card class="mb-4">
+      <template #content>
+        <div class="flex flex-col md:flex-row">
+          <div>
+            <p class="text-sm md:text-lg">
+              <span class="pi pi-info-circle"></span> Here you can store a personalised set of
+              references for later reading. You'll find links throughout the toolkit next to
+              relevant material.
+            </p>
+          </div>
+        </div></template
+      >
+    </Card>
     <Card v-if="!authenticated" class="mb-4">
       <template #content>
         <div>

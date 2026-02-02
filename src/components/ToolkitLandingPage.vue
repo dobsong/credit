@@ -37,7 +37,7 @@ function scrollToSection(id: string) {
                 <a href="https://forms.office.com/e/xrv5N2XtvA" target="_blank">
                   to hear your thoughts
                 </a>
-                when you've had a chance to explore it.
+                when you've had a chance to explore.
               </p>
             </div>
             <div class="text-center md:mt-8 mb-4 text-sm lg:text-lg">
