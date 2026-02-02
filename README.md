@@ -86,7 +86,7 @@ The **`projectPlan` store** (`src/stores/projectPlan.ts`) manages:
 
 ### PrimeVue Volt Components
 
-The app uses **PrimeVue Volt** (`src/volt/`), a custom component library built on PrimeVue. These are styled UI building blocks:
+The app uses [PrimeVue Volt](https://volt.primevue.org/overview) (`src/volt/`), a custom component library built on PrimeVue. Theoretically, only the core primevue packages should need updated, and the components "belong" to our codebase. Some of the components used are:
 
 - **`Button.vue`** – Primary action button (supports `outlined` variant)
 - **`Card.vue`** – Container for content sections
@@ -95,11 +95,11 @@ The app uses **PrimeVue Volt** (`src/volt/`), a custom component library built o
 - **`Select.vue`** – Dropdown selector
 - **`Checkbox.vue`** – Checkbox input
 - **`RadioButton.vue`** – Radio button input
-- **`DataTable.vue`** – Table component
+- **`DataTable.vue`** – Table component (used in Glossary)
 - **`Dialog.vue`** – Modal dialog
 - **`Accordion.vue`** / **`AccordionPanel.vue`** – Collapsible sections
 - **`Toast.vue`** – Toast notifications
-- **`Skeleton.vue`** – Loading placeholder
+- **`Skeleton.vue`** – Loading placeholder (can probably get rid of now as was only used during prototyping)
 
 **Usage:** Import and use as standard Vue components. All support `v-model` binding for form inputs.
 
