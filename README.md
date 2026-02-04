@@ -178,7 +178,7 @@ The Dockerfile uses a **multi-stage build**:
 2. **Production stage:** Serves the static build via nginx on port 80
 
 **Environment Configuration:** The build uses `VITE_BASE_URL` from `.env.production` to set the base path (defaults to `/`).
-`VITE_API_BASE_URL` and `VITE_API_BASE_URL` can be used to configure API and keycloak locations.
+`VITE_API_BASE_URL` and `VITE_KEYCLOAK_URL` can be used to configure API and keycloak locations.
 
 ## Key Dependencies
 
@@ -193,9 +193,9 @@ The Dockerfile uses a **multi-stage build**:
 - **Tailwind CSS** – Styling
 - **html2canvas-pro** / **jsPDF** – Export functionality
 
-## Testing
+## Testing (or lack thereof)
 
-Unit tests use **Vitest**. Run tests with:
+Unit tests use **Vitest**. But I have not been adding them as I went along! Run tests with:
 
 ```bash
 pnpm run test:unit
