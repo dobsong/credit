@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { useKeycloak } from '@/composables/keycloak'
 import { useBibliographyStore } from '@/stores/bibliography'
+import type { Reference } from '@/types/reference'
 import { useToast } from 'primevue/usetoast'
 
 const bibliography = useBibliographyStore()
+const { authenticated, getToken } = useKeycloak()
 const toast = useToast() // instance to create messages
 
 import { onMounted, ref } from 'vue'
@@ -29,6 +32,7 @@ onMounted(() => {
   }, 3000)
 })
 
+// Start bounce animation (called on initial load and on hover)
 const startBounce = () => {
   bouncing.value = true
   settling.value = false
@@ -40,22 +44,47 @@ const stopBounce = () => {
   setTimeout(() => (settling.value = false), 400)
 }
 
-const addToBibliography = () => {
+const addToBibliography = async () => {
   if (!inBibliography.value) {
-    // Add the current reference to the bibliography
-    bibliography.add({
+    const reference: Reference = {
       title: props.title || '',
       authors: props.authors || '',
       citation: props.citation,
       url: props.url,
       year: props.year || 0,
-    })
+    }
+
+    // If authenticated, try to save to backend first and capture returned id
+    if (authenticated.value) {
+      try {
+        const token = await getToken()
+        if (token) {
+          console.log('Saving reference to backend reading list')
+          const createdId = await bibliography.save(reference, token)
+          if (createdId && createdId > 0) {
+            reference.id = createdId
+          }
+        }
+      } catch {
+        // Show error toast and don't add to store
+        toast.add({
+          severity: 'error',
+          summary: 'Failed to Save Reference',
+          detail: 'The reference could not be saved to your reading list.',
+          life: 3000,
+        })
+        return
+      }
+    }
+
+    // Add to local store (will include id if backend returned one)
+    bibliography.add(reference)
 
     // Show a toast message to confirm addition
     toast.add({
       severity: 'success',
       summary: 'Reference Added',
-      detail: 'The reference has been added to your bibliography. Access it from the topbar.',
+      detail: 'The reference has been added to your reading list. Access it from the topbar.',
       life: 3000,
     })
 
@@ -67,7 +96,7 @@ const addToBibliography = () => {
   <span>
     <a class="italic" :href="url" target="_blank">{{ shortDescription || title }}</a>
     <button
-      title="Add to your bibliography to review later"
+      title="Add to your reading list to review later"
       @click="addToBibliography()"
       v-if="!inBibliography"
     >

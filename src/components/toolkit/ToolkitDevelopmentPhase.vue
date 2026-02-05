@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { useKeycloak } from '@/composables/keycloak'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import { scrollToSection } from '@/utility'
 import Button from '@/volt/Button.vue'
 import Card from '@/volt/Card.vue'
-import ToolkitExportButtons from '../ui/ToolkitExportButtons.vue'
+import { storeToRefs } from 'pinia'
 import ToolkitHeading from '../ui/ToolkitHeading.vue'
 import ToolkitNextButton from '../ui/ToolkitNextButton.vue'
 import ToolkitPhaseNavigation from '../ui/ToolkitPhaseNavigation.vue'
@@ -11,9 +12,12 @@ import ToolkitReference from '../ui/ToolkitReference.vue'
 import ToolkitSection from '../ui/ToolkitSection.vue'
 import ToolkitOverallPlan from './ToolkitOverallPlan.vue'
 
+const { authenticated } = useKeycloak()
+
 const projectPlan = useProjectPlanStore()
-projectPlan.enable()
 const phase = 3
+
+const { dirty, isLoading, error, retrying } = storeToRefs(projectPlan)
 </script>
 
 <template>
@@ -27,17 +31,6 @@ const phase = 3
             <ToolkitHeading text="Development Phase" class="mx-auto"></ToolkitHeading>
           </div>
           <div class="w-full mx-auto lg:w-4/5">
-            <div
-              class="md:float-right bg-amber-200 text-gray-900 w-64 rounded-xl drop-shadow-xl drop-shadow-slate-500 dark:drop-shadow-gray-950 text-center mx-auto my-4"
-            >
-              <span class="pi pi-exclamation-circle float-right p-2"></span>
-              <h3 class="font-bold pt-4">Beta Version</h3>
-              <p class="px-4 pb-8 pt-4">
-                Your input is not saved in this beta version. For now, you can use the export button
-                at the bottom of this section or download templates in the
-                <RouterLink to="/resources">resources</RouterLink> section for offline use.
-              </p>
-            </div>
             <p class="md:mb-4 text-base md:text-xl">
               This phase defines the space to develop the different plans required to deliver the
               project.
@@ -69,10 +62,21 @@ const phase = 3
 
       <section id="planning">
         <ToolkitHeading text="Planning"></ToolkitHeading>
+        <Card v-if="!authenticated" class="mb-4">
+          <template #content>
+            <div>
+              <span class="pi pi-info-circle"></span> You can login using the button at the top if
+              you want your plan to be saved to revisit later. We advise against adding any
+              confidential information here, although we will store it securely. You are also free
+              to use the tool without an account, but please be aware that refreshing your browser
+              or navigating away will lose any unsaved data. Use the export button at the bottom of
+              the page to keep a copy of your plan.
+            </div>
+          </template>
+        </Card>
         <Card class="mb-4">
           <template #content>
             <ToolkitOverallPlan></ToolkitOverallPlan>
-            <ToolkitExportButtons></ToolkitExportButtons>
           </template>
         </Card>
       </section>
@@ -87,7 +91,8 @@ const phase = 3
           be assessed -UKRI"
               short-description="Funding Applications UKRI core question guidance: Core section questions and how they will
           be assessed -UKRI"
-              citation=""
+              citation="Funding Applications UKRI core question guidance: Core section questions and how they will
+          be assessed -UKRI"
               url="https://www.ukri.org/apply-for-funding/develop-your-application/responsive-mode-opportunities-funding-service-core-application-section-questions-and-assessment/core-section-questions-and-how-they-will-be-assessed/#contents-list"
             ></ToolkitReference>
           </li>
@@ -167,7 +172,22 @@ const phase = 3
         <ToolkitNextButton :currentPhase="phase" text="Launch and Sustain"></ToolkitNextButton>
       </p>
     </div>
+
+    <!-- Floating save indicator -->
+    <div
+      v-if="authenticated && (isLoading || dirty || error)"
+      class="fixed bottom-4 right-4 z-50 px-4 py-2 rounded-4xl transition-opacity duration-300 opacity-80 bg-primary-500 text-white"
+    >
+      <div v-if="error || retrying" class="text-center">
+        <div class="pi pi-exclamation-triangle"></div>
+        <div>{{ error }}</div>
+        <div v-if="retrying">Retrying...</div>
+      </div>
+      <span v-else-if="isLoading" class="pi pi-spin pi-spinner"></span>
+      <span v-else-if="dirty" class="pi pi-save"></span>
+    </div>
   </div>
+
   <img
     src="@/assets/ribbon_development.svg"
     class="w-full h-32 object-cover object-left sm:h-auto sm:object-contain"

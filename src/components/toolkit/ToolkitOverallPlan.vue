@@ -1,18 +1,67 @@
 <script setup lang="ts">
+import { useKeycloak } from '@/composables/keycloak'
+import { useClipboard } from '@/composables/useClipboard'
+import { useProjectPlanAutoSave } from '@/composables/useProjectPlanAutoSave'
+import { useProjectPlanData } from '@/composables/useProjectPlanData'
+import { useUnsavedChangesGuard } from '@/composables/useUnsavedChangesGuard'
 import { useProjectPlanStore } from '@/stores/projectPlan'
 import type { DevelopmentSection } from '@/types/developmentSection'
 import Accordion from '@/volt/Accordion.vue'
 import AccordionHeader from '@/volt/AccordionHeader.vue'
 import AccordionPanel from '@/volt/AccordionPanel.vue'
+import Button from '@/volt/Button.vue'
+import Card from '@/volt/Card.vue'
 import Checkbox from '@/volt/Checkbox.vue'
 import InputText from '@/volt/InputText.vue'
 import Textarea from '@/volt/Textarea.vue'
 import { storeToRefs } from 'pinia'
 import { ref, watch, type Ref } from 'vue'
 import AccordionContent from '../../volt/AccordionContent.vue'
+import ToolkitExportButtons from '../ui/ToolkitExportButtons.vue'
+
+const { authenticated, getToken } = useKeycloak()
 
 const projectPlan = useProjectPlanStore()
+projectPlan.enable()
+
 const projectPlanRefs = storeToRefs(projectPlan)
+
+const {
+  title,
+  vision,
+  laymansSummary,
+  stakeholderAnalysis,
+  approach,
+  data,
+  ethics,
+  platform,
+  costings,
+  dirty,
+  isLoading,
+  error,
+  retrying,
+  previousData,
+} = projectPlanRefs
+
+// Composable hooks
+useProjectPlanAutoSave(
+  projectPlan,
+  [title, vision, laymansSummary, stakeholderAnalysis, approach, data, ethics, platform, costings],
+  authenticated,
+)
+
+// Use the pinia store and load/save from API if authenticated
+useProjectPlanData(projectPlan, authenticated, getToken)
+// Warn about navigation with unsaved changes
+useUnsavedChangesGuard(projectPlan)
+
+const { copySuccess, copyDataAsPlainText } = useClipboard()
+
+// Copy previous data to clipboard as plain text
+async function copyPreviousDataToClipboard() {
+  if (!previousData.value) return
+  await copyDataAsPlainText(previousData.value)
+}
 
 const sections: Ref<DevelopmentSection[]> = ref([
   {
@@ -140,6 +189,37 @@ watch(activePanel, (newVal) => {
 </script>
 
 <template>
+  <Card v-if="previousData" class="mb-4">
+    <template #content>
+      <div class="flex items-start gap-3">
+        <span class="text-lg pi pi-info-circle text-amber-500 mt-1"></span>
+        <div>
+          <h4 class="font-bold mb-2">Previous Data Detected</h4>
+          <p class="mb-3">
+            We found data you were working on before logging in. The server has now loaded your
+            saved project plan, which may differ from what you were editing. You can copy this data
+            to your clipboard to inspect it.
+          </p>
+          <div class="flex gap-2">
+            <Button
+              @click="copyPreviousDataToClipboard()"
+              class="text-sm px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded transition-colors flex items-center gap-2"
+            >
+              <span class="pi" :class="copySuccess ? 'pi-check' : 'pi-copy'"></span>
+              {{ copySuccess ? 'Copied!' : 'Copy Data' }}
+            </Button>
+            <Button
+              @click="projectPlan.clearPreviousData()"
+              variant="outlined"
+              class="text-sm px-3 py-1 bg-gray-400 hover:bg-gray-500 text-white rounded transition-colors"
+            >
+              Dismiss
+            </Button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </Card>
   <InputText placeholder="Project Title" class="mb-4" v-model="projectPlan.title"></InputText>
   <Accordion v-model:value="activePanel" class="w-full">
     <AccordionPanel v-for="section in sections" :key="section.id" :value="section.id">
@@ -179,6 +259,22 @@ watch(activePanel, (newVal) => {
       </AccordionContent>
     </AccordionPanel>
   </Accordion>
+
+  <ToolkitExportButtons class="mt-4"></ToolkitExportButtons>
+
+  <!-- Floating save indicator -->
+  <div
+    v-if="authenticated && (isLoading || dirty || error)"
+    class="fixed bottom-4 right-4 z-50 px-4 py-2 rounded-4xl transition-opacity duration-300 opacity-80 bg-primary-500 text-white"
+  >
+    <div v-if="error || retrying" class="text-center">
+      <div class="pi pi-exclamation-triangle"></div>
+      <div>{{ error }}</div>
+      <div v-if="retrying">Retrying...</div>
+    </div>
+    <span v-else-if="isLoading" class="pi pi-spin pi-spinner"></span>
+    <span v-else-if="dirty" class="pi pi-save"></span>
+  </div>
 </template>
 
 <style scoped></style>

@@ -2,6 +2,7 @@
 import Button from '@/volt/Button.vue'
 import Menu from '@/volt/Menu.vue'
 import { ref } from 'vue'
+import UserAccountButtons from './ui/UserAccountButtons.vue'
 
 defineProps<{
   theme: string
@@ -70,16 +71,16 @@ const toggle = (event: MouseEvent) => {
             icon="pi pi-bookmark text-white"
             variant="text"
             @click="$router.push('/bibliography')"
-            title="Your Bibliography"
+            title="Your Reading List"
             class="ml-2 enabled:hover:p-text:bg-primary-400"
           />
           <Button
             icon="pi pi-pen-to-square text-white"
             variant="text"
+            @click="$router.push('/plan')"
             class="enabled:hover:p-text:bg-primary-400"
-            disabled
+            title="Your Project Plan"
           />
-          <Button icon="pi pi-clipboard text-white" variant="text" disabled />
           <Button
             variant="text"
             @click="toggle"
@@ -95,6 +96,7 @@ const toggle = (event: MouseEvent) => {
               </RouterLink>
             </template>
           </Menu>
+          <UserAccountButtons />
         </div>
       </div>
     </header>

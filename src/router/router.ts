@@ -19,7 +19,9 @@ import ToolkitBibliography from '@/components/ToolkitBibliography.vue'
 import ToolkitCaseStudies from '@/components/ToolkitCaseStudies.vue'
 import ToolkitGlossary from '@/components/ToolkitGlossary.vue'
 import ToolkitLandingPage from '@/components/ToolkitLandingPage.vue'
+import ToolkitPlan from '@/components/ToolkitPlan.vue'
 import ToolkitResources from '@/components/ToolkitResources.vue'
+import UserProfile from '@/components/ui/UserProfile.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 export default createRouter({
@@ -28,6 +30,10 @@ export default createRouter({
     {
       path: '/',
       component: ToolkitLandingPage,
+    },
+    {
+      path: '/profile',
+      component: UserProfile,
     },
     {
       path: '/proposal/phase/01',
@@ -121,6 +127,10 @@ export default createRouter({
     {
       path: '/bibliography',
       component: ToolkitBibliography,
+    },
+    {
+      path: '/plan',
+      component: ToolkitPlan,
     },
   ],
   scrollBehavior(to, from, savedPosition) {

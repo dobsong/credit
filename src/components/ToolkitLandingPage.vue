@@ -31,13 +31,13 @@ function scrollToSection(id: string) {
               class="lg:float-right bg-amber-200 text-gray-900 w-64 rounded-xl drop-shadow-xl drop-shadow-slate-500 dark:drop-shadow-gray-950 text-center mx-auto my-4"
             >
               <span class="pi pi-exclamation-circle float-right p-2"></span>
-              <h3 class="font-bold pt-4">Beta Version</h3>
+              <h3 class="font-bold pt-4">Feedback</h3>
               <p class="px-4 pb-8 pt-4">
-                Thanks for taking a look at the beta version. We're still working on completing the
-                toolkit. We'd love
+                Thanks for taking a look at CREDIT. We'd love
                 <a href="https://forms.office.com/e/xrv5N2XtvA" target="_blank">
-                  to hear your thoughts </a
-                >.
+                  to hear your thoughts
+                </a>
+                when you've had a chance to explore.
               </p>
             </div>
             <div class="text-center md:mt-8 mb-4 text-sm lg:text-lg">
