@@ -256,9 +256,9 @@ function scrollToSection(id: string) {
             </li>
             <li>
               <ToolkitReference
-                title="“Evaluation”, National Co-ordinating Centre for Public Engagement"
-                citation="“Evaluation”, National Co-ordinating Centre for Public Engagement"
-                url="https://www.publicengagement.ac.uk/evaluation"
+                title="FailSpace resources to help you talk about and learn from failure, Centre for Cultural Value"
+                citation="FailSpace resources to help you talk about and learn from failure, Centre for Cultural Value"
+                url="https://www.culturalvalue.org.uk/our-work/failspace/"
               ></ToolkitReference>
             </li>
           </ul>
@@ -271,7 +271,6 @@ function scrollToSection(id: string) {
           />
         </div>
       </div>
-
       <div class="text-center my-4 text-4xl">
         <Button @click="scrollToSection('header')" class="z-50">
           <span class="pi pi-arrow-up" titl="Return to Top"></span>

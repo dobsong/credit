@@ -15,6 +15,7 @@ const leftRoles = [
   'Participant Coordinator/Community Manager',
   'Communicator',
   'Educator/Trainer',
+  'Brokers (Community connector/ development coordinator)',
 ]
 const rightRoles = [
   'Community Partner',
@@ -50,6 +51,8 @@ const roleDescriptions: Record<string, string> = {
   Ambassadors: 'Participants who take on additional role to promote project.',
   Educators:
     'Support participation and legacy. Use project participation or data for educational purposes.',
+  'Brokers (Community connector/ development coordinator)':
+    'Support community/research collaboration by supporting matchmaking, and mediate in community-researcher partnerships.',
 }
 </script>
 
