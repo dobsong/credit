@@ -22,7 +22,7 @@ import ToolkitHeading from './ui/ToolkitHeading.vue'
     <h3 class="font-bold">Contact</h3>
     <p>
       If you have any questions or further input please contact our Education Fellow
-      <a href="mailto:v.seymour@lancaster.ac.uk">v.seymour@lancaster.ac.uk</a>
+      <a href="mailto:openaccess@lancaster.ac.uk">openaccess@lancaster.ac.uk</a>
     </p>
     <h3 class="font-bold">Privacy</h3>
     <p>

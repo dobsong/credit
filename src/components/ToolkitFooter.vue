@@ -41,7 +41,7 @@ defineProps<{
   </div>
   <p class="text-center text-sm py-2 w-full">
     Funded by Wellcome. Email:
-    <a href="mailto:v.seymour@lancaster.ac.uk">v.seymour@lancaster.ac.uk</a>
+    <a href="mailto:openaccess@lancaster.ac.uk">openaccess@lancaster.ac.uk</a>
     <!-- Licence details under consideration
     <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">
       <img src="./../assets/cc_by.png" alt="Creative Commons Licence" class="mx-auto h-10 p-1" />
