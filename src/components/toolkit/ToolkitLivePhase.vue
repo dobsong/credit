@@ -44,7 +44,7 @@ const phase = 4
               />
             </Motion>
             <p class="md:mb-4 text-base md:text-xl lg:mx-24">
-              You may have pre-engaged with your community through co-development or the project, or
+              You may have pre-engaged with your community through co-development of the project, or
               have pre-planned and are ready to engage with your community at the launch stage. A
               community engagement strategy will assist you to attract participants and maintain
               engagement during and after the project.
