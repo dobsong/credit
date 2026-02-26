@@ -25,9 +25,7 @@ function scrollToSection(id: string) {
         </div>
         <div class="my-auto lg:mb-auto lg:mt-0 lg:w-4/5 mx-auto">
           <p class="md:mb-4 text-base md:text-xl lg:mx-24">
-            Before embarking on designing a participatory research or citizen science project it is
-            first important to consider whether it is an appropriate approach. Then the context of
-            the project can be defined and developed.
+            Participants may play a role in collecting or analysing data for the project. Their views are also important for evaluating the project.
           </p>
           <div class="col-span-2 text-center mt-1 mb-2 lg:mt-16">
             <Button @click="scrollToSection('analysis')" class="text-sm md:text-base">
