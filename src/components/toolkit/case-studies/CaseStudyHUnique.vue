@@ -159,9 +159,9 @@ import Button from '@/volt/Button.vue'
             research achieved in this project, which has in turn contributed to the investigation of
             child abuse cases. For Press/Media and Research outputs see the Lancaster University
             <a
-              href="https://www.research.lancs.ac.uk/portal/en/upmprojects/hunique-in-search-of-uniqueness--harnessing-anatomical-hand-variation(b0c82f62-3f22-47ce-8bcf-377c3354338c).html"
+              href="https://research.lancaster-university.uk/en/projects/h-unique-in-search-of-uniqueness-harnessing-anatomical-hand-varia/"
               target="_blank"
-              >Research Portal project page </a
+              >Research Portal project page</a
             >.
           </p>
         </div>
